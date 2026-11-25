@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Posting calendar | Alares Marketing Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<a href="../content.html" style="position:fixed;left:12px;bottom:12px;z-index:9999;background:#0a0a0a;color:#fff;font:500 13px Inter,Arial,sans-serif;padding:8px 12px;text-decoration:none">&larr; Marketing dashboard</a>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<style>
+h1,h2,h3,h4,h5,h6,p,div,span,li,td,th,a,button,label{text-wrap:pretty}
+body{margin:0;background:#EEF2F5}
+a{color:#0E74BB;text-decoration:none}
+a:hover{color:#0C6393;text-decoration:underline}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:#CBD5DC;border:3px solid #EEF2F5;border-radius:6px}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/upscaler@1.0.0-beta.19/dist/browser/umd/upscaler.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@upscalerjs/default-model@1.0.0/dist/umd/index.min.js"></script>
+</helmet>
+<div style="display:flex;height:100vh;font-family:Bahnschrift,'Barlow Semi Condensed',Arial,sans-serif;color:#16222C;overflow-x:auto;overflow-y:hidden">
+
+  <!-- ============ LEFT · CALENDAR ============ -->
+  <div style="flex:0 0 372px;background:#FFFFFF;border-right:1px solid #D8DFE4;display:flex;flex-direction:column;height:100%">
+    <div style="padding:20px 22px 16px;border-bottom:1px solid #E4E9ED">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="assets/alares-logo-transparent.png" alt="Alares" style="height:30px">
+        <span style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#5B6B77;font-weight:600;border-left:1px solid #D8DFE4;padding-left:12px">Content calendar</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:14px">
+        <div style="font-size:22px;font-weight:700;letter-spacing:-0.3px">July – November 2026</div>
+        <div style="font-size:11px;color:#5B6B77">37 posts · Tue &amp; Thu · social + blog</div>
+      </div>
+      <div style="font-size:11.5px;line-height:1.5;color:#5B6B77;margin-top:6px">Two posts a week, Tue &amp; Thu. Each goes out as a social carousel and a matching blog, same photos and words. Click any post to preview and download.</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;padding:8px 14px 20px">
+      <sc-for list="{{ weeks }}" as="w" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:10px;margin:16px 6px 8px">
+          <span style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#0E74BB;font-weight:700">{{ w.label }}</span>
+          <span style="flex:1;height:1px;background:#E4E9ED"></span>
+          <span style="font-size:10px;color:#8A98A3">{{ w.range }}</span>
+        </div>
+        <sc-for list="{{ w.days }}" as="d" hint-placeholder-count="3">
+          <button onClick="{{ d.onClick }}" style="{{ d.rowStyle }}">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span style="{{ d.badgeStyle }}">{{ d.badge }}</span>
+              <span style="font-size:11px;font-weight:600;color:#5B6B77">{{ d.dateLabel }}</span>
+              <span style="flex:1"></span>
+              <span style="font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:#8A98A3">{{ d.pillar }}</span>
+            </div>
+            <div style="font-size:13px;font-weight:600;color:#16222C;line-height:1.3;margin-top:5px;text-align:left">{{ d.title }}</div>
+          </button>
+        </sc-for>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ============ RIGHT · PREVIEW ============ -->
+  <div style="flex:1;min-width:0;display:flex;height:100%">
+
+    <!-- creative -->
+    <div style="flex:0 0 480px;background:#EEF2F5;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;box-sizing:border-box;position:relative">
+      <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8A98A3;font-weight:600;position:absolute;top:22px;left:28px">{{ post.previewLabel }}</div>
+
+      <!-- SOCIAL carousel frame -->
+      <sc-if value="{{ post.isSocial }}" hint-placeholder-val="{{ true }}">
+        <div style="position:relative">
+        <div ref="{{ post.setPreview }}" style="position:relative;width:352px;height:440px;box-shadow:0 12px 34px rgba(11,25,36,0.18);background:#0E74BB;overflow:hidden">
+          {{ post.slideEl }}
+        </div>
+          <!-- carousel arrows, outside the frame so they never cover the artwork -->
+          <sc-if value="{{ post.multi }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ post.prev }}" style="position:absolute;left:-40px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;border:none;background:#FFFFFF;color:#0E74BB;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(11,25,36,0.18)">‹</button>
+            <button onClick="{{ post.next }}" style="position:absolute;right:-40px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;border:none;background:#FFFFFF;color:#0E74BB;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(11,25,36,0.18)">›</button>
+          </sc-if>
+        </div>
+        <!-- dots + counter -->
+        <sc-if value="{{ post.multi }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;align-items:center;gap:7px;margin-top:16px">
+            <sc-for list="{{ post.dots }}" as="dot" hint-placeholder-count="3">
+              <button onClick="{{ dot.onClick }}" style="{{ dot.style }}"></button>
+            </sc-for>
+            <span style="font-size:10px;color:#8A98A3;margin-left:6px">{{ post.counter }}</span>
+          </div>
+        </sc-if>
+      </sc-if>
+
+      </sc-if>
+
+    </div>
+
+    <!-- details -->
+    <div style="flex:1;min-width:340px;box-sizing:border-box;background:#FFFFFF;border-left:1px solid #D8DFE4;overflow-y:auto;padding:30px 34px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="{{ post.tagStyle }}">{{ post.tagText }}</span>
+        <span style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5B6B77;font-weight:600">{{ post.pillar }}</span>
+      </div>
+      <div style="font-size:26px;font-weight:700;line-height:1.12;letter-spacing:-0.3px;margin-top:12px">{{ post.title }}</div>
+      <div style="font-size:12px;color:#5B6B77;margin-top:8px;line-height:1.6">{{ post.metaLine }}</div>
+
+      <div style="margin-top:22px;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:700">{{ post.bodyLabel }}</div>
+      <div style="font-size:13.5px;line-height:1.65;color:#16222C;margin-top:9px;white-space:pre-line">{{ post.caption }}</div>
+
+      <sc-if value="{{ post.hasTags }}" hint-placeholder-val="{{ true }}">
+        <div style="font-size:12.5px;line-height:1.7;color:#0E74BB;font-weight:600;margin-top:14px">{{ post.tagLine }}</div>
+      </sc-if>
+
+      <div style="display:flex;gap:10px;margin-top:22px">
+        <button onClick="{{ post.copy }}" style="background:#0E74BB;color:#FFFFFF;border:none;padding:11px 18px;font-family:Bahnschrift,'Barlow Semi Condensed',Arial,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:0.03em;cursor:pointer" style-hover="background:#0C6393">{{ post.copyLabel }}</button>
+        <a href="Brand%20Asset%20Builder.dc.html" style="border:1px solid #D8DFE4;color:#0E74BB;padding:11px 18px;font-size:12.5px;font-weight:700;letter-spacing:0.03em">Open asset builder →</a>
+      </div>
+
+      <div style="margin-top:26px;border-top:1px solid #E4E9ED;padding-top:16px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:700;flex:1">Edit text</div>
+          <sc-if value="{{ post.hasEdits }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ post.resetEdits }}" style="border:none;background:none;padding:0;font-family:Bahnschrift,'Barlow Semi Condensed',Arial,sans-serif;font-size:10.5px;font-weight:700;color:#8A98A3;cursor:pointer;text-decoration:underline">Reset to original</button>
+          </sc-if>
+        </div>
+        <div style="font-size:11px;color:#8A98A3;margin-top:5px;line-height:1.5">Type below and the slide, X card, and blog card update live. Edits save on this device.</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+          <div>
+            <div style="{{ post.fldLabelStyle }}">Tag (X + blog card)</div>
+            <input value="{{ post.pillarVal }}" onChange="{{ post.pillarChange }}" style="{{ post.fldStyle }}">
+          </div>
+          <div>
+            <div style="{{ post.fldLabelStyle }}">Headline (blog card)</div>
+            <input value="{{ post.titleVal }}" onChange="{{ post.titleChange }}" style="{{ post.fldStyle }}">
+          </div>
+          <div>
+            <div style="{{ post.fldLabelStyle }}">X card headline · press Enter for a line break</div>
+            <textarea value="{{ post.xTitleVal }}" onChange="{{ post.xTitleChange }}" rows="2" style="{{ post.fldStyle }}"></textarea>
+          </div>
+          <sc-for list="{{ post.editFields }}" as="f" hint-placeholder-count="2">
+            <div>
+              <div style="{{ post.fldLabelStyle }}">{{ f.label }}</div>
+              <sc-if value="{{ f.multiline }}" hint-placeholder-val="{{ true }}">
+                <textarea value="{{ f.value }}" onChange="{{ f.onChange }}" rows="2" style="{{ post.fldStyle }}"></textarea>
+              </sc-if>
+              <sc-if value="{{ f.single }}" hint-placeholder-val="{{ false }}">
+                <input value="{{ f.value }}" onChange="{{ f.onChange }}" style="{{ post.fldStyle }}">
+              </sc-if>
+            </div>
+          </sc-for>
+          <div>
+            <div style="{{ post.fldLabelStyle }}">Caption / share text</div>
+            <textarea value="{{ post.captionVal }}" onChange="{{ post.captionChange }}" rows="5" style="{{ post.fldStyle }}"></textarea>
+          </div>
+          <div>
+            <div style="{{ post.fldLabelStyle }}">Hashtags · space separated</div>
+            <input value="{{ post.tagsVal }}" onChange="{{ post.tagsChange }}" style="{{ post.fldStyle }}">
+          </div>
+        </div>
+      </div>
+
+      <sc-if value="{{ post.isSocial }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:26px;border-top:1px solid #E4E9ED;padding-top:16px">
+          <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:700">Carousel · {{ post.slideSummary }}</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px">
+            <sc-for list="{{ post.slideList }}" as="s" hint-placeholder-count="3">
+              <button onClick="{{ s.onClick }}" style="{{ s.rowStyle }}">
+                <span style="{{ s.numStyle }}">{{ s.num }}</span>
+                <div style="text-align:left;min-width:0">
+                  <div style="font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:#8A98A3;font-weight:700">{{ s.mode }}</div>
+                  <div style="font-size:12px;font-weight:600;color:#16222C;line-height:1.25;margin-top:2px">{{ s.label }}</div>
+                </div>
+              </button>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <button onClick="{{ post.dl }}" style="{{ post.dlStyle }}">{{ post.dlLabel }}</button>
+            <sc-if value="{{ post.multi }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ post.dlAll }}" style="border:1px solid #D8DFE4;background:#FFFFFF;color:#0E74BB;padding:11px 16px;font-family:Bahnschrift,'Barlow Semi Condensed',Arial,sans-serif;font-size:12.5px;font-weight:700;letter-spacing:0.03em;cursor:pointer;white-space:nowrap">{{ post.dlAllLabel }}</button>
+            </sc-if>
+          </div>
+          <div style="font-size:10.5px;color:#8A98A3;margin-top:8px">4K PNG, 2160 × 2700 px, ready to post. Downloads the slide with its overlay exactly as shown.</div>
+          <sc-if value="{{ post.canUpscale }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:14px;border-top:1px solid #E4E9ED;padding-top:12px">
+              <button onClick="{{ post.upsc }}" disabled="{{ post.upscBusy }}" style="{{ post.upscStyle }}">{{ post.upscLabel }}</button>
+              <sc-if value="{{ post.upscBusy }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:8px;height:5px;background:#EEF2F5"><div style="height:5px;background:#62C4EF;width:{{ post.upscPct }}"></div></div>
+              </sc-if>
+              <sc-if value="{{ post.upscHasNote }}" hint-placeholder-val="{{ false }}"><div style="font-size:11px;color:#B3261E;margin-top:7px">{{ post.upscNote }}</div></sc-if>
+              <div style="font-size:10.5px;color:#8A98A3;margin-top:7px">Sharpens a blurry photo with AI, right in your browser, then saves it into this slide and keeps your crop. First run downloads the model, and a large photo can take a minute.</div>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <div style="margin-top:26px;border-top:1px solid #E4E9ED;padding-top:16px">
+        <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:700">Also on the blog</div>
+        <div style="font-size:11.5px;color:#5B6B77;margin-top:6px;line-height:1.5">The same post as a website article. This 1200 × 630 link card is the image LinkedIn, X, and Facebook show when the post is shared.</div>
+        <div ref="{{ post.setBlogRef }}" style="width:360px;margin-top:12px;box-shadow:0 8px 22px rgba(11,25,36,0.14)">{{ post.blogCardEl }}</div>
+        <div style="display:flex;gap:8px;margin-top:14px">
+          <button onClick="{{ post.dlBlog }}" style="{{ post.dlBlogStyle }}">{{ post.dlBlogLabel }}</button>
+        </div>
+        <div style="font-size:10.5px;color:#8A98A3;margin-top:8px">Link card PNG, 2400 × 1260 px. The article body reuses the caption above.</div>
+      </div>
+
+      <div style="margin-top:26px;border-top:1px solid #E4E9ED;padding-top:16px">
+        <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:700">Also on X (Twitter)</div>
+        <div style="font-size:11.5px;color:#5B6B77;margin-top:6px;line-height:1.5">X shows a single photo best, so this is a fixed 16:9 version: one image, gradient, headline and logo. Post it on its own with the caption above.</div>
+        <div ref="{{ post.setXRef }}" style="width:400px;margin-top:12px;box-shadow:0 8px 22px rgba(11,25,36,0.14)">{{ post.xCardEl }}</div>
+        <div style="display:flex;gap:8px;margin-top:14px">
+          <button onClick="{{ post.dlX }}" style="{{ post.dlXStyle }}">{{ post.dlXLabel }}</button>
+        </div>
+        <div style="font-size:10.5px;color:#8A98A3;margin-top:8px">X card PNG, 1200 × 675 px (exported at 2400 × 1350). Drag a different photo onto the card to change it.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 800}}">
+class Component extends DCLogic {
+  state = { sel: 'w1t', slide: 0, copied: false, dling: false, dlingBlog: false, dlingX: false, upsc: false, upscP: 0, upscNote: null };
+
+  componentDidMount(){
+    // Self-heal images that failed a transient load (broken-icon slides):
+    // retry same URL with a cache-bust, max 3 tries per file.
+    this._healN = new Map();
+    this._heal = setInterval(() => {
+      try{
+        if(document.readyState !== 'complete') return;
+        const fix = (img) => {
+          if(!img || !img.complete || img.naturalWidth !== 0) return;
+          const src = img.getAttribute('src') || '';
+          if(!src || src.indexOf('data:') === 0 || src.indexOf('blob:') === 0 || /\.svg(\?|$)/i.test(src)) return;
+          const base = src.split('?')[0];
+          const n = this._healN.get(base) || 0;
+          if(n >= 3) return;
+          this._healN.set(base, n + 1);
+          img.src = base + '?r=' + Date.now();
+        };
+        document.querySelectorAll('img').forEach(fix);
+        document.querySelectorAll('image-slot').forEach(s => fix(s._img));
+      }catch(e){}
+    }, 2500);
+  }
+  componentWillUnmount(){ clearInterval(this._heal); }
+
+  setPreview = (el) => { this.previewNode = el; };
+  setBlogRef = (el) => { this.blogNode = el; };
+  setXRef = (el) => { this.xNode = el; };
+
+  renderXCard(d){
+    const h=React.createElement, BLUE='#0E74BB', SKY='#62C4EF', W='#FFFFFF';
+    if(d.xMark) return h('div',{style:{position:'relative',width:'100%',aspectRatio:'1200 / 675',overflow:'hidden',background:BLUE,fontFamily:"'Barlow Semi Condensed',Bahnschrift,Arial,sans-serif"}},[
+      h('div',{key:'p',style:{position:'absolute',right:0,top:0,bottom:0,width:'44%',background:W,display:'flex',alignItems:'center',justifyContent:'center'}},
+        h('img',{src:'assets/emblem-color.svg',alt:'',style:{width:'64%',height:'auto',display:'block'}})),
+      h('div',{key:'y',style:{position:'absolute',left:'20px',top:'20px',fontSize:'8px',letterSpacing:'0.22em',textTransform:'uppercase',color:SKY,fontWeight:700}},d.pillar),
+      h('div',{key:'t',style:{position:'absolute',left:'20px',right:'50%',bottom:'40px',fontSize:'24px',fontWeight:700,color:W,lineHeight:1.18,letterSpacing:'-0.01em',whiteSpace:'pre-line'}},d.xTitle||d.title),
+      h('img',{key:'l',src:'assets/alares-lockup-white.png',alt:'',style:{position:'absolute',left:'20px',bottom:'17px',height:'12px'}})
+    ]);
+    if(d.xFlat) return h('div',{style:{position:'relative',width:'100%',aspectRatio:'1200 / 675',overflow:'hidden',background:BLUE,fontFamily:"'Barlow Semi Condensed',Bahnschrift,Arial,sans-serif"}},[
+      h('img',{key:'e',src:'assets/emblem-white.svg',alt:'',style:{position:'absolute',top:0,right:0,height:'100%',width:'auto',transform:'translateX(9%)',opacity:0.08,pointerEvents:'none'}}),
+      h('div',{key:'y',style:{position:'absolute',left:'20px',top:'20px',fontSize:'8px',letterSpacing:'0.22em',textTransform:'uppercase',color:SKY,fontWeight:700}},d.pillar),
+      h('div',{key:'t',style:{position:'absolute',left:'20px',right:'30%',top:'50%',transform:'translateY(-50%)',fontSize:'26px',fontWeight:700,color:W,lineHeight:1.15,letterSpacing:'-0.01em',whiteSpace:'pre-line'}},d.xTitle||d.title),
+      h('img',{key:'l',src:'assets/alares-lockup-white.png',alt:'',style:{position:'absolute',left:'20px',bottom:'17px',height:'12px'}})
+    ]);
+    if(d.xStat) return h('div',{style:{position:'relative',width:'100%',aspectRatio:'1200 / 675',overflow:'hidden',background:BLUE,fontFamily:"'Barlow Semi Condensed',Bahnschrift,Arial,sans-serif"}},[
+      h('img',{key:'e',src:'assets/emblem-white.svg',alt:'',style:{position:'absolute',top:0,right:0,height:'100%',width:'auto',transform:'translateX(9%)',opacity:0.08,pointerEvents:'none'}}),
+      h('div',{key:'y',style:{position:'absolute',left:'20px',top:'20px',fontSize:'8px',letterSpacing:'0.22em',textTransform:'uppercase',color:SKY,fontWeight:700}},d.pillar),
+      h('div',{key:'n',style:{position:'absolute',left:'20px',right:'34%',top:'50%',transform:'translateY(-54%)'}},[
+        h('div',{key:'s',style:{fontSize:'74px',fontWeight:700,color:W,lineHeight:0.92,letterSpacing:'-0.03em'}},d.xStat),
+        h('div',{key:'l',style:{fontSize:'17px',fontWeight:600,color:W,lineHeight:1.3,marginTop:'20px',maxWidth:'22ch'}},d.xStatLabel)]),
+      h('img',{key:'l',src:'assets/alares-lockup-white.png',alt:'',style:{position:'absolute',left:'20px',bottom:'17px',height:'12px'}})
+    ]);
+    const xsrc = d.xImg || (d.xSlot ? null : (d.slides.find(x=>x.img)||{}).img);
+    const photo = h('image-slot',{id:'cal'+(d.xSlot?'-'+d.xSlot:'x-'+String(xsrc||d.id).replace(/[^a-z0-9]/gi,'-')),src:xsrc||null,placeholder:'Drop the X photo',shape:'rect',style:{position:'absolute',inset:0,width:'100%',height:'100%',display:'block'}});
+    return h('div',{style:{position:'relative',width:'100%',aspectRatio:'1200 / 675',overflow:'hidden',background:BLUE,fontFamily:"'Barlow Semi Condensed',Bahnschrift,Arial,sans-serif"}},[
+      photo,
+      h('div',{key:'g',style:{position:'absolute',left:0,right:0,bottom:0,height:'58%',background:'linear-gradient(to top, rgba(9,26,41,0.9), rgba(9,26,41,0))',pointerEvents:'none'}}),
+      h('img',{key:'e',src:'assets/emblem-white.svg',style:{position:'absolute',top:0,right:0,height:'40%',width:'auto',transform:'translateX(8%)',opacity:0.12,pointerEvents:'none'}}),
+      h('div',{key:'k',style:{position:'absolute',left:'20px',top:'18px',fontSize:'8px',letterSpacing:'0.22em',textTransform:'uppercase',color:W,fontWeight:700,background:BLUE,padding:'4px 9px'}},d.pillar),
+      h('div',{key:'t',style:{position:'absolute',left:'20px',bottom:'17px',maxWidth:'66%',fontSize:'24px',fontWeight:700,color:W,lineHeight:1.18,letterSpacing:'-0.01em',whiteSpace:'pre-line',textShadow:'0 1.6px 12px rgba(9,26,41,0.5)'}},d.xTitle||d.title),
+      h('img',{key:'l',src:'assets/alares-lockup-white.png',style:{position:'absolute',right:'20px',bottom:'17px',height:'12px'}})
+    ]);
+  }
+
+  async upscaleCurrent(){
+    if(this.state.upsc) return;
+    const node=this.previewNode, slot=node&&node.querySelector('image-slot');
+    const img=slot&&slot.shadowRoot&&slot.shadowRoot.querySelector('.frame img');
+    const src=img&&img.getAttribute('src');
+    if(!slot||!src){ this.setState({ upscNote:'No photo found on this slide.' }); return; }
+    this.setState({ upsc:true, upscP:0, upscNote:null });
+    try{
+      if(!window.Upscaler||!window.DefaultUpscalerJSModel) throw new Error('AI model unavailable. Check your connection and try again.');
+      if(!this._up) this._up=new window.Upscaler({ model:window.DefaultUpscalerJSModel });
+      const im=await new Promise((res,rej)=>{ const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=src; });
+      let inSrc=src;
+      const long=Math.max(im.naturalWidth,im.naturalHeight);
+      if(long>1100){ const k=1100/long, c=document.createElement('canvas');
+        c.width=Math.round(im.naturalWidth*k); c.height=Math.round(im.naturalHeight*k);
+        const cx=c.getContext('2d'); cx.imageSmoothingEnabled=true; cx.imageSmoothingQuality='high';
+        cx.drawImage(im,0,0,c.width,c.height); inSrc=c.toDataURL('image/png'); }
+      const out=await this._up.upscale(inSrc,{ patchSize:128, padding:4, progress:(p)=>this.setState({ upscP:p }) });
+      const blob=await (await fetch(out)).blob();
+      const file=new File([blob],'upscaled.png',{ type:'image/png' });
+      const pv=Object.assign({}, slot._view);
+      slot.style.width='1100px';
+      try{ await slot._ingest(file); } finally { slot.style.width=''; }
+      setTimeout(()=>{ try{ slot._view=Object.assign({},pv); slot._clampView(); slot._applyView(); slot._commitView(); }catch(e){} }, 250);
+      this.setState({ upsc:false, upscP:1 });
+    }catch(e){ this.setState({ upsc:false, upscNote:(e&&e.message)||'Upscale failed.' }); }
+  }
+
+  renderBlogCard(d){
+    const h=React.createElement, BLUE='#0E74BB', SKY='#62C4EF', W='#FFFFFF';
+    const s=d.slides[0]||{};
+    const photo = h('image-slot',{id:'calblog-'+String(s.img||d.id).replace(/[^a-z0-9]/gi,'-'),src:s.img||null,placeholder:'Drop the blog photo',shape:'rect',style:{position:'absolute',inset:0,width:'100%',height:'100%',display:'block'}});
+    return h('div',{style:{position:'relative',width:'100%',aspectRatio:'1200 / 630',overflow:'hidden',background:BLUE,fontFamily:"'Barlow Semi Condensed',Bahnschrift,Arial,sans-serif"}},[
+      photo,
+      h('div',{key:'p',style:{position:'absolute',left:0,right:0,bottom:0,background:BLUE,padding:'13px 17px 12px',overflow:'hidden'}},[
+        h('img',{key:'e',src:'assets/emblem-white.svg',style:{position:'absolute',top:0,right:0,height:'100%',width:'auto',transform:'translateX(9%)',opacity:0.06,pointerEvents:'none'}}),
+        h('div',{key:'k',style:{fontSize:'8px',letterSpacing:'0.2em',textTransform:'uppercase',color:SKY,fontWeight:700,position:'relative'}},d.pillar),
+        h('div',{key:'t',style:{fontSize:'24.84px',fontWeight:700,color:W,lineHeight:1.15,marginTop:'4px',position:'relative',maxWidth:'78%',whiteSpace:'pre-line'}},d.xTitle||d.title),
+        h('img',{key:'l',src:'assets/alares-lockup-white.png',style:{position:'absolute',right:'17px',bottom:'13px',height:'13px'}})
+      ])
+    ]);
+  }
+  async downloadBlog(){
+    if(this.state.dlingBlog) return;
+    this.setState({ dlingBlog:true });
+    try {
+      const d=this.selDay, BLUE='#0E74BB', SKY='#62C4EF', F="'Barlow Semi Condensed',Arial,sans-serif";
+      try{ await document.fonts.load('700 120px "Barlow Semi Condensed"'); }catch(e){}
+      const W=2400,H=1260,k=W/360;
+      const c=document.createElement('canvas'); c.width=W; c.height=H;
+      const ctx=c.getContext('2d');
+      ctx.fillStyle=BLUE; ctx.fillRect(0,0,W,H);
+      const slot=this.blogNode&&this.blogNode.querySelector('image-slot');
+      this._slotDraw(ctx, slot, W, H);
+      // blue plate
+      ctx.font='700 '+(18*k)+'px '+F;
+      const q=W/100;
+      ctx.font='700 '+(6.9*q)+'px '+F;
+      const lines=(d.xTitle||d.title).split('\n').reduce((a,seg)=>a.concat(this._wrapLines(ctx, seg, W*0.78)),[]);
+      const lineH=6.9*q*1.15;
+      const plateH=3.611*q + 2.667*q + 1.111*q + lines.length*lineH + 3.333*q;
+      const pY=H-plateH;
+      ctx.fillStyle=BLUE; ctx.fillRect(0,pY,W,plateH);
+      try{ const em=await this._loadImg('assets/emblem-white.svg');
+        ctx.save(); ctx.beginPath(); ctx.rect(0,pY,W,plateH); ctx.clip();
+        const ew=plateH*(em.naturalWidth/em.naturalHeight);
+        ctx.globalAlpha=0.06; ctx.drawImage(em, W-ew+ew*0.09, pY, ew, plateH); ctx.restore(); ctx.globalAlpha=1;
+      }catch(e){}
+      ctx.fillStyle=SKY; ctx.font='700 '+(2.222*q)+'px '+F; ctx.textBaseline='alphabetic';
+      try{ ctx.letterSpacing=(2.222*q*0.2)+'px'; }catch(e){}
+      ctx.fillText(String(d.pillar||'').toUpperCase(), 4.722*q, pY+3.611*q+2.222*q);
+      try{ ctx.letterSpacing='0px'; }catch(e){}
+      ctx.fillStyle='#FFFFFF'; ctx.font='700 '+(6.9*q)+'px '+F;
+      lines.forEach((ln,i)=>ctx.fillText(ln, 4.722*q, pY+3.611*q+2.667*q+1.111*q+(i+1)*lineH-lineH*0.22));
+      try{ const lg=await this._loadImg('assets/alares-lockup-white.png');
+        const lh=3.611*q, lw=lh*(lg.naturalWidth/lg.naturalHeight);
+        ctx.drawImage(lg, W-4.722*q-lw, H-3.611*q-lh, lw, lh);
+      }catch(e){}
+      const blob=await this._canvasBlob(c);
+      if(blob){ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='alares-'+d.id+'-blog-card.png'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),4000); }
+    } finally { this.setState({ dlingBlog:false }); }
+  }
+  async downloadX(){
+    if(this.state.dlingX) return;
+    this.setState({ dlingX:true });
+    try{
+      const d=this.selDay, BLUE='#0E74BB', F="'Barlow Semi Condensed',Arial,sans-serif";
+      try{ await document.fonts.load('700 96px "Barlow Semi Condensed"'); }catch(e){}
+      const W=2400,H=1350,q=W/100;
+      const c=document.createElement('canvas'); c.width=W; c.height=H;
+      const ctx=c.getContext('2d');
+      ctx.fillStyle=BLUE; ctx.fillRect(0,0,W,H);
+      if(d.xMark){
+        const pw=W*0.44, px=W-pw;
+        ctx.fillStyle='#FFFFFF'; ctx.fillRect(px,0,pw,H);
+        try{ const em=await this._loadImg('assets/emblem-color.svg');
+          const ew=pw*0.64, eh=ew*(em.naturalHeight/em.naturalWidth);
+          ctx.drawImage(em, px+(pw-ew)/2, (H-eh)/2, ew, eh);
+        }catch(e){}
+        ctx.font='700 '+(2*q)+'px '+F; ctx.fillStyle='#62C4EF'; ctx.textBaseline='top';
+        try{ ctx.letterSpacing=(2*q*0.22)+'px'; }catch(e){}
+        ctx.fillText(String(d.pillar||'').toUpperCase(), 5*q, 5*q);
+        try{ ctx.letterSpacing='0px'; }catch(e){}
+        ctx.textBaseline='alphabetic'; ctx.fillStyle='#FFFFFF';
+        ctx.font='700 '+(6*q)+'px '+F;
+        try{ ctx.letterSpacing=(-0.06*q)+'px'; }catch(e){}
+        const ml=(d.xTitle||d.title).split('\n').reduce((a,seg)=>a.concat(this._wrapLines(ctx, seg, W*0.46)),[]);
+        const mlh=6*q*1.18;
+        ml.forEach((ln,i)=>ctx.fillText(ln, 5*q, H-10*q-(ml.length-1-i)*mlh));
+        try{ ctx.letterSpacing='0px'; }catch(e){}
+        try{ const lg=await this._loadImg('assets/alares-lockup-white.png');
+          const lgh=3*q, lgw=lgh*(lg.naturalWidth/lg.naturalHeight);
+          ctx.drawImage(lg, 5*q, H-4.25*q-lgh, lgw, lgh);
+        }catch(e){}
+        const mb=await this._canvasBlob(c);
+        if(mb){ const a=document.createElement('a'); a.href=URL.createObjectURL(mb); a.download='alares-'+d.id+'-x-card.png'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),4000); }
+        return;
+      }
+      if(d.xFlat){
+        try{ const em=await this._loadImg('assets/emblem-white.svg');
+          const eh=H, ew=eh*(em.naturalWidth/em.naturalHeight);
+          ctx.globalAlpha=0.08; ctx.drawImage(em, W-ew+ew*0.09, 0, ew, eh); ctx.globalAlpha=1;
+        }catch(e){}
+        ctx.font='700 '+(2*q)+'px '+F; ctx.fillStyle='#62C4EF'; ctx.textBaseline='top';
+        try{ ctx.letterSpacing=(2*q*0.22)+'px'; }catch(e){}
+        ctx.fillText(String(d.pillar||'').toUpperCase(), 5*q, 5*q);
+        try{ ctx.letterSpacing='0px'; }catch(e){}
+        ctx.textBaseline='alphabetic'; ctx.fillStyle='#FFFFFF';
+        ctx.font='700 '+(6.5*q)+'px '+F;
+        const fl=(d.xTitle||d.title).split('\n').reduce((a,seg)=>a.concat(this._wrapLines(ctx, seg, W*0.65)),[]);
+        const flh=6.5*q*1.15, top=H/2-(fl.length*flh)/2;
+        fl.forEach((ln,i)=>ctx.fillText(ln, 5*q, top+(i+1)*flh-flh*0.2));
+        try{ const lg=await this._loadImg('assets/alares-lockup-white.png');
+          const lgh=3*q, lgw=lgh*(lg.naturalWidth/lg.naturalHeight);
+          ctx.drawImage(lg, 5*q, H-4.25*q-lgh, lgw, lgh);
+        }catch(e){}
+        const fb=await this._canvasBlob(c);
+        if(fb){ const a=document.createElement('a'); a.href=URL.createObjectURL(fb); a.download='alares-'+d.id+'-x-card.png'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),4000); }
+        return;
+      }
+      if(d.xStat){
+        try{ const em=await this._loadImg('assets/emblem-white.svg');
+          const eh=H, ew=eh*(em.naturalWidth/em.naturalHeight);
+          ctx.globalAlpha=0.08; ctx.drawImage(em, W-ew+ew*0.09, 0, ew, eh); ctx.globalAlpha=1;
+        }catch(e){}
+        ctx.font='700 '+(2*q)+'px '+F; ctx.fillStyle='#62C4EF'; ctx.textBaseline='top';
+        try{ ctx.letterSpacing=(2*q*0.22)+'px'; }catch(e){}
+        ctx.fillText(String(d.pillar||'').toUpperCase(), 5*q, 5*q);
+        try{ ctx.letterSpacing='0px'; }catch(e){}
+        ctx.textBaseline='alphabetic'; ctx.fillStyle='#FFFFFF';
+        ctx.font='700 '+(18.5*q)+'px '+F;
+        try{ ctx.letterSpacing=(-0.55*q)+'px'; }catch(e){}
+        const baseY=H*0.5-2.8*q;
+        ctx.fillText(String(d.xStat), 5*q, baseY);
+        try{ ctx.letterSpacing='0px'; }catch(e){}
+        ctx.font='600 '+(4.25*q)+'px '+F;
+        const sl=this._wrapLines(ctx, String(d.xStatLabel||''), W*0.5);
+        const slh=4.25*q*1.3;
+        sl.forEach((ln,i)=>ctx.fillText(ln, 5*q, baseY+10*q+i*slh));
+        try{ const lg=await this._loadImg('assets/alares-lockup-white.png');
+          const lgh=3*q, lgw=lgh*(lg.naturalWidth/lg.naturalHeight);
+          ctx.drawImage(lg, 5*q, H-4.25*q-lgh, lgw, lgh);
+        }catch(e){}
+        const sb=await this._canvasBlob(c);
+        if(sb){ const a=document.createElement('a'); a.href=URL.createObjectURL(sb); a.download='alares-'+d.id+'-x-card.png'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),4000); }
+        return;
+      }
+      const slot=this.xNode&&this.xNode.querySelector('image-slot');
+      this._slotDraw(ctx, slot, W, H);
+      const gr=ctx.createLinearGradient(0,H,0,H*0.42);
+      gr.addColorStop(0,'rgba(9,26,41,0.9)'); gr.addColorStop(1,'rgba(9,26,41,0)');
+      ctx.fillStyle=gr; ctx.fillRect(0,H*0.42,W,H*0.58);
+      try{ const em=await this._loadImg('assets/emblem-white.svg');
+        const eh=H*0.4, ew=eh*(em.naturalWidth/em.naturalHeight);
+        ctx.globalAlpha=0.12; ctx.drawImage(em, W-ew+ew*0.08, 0, ew, eh); ctx.globalAlpha=1;
+      }catch(e){}
+      ctx.font='700 '+(2*q)+'px '+F;
+      try{ ctx.letterSpacing=(2*q*0.22)+'px'; }catch(e){}
+      const chipTxt=String(d.pillar||'').toUpperCase();
+      const tw=ctx.measureText(chipTxt).width;
+      ctx.fillStyle=BLUE; ctx.fillRect(5*q, 4.5*q, tw+4.5*q, 4.4*q);
+      ctx.fillStyle='#FFFFFF'; ctx.textBaseline='middle';
+      ctx.fillText(chipTxt, 7.25*q, 4.5*q+2.2*q);
+      try{ ctx.letterSpacing='0px'; }catch(e){}
+      ctx.textBaseline='alphabetic';
+      ctx.font='700 '+(6*q)+'px '+F;
+      try{ ctx.letterSpacing=(-0.06*q)+'px'; }catch(e){}
+      const lines=(d.xTitle||d.title).split('\n').reduce((a,seg)=>a.concat(this._wrapLines(ctx, seg, W*0.66)),[]);
+      const lh=6*q*1.18;
+      ctx.shadowColor='rgba(9,26,41,0.5)'; ctx.shadowBlur=3*q; ctx.shadowOffsetY=0.4*q;
+      lines.forEach((ln,i)=>ctx.fillText(ln, 5*q, H-4.25*q-(lines.length-1-i)*lh-6*q*0.09));
+      try{ ctx.letterSpacing='0px'; }catch(e){}
+      ctx.shadowColor='transparent'; ctx.shadowBlur=0; ctx.shadowOffsetY=0;
+      try{ const lg=await this._loadImg('assets/alares-lockup-white.png');
+        const lgh=3*q, lgw=lgh*(lg.naturalWidth/lg.naturalHeight);
+        ctx.drawImage(lg, W-5*q-lgw, H-4.25*q-lgh, lgw, lgh);
+      }catch(e){}
+      const blob=await this._canvasBlob(c);
+      if(blob){ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='alares-'+d.id+'-x-card.png'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),4000); }
+    } finally { this.setState({ dlingX:false }); }
+  }
+  _loadImg(src){ return new Promise((res,rej)=>{ const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=src; }); }
+  _canvasBlob(c){ return new Promise(r=>c.toBlob(r,'image/png')); }
+  _wrapLines(ctx, text, maxW){
+    const words=String(text||'').split(/\s+/); const lines=[]; let cur='';
+    for(const w of words){ const t=cur?cur+' '+w:w; if(ctx.measureText(t).width>maxW && cur){ lines.push(cur); cur=w; } else cur=t; }
+    if(cur) lines.push(cur); return lines;
+  }
+  _slotDraw(ctx, slot, W, H){
+    const img = slot && slot._img;
+    if(!img || !img.naturalWidth || !img.complete) return false;
+    const fw = slot.clientWidth||1, fh = slot.clientHeight||1;
+    const iw = img.naturalWidth, ih = img.naturalHeight;
+    const contain = (slot.getAttribute('fit')||'cover').toLowerCase()==='contain';
+    const base = contain ? Math.min(fw/iw, fh/ih) : Math.max(fw/iw, fh/ih);
+    const v = slot._view || { s:1, x:0, y:0 };
+    const K = W / fw;
+    const dw = iw*base*v.s*K, dh = ih*base*v.s*K;
+    const cx = (50+v.x)/100*fw*K, cy = (50+v.y)/100*fh*K;
+    ctx.drawImage(img, cx-dw/2, cy-dh/2, dw, dh);
+    return true;
+  }
+
+  async _blobNode(node, target){
+    if(!node || !window.htmlToImage) return null;
+    const w = node.offsetWidth || 352;
+    const fontEmbedCSS = await this._fontCSS();
+    return await window.htmlToImage.toBlob(node, { pixelRatio: (target||2160) / w, cacheBust: true, fontEmbedCSS, filter:(n)=>!(n.getAttribute&&n.getAttribute('data-noexport')) });
+  }
+  async _fontCSS(){
+    if(this._fontCssP) return this._fontCssP;
+    this._fontCssP = (async()=>{
+      try{
+        let css=await (await fetch('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400;500;600;700&display=swap')).text();
+        const urls=Array.from(new Set(css.match(/https:\/\/[^)]+\.woff2/g)||[]));
+        for(const u of urls){
+          const b=await (await fetch(u)).blob();
+          const d=await new Promise(r=>{ const fr=new FileReader(); fr.onload=()=>r(fr.result); fr.readAsDataURL(b); });
+          css=css.split(u).join(d);
+        }
+        return css;
+      }catch(e){ return ''; }
+    })();
+    return this._fontCssP;
+  }
+  async _exportNode(node, name){
+    const blob = await this._blobNode(node);
+    if(!blob) return;
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = name + '.png'; a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+  }
+  async downloadCurrent(){
+    if(this.state.dling) return;
+    this.setState({ dling:true });
+    try { const d=this.selDay; const i=Math.min(this.state.slide,d.slides.length-1); await this._exportNode(this.previewNode, 'alares-'+d.id+'-slide-'+(i+1)); }
+    finally { this.setState({ dling:false }); }
+  }
+  async downloadAll(){
+    const d=this.selDay; if(this.state.dling) return;
+    this.setState({ dling:true });
+    try {
+      const folder = d.date.replace(/[^\w]+/g,'-').replace(/^-|-$/g,'');
+      if(window.JSZip){
+        const zip = new window.JSZip(); const dir = zip.folder(folder);
+        for(let k=0;k<d.slides.length;k++){
+          this.setSlide(k);
+          await new Promise(r=>setTimeout(r,500));
+          const blob = await this._blobNode(this.previewNode);
+          if(blob) dir.file('alares-'+d.id+'-slide-'+(k+1)+'.png', blob);
+        }
+        const zblob = await zip.generateAsync({ type:'blob' });
+        const a = document.createElement('a'); a.href = URL.createObjectURL(zblob); a.download = folder+'.zip'; a.click();
+        setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+      } else {
+        for(let k=0;k<d.slides.length;k++){ this.setSlide(k); await new Promise(r=>setTimeout(r,500)); await this._exportNode(this.previewNode,'alares-'+d.id+'-slide-'+(k+1)); await new Promise(r=>setTimeout(r,250)); }
+      }
+    } finally { this.setState({ dling:false }); }
+  }
+
+  DAYS = [
+    { id:'w1t', wk:1, dateLabel:'Tue · Jul 21', date:'July 21, 2026', kind:'social', layout:'I · Plate', pillar:'Case study',
+      title:'A 1940s boiler plant, brought into 2026.',
+      slides:[
+        { mode:'plate', img:'assets/projects/albany-1.jpg', eyebrow:'Selected work / VA Albany', headline:'A 1940s boiler plant, brought into 2026.' },
+        { mode:'plate', img:'assets/projects/albany-2.jpg', eyebrow:'The challenge', headline:'Three circa 1976 900 HP steam boilers, replaced with high-efficiency boilers.' },
+        { mode:'plate', img:'assets/projects/albany-4.jpg', eyebrow:'Inside the plant', headline:'Temporary boilers ran the hospital while we replaced the old ones.' },
+        { mode:'plate', img:'assets/projects/albany-3.jpg', eyebrow:'Alares scope', headline:'Prime designer, architecture, MEP, structural, fire.' }
+      ],
+      caption:"The boiler plant at the VA Albany Medical Center dates to the 1940s, with boilers last replaced in 1976. As prime designer, Alares delivered architecture, MEP, structural, fire-protection and project-management services to replace three 900 HP high-pressure steam boilers, keeping a critical campus running throughout. Completed 2026.",
+      tags:['#VeteransHealth','#HealthcareEngineering','#MEP','#BoilerPlant','#FederalDesign'] },
+
+    { id:'w1th', wk:1, dateLabel:'Thu · Jul 23', date:'July 23, 2026', kind:'social', layout:'B · Top band', pillar:'Capabilities', xImg:'assets/alares-team-photo.png', xTitle:'Eight disciplines,\nOne accountable team.',
+      title:'Eight disciplines, one accountable team.',
+      slides:[
+        { mode:'flat', eyebrow:'Capabilities', headline:'Eight disciplines,\nOne accountable team.' },
+        { mode:'topband', img:'assets/projects/cap-architecture.jpg', eyebrow:'Capability · 01 / 08', headline:'Architecture, concept through construction documents.' },
+        { mode:'topband', img:'assets/projects/cap-mep.jpg', eyebrow:'Capability · 02 / 08', headline:'Mechanical, electrical & plumbing engineering.' },
+        { mode:'topband', img:'assets/projects/eastorange-1.jpg', eyebrow:'Capability · 03 / 08', headline:'Structural & seismic evaluation and retrofit.' },
+        { mode:'topband', img:'assets/projects/cap-ownersrep.jpg', eyebrow:'Capability · 04 / 08', headline:"Owner's representation & construction\u00A0management." },
+        { mode:'topband', img:'assets/projects/cap-commissioning.jpg', eyebrow:'Capability · 05 / 08', headline:'Commissioning & retrocommissioning.' },
+        { mode:'topband', img:'assets/projects/houston-solar-1.jpg', eyebrow:'Capability · 06 / 08', headline:'Sustainability & energy modeling.' },
+        { mode:'topband', img:'assets/projects/cap-environmental.jpg', eyebrow:'Capability · 07 / 08', headline:'Environmental assessment & NEPA.' },
+        { mode:'topband', img:'assets/projects/cap-energy-2.jpg', eyebrow:'Capability · 08 / 08', headline:'Energy consulting & feasibility studies.' }
+      ],
+      caption:"Architecture. MEP. Structural & seismic. Commissioning. Sustainability. Environmental. Owner's representation. Energy consulting. Eight disciplines under one roof, so your project has a single point of ownership from kickoff to closeout.",
+      tags:['#AEC','#HealthcareDesign','#Engineering','#VA'] },
+
+    { id:'w2t', wk:2, dateLabel:'Tue · Jul 28', date:'July 28, 2026', kind:'social', layout:'F · Split stack', pillar:'Case study',
+      title:'10,000 feet of chilled water pipe, replaced live.',
+      slides:[
+        { mode:'split', img:'assets/projects/chilled-water-1.jpg', eyebrow:'Selected work / Asheville VAMC', headline:'10,000 feet of chilled water pipe,\nreplaced live.' },
+        { mode:'stat', stat:'10,000 ft', statLabel:'of chilled water distribution piping replaced, fed by three large chillers serving the main hospital.' },
+        { mode:'split', img:'assets/projects/asheville-2.jpg', eyebrow:'The challenge', headline:'A working hospital that could not lose cooling.' },
+        { mode:'split', img:'assets/projects/asheville-1.jpg', eyebrow:'How we did it', headline:'Phasing kept chilled water on the whole time.' },
+        { mode:'split', img:'assets/projects/asheville-3.jpg', eyebrow:'The details', headline:'We crawled every space\nto verify conditions.' },
+        { mode:'flat', eyebrow:'Infection control', headline:'ICRA plans protected\npatients on every floor.' },
+        { mode:'split', img:'assets/projects/hospital-occupied.jpg', eyebrow:'The outcome', headline:'Zero unplanned outages.' }
+      ],
+      caption:"At the Asheville VA Medical Center, Alares replaced roughly 10,000 linear feet of chilled water distribution piping serving the main hospital. We ran load calculations and HVAC modeling to right size every run, then built phasing plans and Infection Control Risk Assessment drawings so the work moved floor by floor without interrupting patient care. Full hospital operations were maintained throughout, with zero unplanned outages.",
+      tags:['#MEP','#HealthcareEngineering','#ChilledWater','#VA','#Commissioning'] },
+
+    { id:'w2th', wk:2, dateLabel:'Thu · Jul 30', date:'July 30, 2026', kind:'social', layout:'E · Stat card', pillar:'Expertise',
+      title:'Your building is probably wasting 15% of its energy.',
+      xTitle:'Your building is wasting\n15% of its energy.',
+      slides:[
+        { mode:'stat', stat:'15–20%', statLabel:'lower energy bills at 11 VA hospitals, without buying any new equipment.' },
+        { mode:'flat', eyebrow:'The problem', headline:'The equipment is fine.\nIt is just not optimized.' },
+        { mode:'split', img:'assets/projects/cap-mep.jpg', eyebrow:'What we do', headline:'We test, measure and tune it.\nThen you save.' },
+        { mode:'flat', eyebrow:'The payoff', headline:'You already paid for that\nenergy. We help you use it.' }
+      ],
+      caption:"Most older buildings waste 15 to 20 percent of the energy they buy, and the equipment is rarely the problem. Good chillers and boilers are just running settings nobody has revisited in years. Alares tests the systems, logs how they behave, and corrects the sequences. Across 11 VA campuses in New England, that cut energy use 15 to 20 percent without replacing a single chiller or boiler.",
+      tags:['#Retrocommissioning','#EnergySavings','#FacilityManagement','#VA'] },
+
+    { id:'w3t', wk:3, dateLabel:'Tue · Aug 4', date:'August 4, 2026', kind:'social', layout:'F · Split stack', pillar:'Case study',
+      title:'Fire alarm upgrades across 27 buildings.',
+      xTitle:'Fire alarm upgrades\nacross 27 buildings.',
+      slides:[
+        { mode:'split', img:'assets/projects/fire-protection-1.jpg', eyebrow:'Case study / Bedford VAMC', headline:'Fire alarm upgrades\nacross 27 buildings.' },
+        { mode:'stat', stat:'27', statLabel:'occupied hospital buildings upgraded to current NFPA and VA life safety standards.' },
+        { mode:'split', img:'assets/projects/fire-alarm-corridor.jpg', eyebrow:'The work', headline:'New devices, new wiring,\nevery building.' },
+        { mode:'flat', eyebrow:'How we did it', headline:'Surveyed every building\nbefore we designed.' },
+        { mode:'split', img:'assets/projects/hospital-corridor-2.jpg', eyebrow:'The challenge', headline:'Every building stayed\nopen throughout.' },
+        { mode:'flat', eyebrow:'The result', headline:'No surprise\nchange orders.' }
+      ],
+      caption:"Alares delivered the full architecture and engineering for the fire alarm upgrade of 27 buildings at the Bedford VA, designed to Chapter 260 of the VA Design Guide. New speaker strobes throughout, panels upgraded to addressable systems, fiber and copper rebuilt. All of it inside a live medical campus. We surveyed every building before designing one, which headed off change orders before they could happen.",
+      tags:['#FireAlarm','#LifeSafety','#NFPA','#HealthcareEngineering','#VA'] },
+
+    { id:'w4t', wk:4, dateLabel:'Tue · Aug 11', date:'August 11, 2026', kind:'social', layout:'I · Plate', pillar:'Case study',
+      title:'We replaced every window in the hospital.',
+      xImg:'assets/projects/bigspring-x.jpg',
+      xTitle:'We replaced every window\nin the hospital.',
+      slides:[
+        { mode:'plate', img:'assets/projects/bigspring-exterior.jpg', slot:'bigspring-exterior', placeholder:'Hospital exterior window', eyebrow:'Case study / VAMC Big Spring, TX', headline:'We replaced every window\nin the hospital.' },
+        { mode:'flat', eyebrow:'Why it matters', headline:'A hospital window has to\ndo more than let light in.' },
+        { mode:'plate', img:'assets/projects/bigspring-glazing.jpg', slot:'bigspring-glazing', placeholder:'Aluminum window frame', eyebrow:'Job one, heat', headline:'Tinted glass and argon\nkeep the heat out.' },
+        { mode:'flat', eyebrow:'Job two, safety', headline:'It opens six inches,\nthen it stops.' },
+        { mode:'plate', img:'assets/projects/bigspring-glass.jpg', slot:'bigspring-glass', placeholder:'Laminated safety glass', eyebrow:'Job three, security', headline:'And the glass has to\nsurvive a blast.' }
+      ],
+      caption:"A window in a VA hospital has more jobs than a window at home. At the Big Spring VA Medical Center in West Texas, Alares was prime architect on replacing every window in Building 1. The sun does most of the damage out there, so the new units are tinted and heat reflective, with a thermal break, double glazing and argon fill. The bottom sash opens six inches and stops, with hold open hardware and removable handles, because a hospital window has to be safe as well as sealed. And because it is a federal medical center, we had the glass checked against blast resistance requirements too.",
+      tags:['#Architecture','#Glazing','#EnergyEfficiency','#VA','#HealthcareDesign'] },
+
+    { id:'w5t', wk:5, dateLabel:'Tue · Aug 18', date:'August 18, 2026', kind:'social', layout:'B · Top band', pillar:'Case study',
+      title:'We renovated a mental health ward around the patients.',
+      xSlot:'brockton-ward', xImg:'assets/projects/hospital-corridor-2.jpg',
+      xTitle:'We renovated a ward\naround the patients.',
+      slides:[
+        { mode:'topband', img:'assets/projects/hospital-corridor-2.jpg', slot:'brockton-ward', placeholder:'Hospital ward corridor', eyebrow:'Case study / Brockton VAMC, MA', headline:'We renovated a mental health\nward around the patients.' },
+        { mode:'flat', eyebrow:'The constraint', headline:'The other wards stayed\nfull the whole time.' },
+        { mode:'stat', stat:'4 phases', statLabel:'one or two wards at a time, so the hospital never stopped admitting patients.' },
+        { mode:'topband', img:'assets/projects/brockton-chiller.jpg', slot:'brockton-chiller', placeholder:'Chiller or mechanical room', eyebrow:'The design', headline:'One central chiller\ninstead of five.' },
+        { mode:'topband', img:'assets/projects/brockton-sprinkler.jpg', slot:'brockton-sprinkler', placeholder:'Sprinkler piping above ceiling', eyebrow:'What we found', headline:'The fire protection was\nnot up to code.' },
+        { mode:'flat', eyebrow:'What we did', headline:'One project,\nboth problems fixed.' }
+      ],
+      caption:"Building 2 at the Brockton VA is an inpatient mental health facility. Alares designed the mechanical, electrical, plumbing and fire protection systems for a five level addition and renovation, under WPA as prime architect. The building could not close, so the work ran in four phases with only one or two wards down at a time. We front loaded it, putting every major service into the addition during phase one, which made the later fit outs far simpler. Site investigations also turned up two things nobody was looking for: the fire protection did not meet code, and the electrical backup had deficiencies. Both fixes, including a new fire pump, were designed into the same project.",
+      tags:['#MEP','#HealthcareDesign','#MentalHealth','#FireProtection','#VA'] },
+
+    { id:'w3th', wk:3, dateLabel:'Thu · Aug 6', date:'August 6, 2026', kind:'social', layout:'B · Top band', pillar:'Expertise',
+      title:'Make as much energy as you use.',
+      xTitle:'Make as much energy\nas you use.',
+      slides:[
+        { mode:'topband', img:'assets/projects/houston-solar-3.jpg', eyebrow:'Net zero, explained', headline:'Make as much energy\nas you use.' },
+        { mode:'topband', img:'assets/projects/houston-solar-1.jpg', eyebrow:'Solar at Houston VA', headline:'5 MW of power the\nhospital stops buying.' },
+        { mode:'topband', img:'assets/projects/steam-piping-1.jpg', eyebrow:'Combined heat and power', headline:'One fuel burn,\ntwo useful outputs.' },
+        { mode:'topband', img:'assets/projects/reno-geo-rig.jpg', eyebrow:'Geothermal at Reno VA', headline:'We drilled 2,200 feet\nto prove it works.' },
+        { mode:'topband', img:'assets/projects/ahu-controls-1.jpg', eyebrow:'Efficiency comes first', headline:'Tune the equipment\nyou already own.' }
+      ],
+      caption:"Net zero means a campus makes as much energy as it uses over a year. It still runs around the clock, it just stops buying that power. Two levers get you there: use less, and make your own. At the Houston VA, 5 MW of solar over existing parking. At Newington, a plant that makes power and captures its waste heat for cooling. At Reno, a 2,200 foot test well to confirm geothermal before committing capital.",
+      tags:['#Sustainability','#NetZero','#Solar','#Geothermal','#FederalProjects'] },
+
+    { id:'w4th', wk:4, dateLabel:'Thu · Aug 13', date:'August 13, 2026', kind:'social', layout:'F · Split stack', pillar:'Expertise',
+      title:'The boiler plant has to survive an earthquake.',
+      xImg:'assets/projects/eastorange-3.jpg',
+      xTitle:'The boiler plant has to\nsurvive an earthquake.',
+      slides:[
+        { mode:'split', img:'assets/projects/eastorange-3.jpg', eyebrow:'Structural & seismic', headline:'The boiler plant has to\nsurvive an earthquake.' },
+        { mode:'flat', eyebrow:'Why this building', headline:'Lose the plant and you\nlose heat and sterilization.' },
+        { mode:'stat', stat:'ASCE 41', statLabel:'the standard that asks whether a critical building keeps working, not just whether it stays standing.' },
+        { mode:'split', img:'assets/projects/eastorange-1.jpg', eyebrow:'The structure', headline:'New walls to brace it\nagainst the sideways force.' },
+        { mode:'split', img:'assets/projects/eastorange-2.jpg', eyebrow:'And the systems', headline:'Braced piping, so the\nsteam survives too.' },
+        { mode:'flat', eyebrow:'Where to start', headline:'An evaluation tells you\nwhat the building needs.' }
+      ],
+      caption:"Most central plants on older hospital campuses were built decades before the seismic codes they now have to meet. That matters here more than anywhere else, because the plant keeps heat, sterilization and hot water running while everyone else evacuates. For a hospital the bar is not do not collapse, it is keep working. At the East Orange VA we evaluated the existing frame, then designed buttress walls on new piers, steel reinforcement at the roof, and bracing on every pipe and conduit. If your plant predates current code, start with the evaluation before you spend a dollar guessing.",
+      tags:['#StructuralEngineering','#Seismic','#ASCE41','#HealthcareEngineering','#VA'] },
+
+    { id:'w5th', wk:5, dateLabel:'Thu · Aug 20', date:'August 20, 2026', kind:'social', layout:'F · Split stack', pillar:'How we work',
+      title:'We measure first. Then we design.',
+      xImg:'assets/projects/tunnel-robot-1.jpg',
+      xTitle:'We measure first.\nThen we design.',
+      slides:[
+        { mode:'flat', eyebrow:'How we work', headline:'We measure first.\nThen we design.' },
+        { mode:'flat', eyebrow:'The problem', headline:'The drawings on file rarely\nmatch what is in the field.' },
+        { mode:'split', slot:'bim-render', placeholder:'3D model of plant piping', eyebrow:'How we do it', headline:'The whole plant,\nmodeled in 3D.' },
+        { mode:'split', img:'assets/projects/tunnel-robot-1.jpg', eyebrow:'Instead of sending people', headline:'A camera robot surveys\nthe tunnel.' },
+        { mode:'flat', eyebrow:'Why it pays', headline:'Accurate bids.\nFewer change orders.' }
+      ],
+      caption:"Decades of patches and undocumented changes mean the drawings on file rarely match what is actually in the field. So we measure first. At the Albany VA we modeled the entire boiler plant in 3D Revit before designing its replacement. At Manchester, we drove a remote camera vehicle through 500 feet of tunnel instead of sending people into a four foot crawl space. Designs built on verified conditions get accurate bids and far fewer change orders.",
+      tags:['#BIM','#Revit','#3DScanning','#MEP','#Retrofit'] },
+    { id:'w6t', wk:6, dateLabel:'Tue · Aug 25', date:'August 25, 2026', kind:'social', layout:'D · Corner tab', pillar:'Case study',
+      title:'Before the VA buys land, we check it.',
+      xTitle:'Before the VA buys\nland, we check it.',
+      slides:[
+        { mode:'corner', img:'assets/projects/national-cemetery-1.jpg', eyebrow:'Case study / VA National Cemeteries', headline:'Before the VA buys land,\nwe check it.' },
+        { mode:'flat', eyebrow:'What we check', headline:'Soil, water, wetlands\nand who owns it.' },
+        { mode:'stat', stat:'4 states', statLabel:'Oregon, Illinois, Maine and Wisconsin, from land acquisition to demolition design.' },
+        { mode:'split', img:'assets/projects/cem-soil-sampling.jpg', slot:'cem-soil-sampling', placeholder:'Soil sampling on open land', eyebrow:'Rock Island, Illinois', headline:'So we tested the soil\nfor lead.' },
+        { mode:'split', img:'assets/projects/cem-historic-building.jpg', slot:'cem-historic-building', placeholder:'Historic brick building before demolition', eyebrow:'Togus, Maine', headline:'These had to come down.\nCarefully.' },
+        { mode:'flat', eyebrow:'Why it matters', headline:'Better to know now\nthan after.' }
+      ],
+      caption:"National cemeteries run out of room, so the VA buys the land next door. Before that happens, somebody has to go look at it. Alares does that work. Is there contamination in the soil. Are there wetlands. Will the ground hold what gets built on it. Does the title actually check out. At Rock Island in Illinois, 9.7 acres came from the Arsenal and part of it had been a shooting range, so we sampled the soil for lead instead of assuming it was fine. At Togus in Maine the job was the opposite: old buildings had to come down, and because they sat inside a historic district it took a formal review to get state approval first. Four sites so far, in Oregon, Illinois, Maine and Wisconsin.",
+      tags:['#Environmental','#NEPA','#DueDiligence','#NationalCemeteries','#VA'] },
+
+    { id:'w6th', wk:6, dateLabel:'Thu · Aug 27', date:'August 27, 2026', kind:'social', layout:'K · Mark', pillar:'People & culture', xMark:true,
+      title:'Three layers. One wing.',
+      xTitle:'Three layers.\nOne wing.',
+      slides:[
+        { mode:'flat', eyebrow:'The mark', headline:'Three layers.\nOne wing.' },
+        { mode:'markfull', eyebrow:'What it is', headline:'A wing, layered\nlike plan sheets.' },
+        { mode:'flat', eyebrow:'What it stands for', headline:'Lift. Forward motion.\nMomentum.' },
+        { mode:'quote', quote:'Always achieve our clients\u2019 objectives in a swift manner, without sacrificing quality for speed.', quoteAttr:'How Alares works, since 2007' },
+        { mode:'flat', eyebrow:'Why it fits', headline:'Speed is the promise.\nQuality is the standard.' }
+      ],
+      caption:"People ask about the logo, so here it is. The mark is a wing, drawn in three layers that stack like plan sheets, in three blues from deep to sky. It reads as lift, forward motion, momentum. That is deliberate. Alares was founded in 2007 by Don Maggioli, a West Point graduate and former Green Beret officer, and the firm runs on a commitment he set at the start: always achieve our clients' objectives in a swift manner, without sacrificing quality for speed. Speed is the promise. Quality is the standard. The wing is there to remind us of both.",
+      tags:['#Branding','#VeteranOwned','#Culture','#Engineering'] },
+    { id:'w7t', wk:7, dateLabel:'Tue · Sep 1', date:'September 1, 2026', kind:'social', layout:'B · Top band', pillar:'Case study',
+      title:'Four old cooling towers out. Six new ones in.',
+      xTitle:'Four old cooling towers\nout. Six new ones in.',
+      slides:[
+        { mode:'topband', img:'assets/projects/dallas-towers.jpg', eyebrow:'Case study / VAMC Dallas, TX', headline:'Four old cooling towers\nout. Six new ones in.' },
+        { mode:'stat', stat:'1,500 tons', statLabel:'of new chiller capacity, commissioned alongside the tower replacement.' },
+        { mode:'flat', eyebrow:'Our role', headline:'We did not build it.\nWe commissioned it.' },
+        { mode:'topband', img:'assets/projects/dallas-plant-pumps.jpg', eyebrow:'What we tested', headline:'The controls, not just\nthe equipment.' },
+        { mode:'flat', eyebrow:'Why it matters', headline:'A brand new plant can\nstill run wrong.' }
+      ],
+      caption:"At the Dallas VA Medical Center, Building 70 got a new 1,500 ton chiller and a full cooling tower replacement: four old field erected towers out, six new stainless steel towers in, on existing and extended concrete basins. Alares was the commissioning agent. We verified the controls were installed per the drawings and the manufacturer practice, that every piece of equipment got a real startup and checkout, that the systems actually talk to each other, and we tracked every issue we found until it was closed. A brand new plant can still run wrong on day one. Commissioning is how you find out before the hospital does.",
+      tags:['#Commissioning','#ChilledWater','#CoolingTowers','#MEP','#VA'] },
+
+    { id:'w7th', wk:7, dateLabel:'Thu · Sep 3', date:'September 3, 2026', kind:'social', layout:'G · Framed', pillar:'People & culture',
+      title:'We work for the people who served.',
+      xTitle:'We work for the\npeople who served.',
+      slides:[
+        { mode:'framed', img:'assets/alares-team-photo.png', eyebrow:'Inside Alares', headline:'We work for the\npeople who served.' },
+        { mode:'flat', eyebrow:'Who we are', headline:'A veteran owned firm,\nfounded in 2007.' },
+        { mode:'flat', eyebrow:'Our founder', headline:'West Point graduate.\nFormer Green Beret officer.' },
+        { mode:'flat', eyebrow:'Where we work', headline:'Almost every project\nis a VA campus.' },
+        { mode:'flat', eyebrow:'Why it matters', headline:'Veterans built this firm.\nVeterans use these buildings.' }
+      ],
+      caption:"Alares was founded in 2007 by a West Point graduate and former Green Beret officer, and we are a Service Disabled Veteran Owned Small Business. Nearly everything we work on is a VA medical center: boiler plants, chilled water, fire alarm, seismic upgrades, national cemeteries. The buildings are complicated and the clients are veterans. That is not a marketing angle for us, it is who signs the contract and who uses the building.",
+      tags:['#VeteranOwned','#SDVOSB','#Engineering','#VA'] },
+    { id:'w8t', wk:8, dateLabel:'Tue · Sep 8', date:'September 8, 2026', kind:'social', layout:'I · Plate', pillar:'Case study',
+      title:'Other firms could not fix it. We did.',
+      xSlot:'derby-tower',
+      xTitle:'Other firms could not\nfix it. We did.',
+      slides:[
+        { mode:'plate', img:'assets/projects/derby-tower.jpg', slot:'derby-tower', placeholder:'Cooling tower on a small facility roof', eyebrow:'Case study / Derby Line Border Station, VT', headline:'Years of cooling problems.\nNobody could fix them.' },
+        { mode:'flat', eyebrow:'What we did differently', headline:'We looked for the cause,\nnot the broken part.' },
+        { mode:'split', img:'assets/projects/derby-plant.jpg', slot:'derby-plant', placeholder:'Chilled water pumps and piping in a mechanical room', eyebrow:'What we found', headline:'Wrong pumps. Bad piping.\nOutdated controls.' },
+        { mode:'stat', stat:'4 systems', statLabel:'chillers, pumps, piping and controls, all redesigned together instead of one at a time.' },
+        { mode:'flat', eyebrow:'The outcome', headline:'Fixed what other firms\ncould not.' }
+      ],
+      caption:"The Derby Line border station in Vermont had cooling problems for years. Several firms had tried to solve them. The General Services Administration brought in Alares, and instead of swapping out the equipment that kept failing, we investigated the whole chilled water system to find out why it was failing. The answer was not one part. The chillers were poorly matched to the load, the circulation pumps were undersized, the piping layout was working against itself, and the controls were out of date. We redesigned all four together, then stayed through construction and commissioned the result. The chronic failures stopped, the building runs cooler, and it costs less to operate.",
+      tags:['#GSA','#ChilledWater','#MechanicalEngineering','#Commissioning','#RootCause'] },
+
+    { id:'w8th', wk:8, dateLabel:'Thu · Sep 10', date:'September 10, 2026', kind:'social', layout:'J · Flat blue', pillar:'Expertise',
+      title:'One hospital. Eight rulebooks.',
+      xImg:'assets/projects/va-standards-plant.jpg',
+      xTitle:'One hospital.\nEight rulebooks.',
+      slides:[
+        { mode:'flat', eyebrow:'Designing for the VA', headline:'One hospital.\nEight rulebooks.' },
+        { mode:'flat', eyebrow:'VA design guides', headline:'The PG-18 manuals set\nevery room and system.' },
+        { mode:'stat', stat:'H-18-8', statLabel:'the VA seismic handbook. A central plant has to keep running, not just stay standing.' },
+        { mode:'flat', eyebrow:'Existing structures', headline:'ASCE 41 governs what\nwe can reuse.' },
+        { mode:'flat', eyebrow:'Life safety', headline:'NFPA 101 and VA fire\nprotection design.' },
+        { mode:'flat', eyebrow:'Working in occupied space', headline:'ICRA decides how we\nopen a ceiling.' },
+        { mode:'flat', eyebrow:'Pharmacy compounding', headline:'USP 797 and 800\nset the air itself.' },
+        { mode:'flat', eyebrow:'Why it matters', headline:'We have worked this\nstack since 2007.' }
+      ],
+      caption:"Designing a VA medical center is not one code, it is a stack of them. The PG-18 design manuals and space planning criteria set how rooms and systems are built. H-18-8 governs seismic, and for a central plant the standard is not survive, it is keep operating. ASCE 41 decides what existing structure can be reused and what has to be reinforced. NFPA 101 and the VA fire protection design manual cover life safety. ICRA requirements dictate how you can even open a ceiling in an occupied wing. USP 797 and 800 set pressurization and filtration wherever pharmacists compound. Each has its own reviewers and its own submittals, and knowing which one governs a given decision is most of what keeps a hospital project moving. We have been doing this work since 2007.",
+      tags:['#VA','#HealthcareEngineering','#Compliance','#Standards','#MEP'] },
+    { id:'w9t', wk:9, dateLabel:'Tue · Sep 15', date:'September 15, 2026', kind:'social', layout:'D · Corner tab', pillar:'Case study',
+      title:'We renovated a judge\u2019s chambers in Boston.',
+      xTitle:'We renovated a judge\u2019s\nchambers in Boston.',
+      xSlot:'judges-chambers',
+      slides:[
+        { mode:'corner', img:'assets/projects/judges-chambers.jpg', slot:'judges-chambers', placeholder:'Judge\u2019s chambers or courthouse office interior', eyebrow:'Case study / Moakley Courthouse, Boston', headline:'We renovated a judge\u2019s\nchambers in Boston.' },
+        { mode:'flat', eyebrow:'The scope', headline:'New millwork, wainscoting,\na private bathroom.' },
+        { mode:'flat', eyebrow:'Our role', headline:'Lead architect on\nthe whole design.' },
+        { mode:'stat', stat:'$297K', statLabel:'construction cost, run through the same process as a twelve million dollar plant.' },
+        { mode:'flat', eyebrow:'Why it matters', headline:'Not every project is\na boiler plant.' }
+      ],
+      caption:"At the Moakley Courthouse in Boston, the GSA needed a judge's chambers renovated, and Alares was lead architect on it. The work added a private bathroom and reworked the existing spaces: new doors, ceiling, lighting, carpet, paint, millwork trim, a cased opening and wainscoting panels, with selective demolition of what came out. We handled architecture, interior design, mechanical and cost estimating, with New England Engineering on electrical and fire protection. Site surveys through concept design, detailed design and bid documents. It is a small job next to a boiler plant replacement, and it went through the same process, because a room somebody works in every day is worth getting right.",
+      tags:['#GSA','#Architecture','#InteriorDesign','#Courthouse','#FederalProjects'] },
+
+    { id:'w9th', wk:9, dateLabel:'Thu · Sep 17', date:'September 17, 2026', kind:'social', layout:'E · Stat card', pillar:'People & culture',
+      title:'Alares by the numbers.',
+      xTitle:'Alares by\nthe numbers.',
+      xStat:'95M', xStatLabel:'square feet of VA hospital space retrocommissioned.',
+      slides:[
+        { mode:'stat', stat:'19 years', statLabel:'of work on federal and healthcare facilities, since 2007.' },
+        { mode:'stat', stat:'95M', statLabel:'square feet of VA hospital space retrocommissioned across 11 campuses.' },
+        { mode:'stat', stat:'5 MW', statLabel:'of solar built over the parking lots at the Houston VA.' },
+        { mode:'stat', stat:'2,200 ft', statLabel:'down, the test well that proved geothermal was viable in Reno.' },
+        { mode:'flat', eyebrow:'Behind every number', headline:'Every one of these was\na building in use.' }
+      ],
+      caption:"Nineteen years of federal and healthcare work adds up to some numbers we do not usually put in one place. 95 million square feet of VA hospital space retrocommissioned across 11 New England campuses. 11 VA campuses seismically assessed across California. 5 MW of solar built over the parking lots in Houston. A test well drilled 2,200 feet down in Reno to find out whether geothermal was viable. Every one of those happened in a building that stayed open the whole time, which is the part that does not fit in a statistic.",
+      tags:['#Engineering','#VeteranOwned','#VA','#FederalProjects'] },
+    { id:'w10t', wk:10, dateLabel:'Tue · Sep 22', date:'September 22, 2026', kind:'social', layout:'B · Top band', pillar:'Case study',
+      title:'Five megawatts over the parking lot.',
+      xTitle:'Five megawatts over\nthe parking lot.',
+      slides:[
+        { mode:'topband', img:'assets/projects/houston-solar-1.jpg', eyebrow:'Case study / VAMC Houston, TX', headline:'Five megawatts over\nthe parking lot.' },
+        { mode:'stat', stat:'$21.6M', statLabel:'construction contract. Alares was the VA\u2019s owner\u2019s rep and commissioning agent.' },
+        { mode:'flat', eyebrow:'Why the parking lot', headline:'The VA already\nowned the land.' },
+        { mode:'flat', eyebrow:'Our role', headline:'On site every day,\nchecking the work.' },
+        { mode:'flat', eyebrow:'What we checked', headline:'Submittals, schedule,\npay applications.' },
+        { mode:'flat', eyebrow:'The finish', headline:'We commissioned it\nbefore the VA took it.' }
+      ],
+      caption:"The Houston VA Medical Center now generates 5 MW of its own power from panels built over the campus parking lots. Alares was the VA's owner's representative and commissioning agent on the $21.6M build. We did not manage the construction. That meant daily on site inspections, weekly progress reports, submittal and shop drawing review, schedule evaluations, help with contract modifications, and validating every progress payment. We also reviewed the completed design for errors and omissions before the work started, then commissioned the system at the end. Carport solar keeps coming up on federal campuses for one simple reason. The land is already on the books, and now it makes power and shades the cars.",
+      tags:['#Solar','#OwnersRep','#Commissioning','#Energy','#VA'] },
+
+    { id:'w10th', wk:10, dateLabel:'Thu · Sep 24', date:'September 24, 2026', kind:'social', layout:'J · Flat blue', pillar:'How we work',
+      title:'Six days left in the fiscal year.',
+      xTitle:'Six days left in\nthe fiscal year.',
+      xStat:'6 days', xStatLabel:'left in the federal fiscal year. Fund the study that creates next year\u2019s project.',
+      slides:[
+        { mode:'flat', eyebrow:'Fiscal year end', headline:'Six days left\nin the fiscal year.' },
+        { mode:'flat', eyebrow:'The problem', headline:'Money left, but nothing\nready to build.' },
+        { mode:'flat', eyebrow:'The answer', headline:'Fund the study that\ncreates the project.' },
+        { mode:'flat', eyebrow:'What moves fast', headline:'Assessments, studies,\nretrocommissioning.' },
+        { mode:'flat', eyebrow:'Why it pays', headline:'This September funds\nnext year\u2019s project.' }
+      ],
+      caption:"The federal fiscal year ends September 30. If you have funds left and no project ready to build, that money is about to expire. The better move is to fund the work that creates next year's project: a facility condition assessment, a feasibility study, a seismic evaluation, or a retrocommissioning scope. None of those need a construction window, and each one turns into a defensible capital request with real numbers behind it. We have run this kind of work for the VA in Reno, Sacramento, New England and California. If you have money left this week, call us.",
+      tags:['#FiscalYearEnd','#FederalProjects','#FacilityManagement','#CapitalPlanning','#VA'] },
+    { id:'w11th', wk:11, dateLabel:'Thu · Oct 1', date:'October 1, 2026', kind:'social', layout:'E · Stat card', pillar:'How we work',
+      title:'Start the study now, not next summer.',
+      xTitle:'Start the study now,\nnot next summer.',
+      xStat:'FY27', xStatLabel:'Fiscal Q1 starts today. October to December.',
+      slides:[
+        { mode:'flat', eyebrow:'FY27 · First quarter', headline:'Start the study now,\nnot next summer.' },
+        { mode:'flat', eyebrow:'The order', headline:'Study, then design,\nthen build.' },
+        { mode:'flat', eyebrow:'What counts as a study', headline:'Condition, seismic,\nenvironmental.' },
+        { mode:'stat', stat:'4 sites', statLabel:'assessed under one VA task order: Sacramento, Martinez, McClellan and Mare Island.' },
+        { mode:'flat', eyebrow:'Seismic', headline:'Our condition reviews\ninclude the structure.' },
+        { mode:'flat', eyebrow:'Why it matters', headline:'No study, no\nproject to fund.' }
+      ],
+      caption:"The federal fiscal year started today. Almost no federal construction project starts without a study first, so the earlier you scope one, the sooner there is a real project to fund. A facility condition assessment grades and prices what needs fixing. A seismic evaluation tells you whether a building needs bracing, reinforcement or replacement. An environmental assessment clears the way for work to start at all. We have done this work for the VA, from facility condition assessments at Reno and four California sites, with the structure reviewed for seismic on each, to a NEPA assessment that brought the Reno geothermal well to a Finding of No Significant Impact. Get the study moving this fall, and when the money comes through, the project is ready for it.",
+      tags:['#FiscalYear','#FederalProjects','#ConditionAssessment','#CapitalPlanning','#VA'] },
+    { id:'w12t', wk:12, dateLabel:'Tue · Oct 6', date:'October 6, 2026', kind:'social', layout:'F · Split stack', pillar:'Case study',
+      title:'Four air handlers. Then we found more.',
+      xTitle:'Four air handlers.\nThen we found more.',
+      slides:[
+        { mode:'split', img:'assets/projects/lebanon-ahu.jpg', eyebrow:'Case study / Lebanon VAMC, PA', headline:'Four air handlers.\nThen we found more.' },
+        { mode:'flat', eyebrow:'The starting point', headline:'We documented the building\nbefore we designed it.' },
+        { mode:'flat', eyebrow:'What we found', headline:'A geothermal system\nworking against itself.' },
+        { mode:'flat', eyebrow:'The problems', headline:'Bad valves. Wrong ducts.\nA broken sequence.' },
+        { mode:'stat', stat:'70%', statLabel:'of the design done in house, so the quality stayed under our control.' },
+        { mode:'flat', eyebrow:'The result', headline:'Fewer service calls.\nFewer change orders.' }
+      ],
+      caption:"The Lebanon VA Medical Center in Pennsylvania needed four air handlers replaced, and there were no as-built drawings to design from. So we investigated. While documenting the existing conditions, our team found heating and cooling problems nobody knew about in several buildings served by a geothermal system: valves that were not working, errors in the sequence of operations, and ducting that was configured wrong. We designed the corrections into the air handler project. Alares did more than 70 percent of the design in house, and the VA's contracting officer's representative noted that our investigation went well beyond what other firms had done. The result was fewer maintenance calls, more reliable heating and cooling, and fewer change orders during construction.",
+      tags:['#HVAC','#Geothermal','#MEP','#Investigation','#VA'] },
+
+    { id:'w12th', wk:12, dateLabel:'Thu · Oct 8', date:'October 8, 2026', kind:'social', layout:'J · Flat blue', pillar:'Expertise',
+      title:'Why hospitals still run on steam.',
+      xTitle:'Why hospitals still\nrun on steam.',
+      xStat:'120 psig', xStatLabel:'steam pressure at the Albany VA boiler plant.',
+      slides:[
+        { mode:'flat', eyebrow:'Steam, explained', headline:'Why hospitals still\nrun on steam.' },
+        { mode:'flat', eyebrow:'Sterilization', headline:'Surgical tools are\nsterilized with steam.' },
+        { mode:'flat', eyebrow:'Everything else', headline:'Kitchens, laundry,\nhumidity and heat.' },
+        { mode:'stat', stat:'120 psig', statLabel:'steam pressure at the Albany VA boiler plant, serving the whole campus.' },
+        { mode:'flat', eyebrow:'Why steam', headline:'Pressure moves it\nacross the campus.' },
+        { mode:'flat', eyebrow:'Why it matters', headline:'So we keep it on\nduring every job.' }
+      ],
+      caption:"Most people assume steam is a relic. In a hospital it is still doing essential work. Surgical instruments are sterilized in steam autoclaves. The same plant feeds the kitchen, the laundry, humidification and building heat. At the Albany VA, three 900 HP boilers make steam at 120 psig for the whole campus. Steam carries a lot of energy per pound and its own pressure pushes it through the distribution piping, which is why one central plant can serve an entire campus. It is also why we never let it go off during construction. At Albany we designed temporary boilers to keep steam flowing while the old boilers came out.",
+      tags:['#Steam','#BoilerPlant','#HealthcareEngineering','#MEP','#VA'] },
+    { id:'w13t', wk:13, dateLabel:'Tue · Oct 13', date:'October 13, 2026', kind:'social', layout:'I · Plate', pillar:'Case study',
+      title:'6,240 niches, designed and built.',
+      xTitle:'6,240 niches,\ndesigned and built.',
+      slides:[
+        { mode:'plate', img:'assets/projects/longisland-1.jpg', eyebrow:'Case study / Long Island National Cemetery', headline:'6,240 niches,\ndesigned and built.' },
+        { mode:'stat', stat:'13', statLabel:'columbarium structures, with foundations, drainage, a plaza and landscaping.' },
+        { mode:'flat', eyebrow:'The main gate', headline:'Relocated, all ten\nbrick columns.' },
+        { mode:'flat', eyebrow:'The historic fence', headline:'16,000 feet of fence,\nreplicated for SHPO.' },
+        { mode:'plate', img:'assets/projects/longisland-5.jpg', eyebrow:'Design-build', headline:'One firm, from survey\nto final inspection.' }
+      ],
+      caption:"At Long Island National Cemetery, the VA selected Alares as prime design-build contractor for a 6,240-niche columbarium and plaza: 13 structures with foundations, masonry, subsurface drainage, a walking and sitting plaza, parking, irrigation and landscaping. The job also replaced 16,000 feet of perimeter fence, replicating the historic ornamental iron to satisfy SHPO, added a deceleration lane, sidewalk and guardrail, and relocated the main gate, all ten brick columns. We carried it from survey and geotechnical work through design and into construction oversight, and the Phase 1 site work was laid out so future columbarium phases can tie in. Construction cost was about $9 million.",
+      tags:['#DesignBuild','#NationalCemeteries','#Architecture','#SHPO','#VA'] },
+
+    { id:'w13th', wk:13, dateLabel:'Thu · Oct 15', date:'October 15, 2026', kind:'social', layout:'B · Top band', pillar:'How we work',
+      title:'Stop replacing it with the same thing.',
+      xTitle:'Stop replacing it\nwith the same thing.',
+      xSlot:'inkind-cover',
+      slides:[
+        { mode:'topband', img:'assets/projects/inkind-cover.jpg', img:'assets/projects/inkind-cover.jpg', slot:'inkind-cover', placeholder:'Old and new mechanical equipment side by side', eyebrow:'How we work', headline:'Stop replacing it\nwith the same thing.' },
+        { mode:'flat', eyebrow:'Replacing in kind', headline:'Same size, same model,\nsame problems.' },
+        { mode:'flat', eyebrow:'What we do instead', headline:'Run the load calcs\nbefore we size anything.' },
+        { mode:'stat', stat:'10,000 ft', statLabel:'of chilled water pipe at Asheville, sized from load calculations, not the old drawings.' },
+        { mode:'flat', eyebrow:'Brockton', headline:'Two undersized units\nbecame four.' },
+        { mode:'flat', eyebrow:'Why it matters', headline:'Sized for today\u2019s load,\nnot 1976\u2019s.' }
+      ],
+      caption:"The easy way to replace a chiller, a boiler or an air handler is to buy the same one again. It matches the old pad, the old piping and the old drawings. It also keeps whatever was wrong with the original sizing. Hospitals have changed a lot since most of their equipment went in, so we run the load calculations first. At Asheville we sized roughly 10,000 feet of chilled water pipe from load calculations and HVAC modeling rather than matching what was there. At Brockton, two undersized air handlers became four, which is what finally gave the patient spaces real heating and cooling control. Replacing in kind is quick. Sizing it right is what you live with for the next thirty years.",
+      tags:['#MEP','#HVAC','#HealthcareEngineering','#Retrofit','#VA'] },
+    { id:'w14t', wk:14, dateLabel:'Tue · Oct 20', date:'October 20, 2026', kind:'social', layout:'D · Corner tab', pillar:'Case study',
+      title:'The new air handlers would not fit.',
+      xTitle:'The new air handlers\nwould not fit.',
+      xSlot:'m15-roof',
+      slides:[
+        { mode:'corner', img:'assets/projects/m15-roof.jpg', slot:'m15-roof', placeholder:'Air handlers on a hospital roof', eyebrow:'Case study / Manchester VAMC, NH', headline:'The new air handlers\nwould not fit.' },
+        { mode:'flat', eyebrow:'The reason', headline:'The VA design guide\nchanged in 20 years.' },
+        { mode:'flat', eyebrow:'What else we found', headline:'The ductwork was\nundersized too.' },
+        { mode:'flat', eyebrow:'The fix', headline:'We moved the air\nhandlers to the roof.' },
+        { mode:'stat', stat:'$10M', statLabel:'AHU and chiller replacement for the Community Living Center.' },
+        { mode:'flat', eyebrow:'During construction', headline:'Temporary units kept\npatients comfortable.' }
+      ],
+      caption:"At the Manchester VA, the air handlers serving the Community Living Center were due for replacement. The obvious plan was to put new units where the old ones were. It would not have worked. The VA design guide has added requirements since the originals went in 20 years ago, and the existing mechanical rooms were no longer big enough. We also found the ductwork was undersized. So we moved the new air handlers to the roof in the vestibule enclosures the guide requires, redesigned the ductwork, and sized the new chiller to match. Temporary air handlers let construction move faster and kept the impact on residents low.",
+      tags:['#MEP','#HVAC','#AirHandlers','#HealthcareEngineering','#VA'] },
+
+    { id:'w14th', wk:14, dateLabel:'Thu · Oct 22', date:'October 22, 2026', kind:'social', layout:'J · Flat blue', pillar:'For contracting officers',
+      title:'What SDVOSB means for your set-aside.',
+      xFlat:true,
+      xTitle:'What SDVOSB means\nfor your set-aside.',
+      slides:[
+        { mode:'flat', eyebrow:'For contracting officers', headline:'What SDVOSB means\nfor your set-aside.' },
+        { mode:'flat', eyebrow:'SDVOSB', headline:'Majority owned by\na disabled veteran.' },
+        { mode:'flat', eyebrow:'Veterans First', headline:'The VA looks at\nveteran firms first.' },
+        { mode:'flat', eyebrow:'The rule of two', headline:'Two qualified firms?\nIt gets set aside.' },
+        { mode:'flat', eyebrow:'Certification', headline:'The SBA verifies\nevery SDVOSB.' },
+        { mode:'flat', eyebrow:'Alares', headline:'An SDVOSB,\nfounded in 2007.' }
+      ],
+      caption:"SDVOSB stands for Service Disabled Veteran Owned Small Business. To qualify, a firm has to be at least 51 percent owned and controlled by one or more service disabled veterans. At the VA, the Veterans First program means veteran owned firms are considered first. If a contracting officer expects at least two qualified veteran owned firms to bid at a fair price, the contract is set aside for them, and the Supreme Court confirmed in 2016 that the VA has to apply that rule. Since 2023 the SBA certifies SDVOSBs through its VetCert program. Alares is an SDVOSB, founded in 2007 by a West Point graduate and former Green Beret officer.",
+      tags:['#SDVOSB','#VeteransFirst','#FederalContracting','#VA','#GovCon'] },
+    { id:'w15t', wk:15, dateLabel:'Tue · Oct 27', date:'October 27, 2026', kind:'social', layout:'B · Top band', pillar:'Case study',
+      title:'One chiller plant was not enough.',
+      xTitle:'One chiller plant\nwas not enough.',
+      xImg:'assets/projects/manchester-chw-1.jpg',
+      slides:[
+        { mode:'topband', img:'assets/projects/manchester-chw-1.jpg', eyebrow:'Case study / Manchester VAMC, NH', headline:'One chiller plant\nwas not enough.' },
+        { mode:'flat', eyebrow:'The old system', headline:'200 tons, on the roof\nof the sixth floor.' },
+        { mode:'stat', stat:'350 tons', statLabel:'of new chilled water capacity for the main medical center.' },
+        { mode:'flat', eyebrow:'Built in a backup', headline:'If a chiller goes down,\nthe hospital stays cool.' },
+        { mode:'flat', eyebrow:'During construction', headline:'Temporary cooling\nkept the hospital open.' },
+        { mode:'flat', eyebrow:'Handing it over', headline:'We trained the VA staff\nto run it.' }
+      ],
+      caption:"The main medical center at the Manchester VA was cooled by 200 tons of chilled water equipment on the roof of the sixth floor. Alares designed its replacement: a fully redundant chilled water system providing 350 tons of cooling to the air handling units across the building. Fully redundant means a chiller can go down and the hospital still stays cool. We also designed the temporary services needed to keep the building running during construction, the tie in to the Johnson Controls Metasys system, and the manuals and operator training so the VA staff can run it. NV5 handled the electrical engineering.",
+      tags:['#ChilledWater','#MEP','#HVAC','#HealthcareEngineering','#VA'] },
+
+    { id:'w15th', wk:15, dateLabel:'Thu · Oct 29', date:'October 29, 2026', kind:'social', layout:'E · Stat card', pillar:'How we work',
+      title:'Why hospitals build two of everything.',
+      xTitle:'Why hospitals build\ntwo of everything.',
+      xFlat:true,
+      slides:[
+        { mode:'flat', eyebrow:'How we work', headline:'Why hospitals build\ntwo of everything.' },
+        { mode:'flat', eyebrow:'The reason', headline:'Equipment fails.\nPatients cannot wait.' },
+        { mode:'stat', stat:'N+1', statLabel:'enough equipment to carry the load, plus one spare.' },
+        { mode:'flat', eyebrow:'Cooling', headline:'If one chiller stops,\nthe other carries it.' },
+        { mode:'flat', eyebrow:'Power', headline:'The generator takes over\nwhen the grid drops.' },
+        { mode:'flat', eyebrow:'Why it matters', headline:'Nobody inside should\nnotice a failure.' }
+      ],
+      caption:"In most buildings, a broken chiller means a hot afternoon. In a hospital it means operating rooms, imaging and pharmacy all losing the conditions they need. So hospitals are designed with redundancy, usually called N+1: enough equipment to carry the full load, plus one more. At the Manchester VA we designed a fully redundant chilled water system so one chiller can fail without the building noticing. At Albany the boiler plant work added a backup generator so the plant keeps power when the grid does not. The goal is the same every time. Equipment will fail eventually. The hospital should not.",
+      tags:['#Redundancy','#HealthcareEngineering','#MEP','#CriticalFacilities','#VA'] },
+    { id:'w16t', wk:16, dateLabel:'Tue · Nov 3', date:'November 3, 2026', kind:'social', layout:'F · Split stack', pillar:'Case study',
+      title:'We tested every system before it opened.',
+      xTitle:'We tested every system\nbefore it opened.',
+      xSlot:'muc-cx',
+      slides:[
+        { mode:'split', slot:'muc-cx', placeholder:'Commissioning agent testing an air handler', eyebrow:'Case study / Manchester VAMC, NH', headline:'We tested every system\nbefore it opened.' },
+        { mode:'flat', eyebrow:'The job', headline:'Commission every system\nin a new urgent care.' },
+        { mode:'stat', stat:'20,000 GSF', statLabel:'new urgent care addition, commissioned from construction through warranty.' },
+        { mode:'flat', eyebrow:'What we found', headline:'Problems with the air\nhandlers and controls.' },
+        { mode:'flat', eyebrow:'What we did', headline:'We did not sign off\nuntil it was fixed.' },
+        { mode:'flat', eyebrow:'Eleven months later', headline:'We came back and\nchecked it again.' }
+      ],
+      caption:"At the Manchester VA, Alares was the commissioning agent on a new 20,000 square foot urgent care addition. We checked every system, from the envelope and HVAC to fire alarm, security and data. During testing we found major problems with the air handlers and the controls. The designer of record could not resolve them, so we helped work out the fixes and did not sign off until they were done. Eleven months after occupancy we came back for a warranty visit to make sure it was still running right.",
+      tags:['#Commissioning','#HealthcareEngineering','#MEP','#VA'] },
+
+    { id:'w16th', wk:16, dateLabel:'Thu · Nov 5', date:'November 5, 2026', kind:'social', layout:'J · Flat blue', pillar:'Expertise',
+      title:'Why a pharmacy needs its own air.',
+      xTitle:'Why a pharmacy needs\nits own air.',
+      xFlat:true,
+      slides:[
+        { mode:'flat', eyebrow:'USP 797 and 800, explained', headline:'Why a pharmacy needs\nits own air.' },
+        { mode:'flat', eyebrow:'USP 797', headline:'Sterile drugs need\npositive pressure.' },
+        { mode:'flat', eyebrow:'USP 800', headline:'Hazardous drugs need\nnegative pressure.' },
+        { mode:'flat', eyebrow:'The hard part', headline:'Both rooms, built inside\nan existing clinic.' },
+        { mode:'stat', stat:'$1.3M', statLabel:'to turn exam rooms at the Reno VA into a USP 797/800 compounding pharmacy.' },
+        { mode:'flat', eyebrow:'What makes it work', headline:'The building automation\nholds the pressures.' }
+      ],
+      caption:"A hospital pharmacy that mixes drugs on site needs rooms with their own air. USP 797 covers sterile compounding, and those rooms are kept at positive pressure so nothing drifts in. USP 800 covers hazardous drugs, and those rooms are kept at negative pressure so nothing drifts out. At the Reno VA we turned existing exam rooms into a compounding pharmacy with both: a new air handler for the positive pressure rooms, a separate negative pressure system, special plumbing, a new steam generator, and building automation to hold the pressures.",
+      tags:['#USP797','#USP800','#Pharmacy','#HealthcareEngineering','#VA'] },
+    { id:'w17t', wk:17, dateLabel:'Tue · Nov 10', date:'November 10, 2026', kind:'social', layout:'I · Plate', pillar:'Case study',
+      title:'Three new boilers, one rebuilt plant.',
+      xTitle:'Three new boilers,\none rebuilt plant.',
+      xSlot:'mather-plant',
+      slides:[
+        { mode:'plate', slot:'mather-plant', placeholder:'New boilers in a clean boiler plant', eyebrow:'Case study / Sacramento VAMC, CA', headline:'Three new boilers,\none rebuilt plant.' },
+        { mode:'flat', eyebrow:'The problem', headline:'The whole floor plan\nhad to change.' },
+        { mode:'flat', eyebrow:'Where we started', headline:'We 3D scanned the plant\nand all its piping.' },
+        { mode:'stat', stat:'$16M', statLabel:'construction cost to replace the boiler plant at the Sacramento VA.' },
+        { mode:'flat', eyebrow:'During construction', headline:'Temporary boilers\nkeep the steam on.' },
+        { mode:'flat', eyebrow:'Sized for', headline:'Today, and for what\nthe campus adds next.' }
+      ],
+      caption:"At the Sacramento VA Medical Center, Alares was prime designer on the boiler plant replacement. New boilers could not simply go where the old ones stood. The whole space had to be redesigned to hold three boilers and a control room that meet current VA guidelines. We started by 3D scanning the existing plant and all of its piping into a Revit model, then designed the new piping, the electrical upgrade, and the temporary boilers that carry the campus while the floor is rebuilt. The new boilers are sized for what the facility needs now and what it plans to add. Construction cost is $16M.",
+      tags:['#BoilerPlant','#MEP','#3DScanning','#HealthcareEngineering','#VA'] },
+
+    { id:'w17th', wk:17, dateLabel:'Thu · Nov 12', date:'November 12, 2026', kind:'social', layout:'J · Flat blue', pillar:'How we work',
+      title:'Test for asbestos before you design.',
+      xTitle:'Test for asbestos\nbefore you design.',
+      xFlat:true,
+      slides:[
+        { mode:'flat', eyebrow:'Asbestos, explained', headline:'Test for asbestos\nbefore you design.' },
+        { mode:'flat', eyebrow:'Where it hides', headline:'Old pipe insulation\noften contains it.' },
+        { mode:'flat', eyebrow:'The rule', headline:'An inspection comes\nbefore any demolition.' },
+        { mode:'flat', eyebrow:'Found in design', headline:'It is a line\nin the budget.' },
+        { mode:'flat', eyebrow:'Found in demolition', headline:'It stops\nthe job.' },
+        { mode:'flat', eyebrow:'On our projects', headline:'Testing is part of\nthe design team.' }
+      ],
+      caption:"Most of the plants and tunnels we work in were built when asbestos was a standard insulation material. It is often still there, wrapped around the steam and condensate piping we are hired to replace. Federal rules require an inspection before renovation or demolition disturbs it. The question is when you find out. Found during design, asbestos is an abatement scope with a known cost that every bidder prices the same way. Found during demolition, it stops the job. That is why asbestos testing sits on our design teams at Albany, Sacramento and Manchester, before the drawings are finished.",
+      tags:['#Asbestos','#Abatement','#MEP','#HealthcareEngineering','#VA'] },
+    { id:'w18t', wk:18, dateLabel:'Tue · Nov 17', date:'November 17, 2026', kind:'social', layout:'D · Corner tab', pillar:'Case study',
+      title:'We drilled 2,200 feet to answer one question.',
+      xTitle:'We drilled 2,200 feet\nto answer one question.',
+      xImg:'assets/projects/reno-geo-1.jpg',
+      slides:[
+        { mode:'corner', img:'assets/projects/reno-geo-1.jpg', eyebrow:'Case study / Reno VAMC, NV', headline:'We drilled 2,200 feet\nto answer one question.' },
+        { mode:'flat', eyebrow:'The question', headline:'Could the ground heat\nthe hospital?' },
+        { mode:'stat', stat:'2,200 ft', statLabel:'test well at the Reno VA, drilled to find out if the heat was really there.' },
+        { mode:'flat', eyebrow:'Before drilling', headline:'Four agencies had to\napprove the well.' },
+        { mode:'split', img:'assets/projects/reno-geo-probe.jpg', eyebrow:'The testing', headline:'We measured how hot,\nand how much.' },
+        { mode:'flat', eyebrow:'The answer', headline:'Yes. Geothermal heating\nis viable.' }
+      ],
+      caption:"Earlier studies suggested there was hot water deep under the Reno VA Medical Center, but nobody had proof. The VA asked Alares to find out. We cleared the environmental review, got approvals from four agencies, and drilled a test well 2,200 feet down. Then we tested how hot the water was and how much the well could produce. The answer was yes: geothermal heating is viable for the campus. Now the VA can plan around a measured result instead of a guess.",
+      tags:['#Geothermal','#Energy','#NEPA','#Feasibility','#VA'] },
+
+    { id:'w18th', wk:18, dateLabel:'Thu · Nov 19', date:'November 19, 2026', kind:'social', layout:'J · Flat blue', pillar:'How we work',
+      title:'Three catches that kept projects moving.',
+      xTitle:'Three catches that kept\nprojects moving.',
+      xFlat:true,
+      slides:[
+        { mode:'flat', eyebrow:'From the field', headline:'Three catches that kept\nprojects moving.' },
+        { mode:'flat', eyebrow:'Albany VAMC, NY', headline:'A failing chimney stack.\nNo change order.' },
+        { mode:'flat', eyebrow:'East Orange VAMC, NJ', headline:'A footing in the way\nof a hospital tunnel.' },
+        { mode:'flat', eyebrow:'Rock Island, IL', headline:'An old gun range\nunder the new land.' },
+        { mode:'flat', eyebrow:'Why it matters', headline:'Problems are cheaper\nthe earlier you look.' }
+      ],
+      caption:"Three real problems, and none of them stopped a job. At the Albany VA, the boiler plant chimney stack was not meeting air quality requirements. We identified it and corrected it without a change order. At East Orange, the footing for a new seismic wall landed right beside the tunnel that connects the boiler plant to the hospital. We visited the site, worked it out with the contractor, and drew a footing that cleared the tunnel without interrupting the hospital. At Rock Island, part of the land the VA was buying for the national cemetery had been a gun range, so we tested the soil before the purchase. Problems are cheaper the earlier you look for them.",
+      tags:['#Engineering','#HealthcareEngineering','#FacilityManagement','#VA'] },
+    { id:'w19t', wk:19, dateLabel:'Tue · Nov 24', date:'November 24, 2026', kind:'social', layout:'B · Top band', pillar:'Case study',
+      title:'The new power plant was fighting itself.',
+      xTitle:'A new power plant\nwas fighting itself.',
+      xSlot:'newington-plant',
+      slides:[
+        { mode:'topband', slot:'newington-plant', placeholder:'Generators inside a new power plant', eyebrow:'Case study / Newington VAMC, CT', headline:'A new power plant\nwas fighting itself.' },
+        { mode:'flat', eyebrow:'What it does', headline:'Power and cooling\nfrom the same fuel.' },
+        { mode:'stat', stat:'$18M', statLabel:'new combined heat and power plant, with three generators and an absorption chiller.' },
+        { mode:'flat', eyebrow:'What we found', headline:'It was cooling the water\nit needed to stay hot.' },
+        { mode:'flat', eyebrow:'The fix', headline:'We found the cause and\nthe controls were fixed.' },
+        { mode:'flat', eyebrow:'The timing', headline:'Fixed before the VA\ntook the plant over.' }
+      ],
+      caption:"The Newington VA built a new plant that makes electricity and uses the leftover heat to cool the campus. On paper it worked. When we tested it, it did not. The hot water that was supposed to drive the chiller was being cooled on its way there, so the plant was spending energy to undo its own work. We traced the cause, recommended a corrected control sequence, and the controls were reprogrammed before the VA took the plant over. Nobody finds that on a drawing. You find it by running the plant and watching what it does.",
+      tags:['#Commissioning','#CHP','#EnergyEngineering','#MEP','#VA'] },
+
+    { id:'w19th', wk:19, dateLabel:'Thu · Nov 26', date:'November 26, 2026', kind:'social', layout:'J · Flat blue', pillar:'People & culture',
+      title:'Hospitals do not close for Thanksgiving.',
+      xTitle:'Hospitals do not close\nfor Thanksgiving.',
+      xFlat:true,
+      slides:[
+        { mode:'flat', eyebrow:'Thanksgiving', headline:'Hospitals do not close\nfor Thanksgiving.' },
+        { mode:'flat', eyebrow:'Right now', headline:'Someone is watching\nthe boiler plant.' },
+        { mode:'flat', eyebrow:'Every holiday', headline:'The heat, the power and\nthe air all stay on.' },
+        { mode:'flat', eyebrow:'To the facility crews', headline:'Thank you for keeping\nthem running.' },
+        { mode:'markfull', eyebrow:'From all of us at Alares', headline:'Happy Thanksgiving.' }
+      ],
+      caption:"Hospitals do not close for Thanksgiving. Today, at VA medical centers across the country, someone is watching the boilers, checking the chillers and answering the alarms so patients stay warm and cared for. Most of our work happens alongside those crews, and none of it works without them. To the facility staff, the engineers and the veterans we work for: thank you. Happy Thanksgiving from all of us at Alares.",
+      tags:['#Thanksgiving','#ThankYou','#FacilityManagement','#VeteranOwned','#VA'] } ];
+
+  WEEK_RANGE = { 1:'Jul 21, 23', 2:'Jul 28, 30', 3:'Aug 4, 6', 4:'Aug 11, 13', 5:'Aug 18, 20', 6:'Aug 25, 27', 7:'Sep 1, 3', 8:'Sep 8, 10', 9:'Sep 15, 17', 10:'Sep 22, 24', 11:'Sep 29, Oct 1', 12:'Oct 6, 8', 13:'Oct 13, 15', 14:'Oct 20, 22', 15:'Oct 27, 29', 16:'Nov 3, 5', 17:'Nov 10, 12', 18:'Nov 17, 19', 19:'Nov 24, 26' };
+
+  get edits(){
+    if(!this._edits){ try{ this._edits = JSON.parse(localStorage.getItem('alares-cal-text-edits')||'{}'); }catch(e){ this._edits = {}; } }
+    return this._edits;
+  }
+  _merge(d){
+    const ov = this.edits[d.id]; if(!ov) return d;
+    return { ...d,
+      title: ov.title !== undefined ? ov.title : d.title,
+      pillar: ov.pillar !== undefined ? ov.pillar : d.pillar,
+      xTitle: ov.xTitle !== undefined ? ov.xTitle : d.xTitle,
+      caption: ov.caption !== undefined ? ov.caption : d.caption,
+      tags: ov.tags !== undefined ? ov.tags : d.tags,
+      slides: d.slides.map((s,i)=> ov.s && ov.s[i] ? { ...s, ...ov.s[i] } : s) };
+  }
+  setEdit(dayId, key, val, slideIdx){
+    const e = this.edits;
+    const day = e[dayId] = e[dayId] || {};
+    if(slideIdx === undefined) day[key] = val;
+    else { day.s = day.s || {}; day.s[slideIdx] = day.s[slideIdx] || {}; day.s[slideIdx][key] = val; }
+    try{ localStorage.setItem('alares-cal-text-edits', JSON.stringify(e)); }catch(err){}
+    this.forceUpdate();
+  }
+  resetEdits(dayId){
+    delete this.edits[dayId];
+    try{ localStorage.setItem('alares-cal-text-edits', JSON.stringify(this.edits)); }catch(err){}
+    this.forceUpdate();
+  }
+  get selDay(){ return this._merge(this.DAYS.find(d => d.id === this.state.sel) || this.DAYS[0]); }
+
+  renderSlide(s){
+    const h=React.createElement, BLUE='#0E74BB', SKY='#62C4EF', W='#FFFFFF';
+    const emblem=()=>h('img',{key:'e',src:'assets/emblem-white.svg',style:{position:'absolute',top:0,right:0,height:'100%',width:'auto',transform:'translateX(9%)',opacity:0.06,pointerEvents:'none'}});
+    const lock=(ht)=>h('img',{src:'assets/alares-lockup-white.png',style:{height:(ht||13)+'px',width:'auto',display:'block'}});
+    const photo=()=>h('image-slot',{id:'cal-'+String(s.slot||s.img).replace(/[^a-z0-9]/gi,'-'),src:s.img||null,placeholder:s.placeholder||'Drop an image',shape:'rect',style:{position:'absolute',inset:0,width:'100%',height:'100%',display:'block'}});
+    const eye=(c)=>h('div',{style:{fontSize:'9px',letterSpacing:'0.2em',textTransform:'uppercase',color:c||SKY,fontWeight:700,position:'relative'}},s.eyebrow);
+    const head=(sz)=>h('div',{style:{fontSize:(sz||21)+'px',fontWeight:700,color:W,lineHeight:1.15,marginTop:'7px',position:'relative',whiteSpace:'pre-line'}},s.headline);
+    const fill={position:'absolute',inset:0};
+    const INK='#16222C';
+    if(s.mode==='markfull') return h('div',{style:fill},[
+      h('div',{key:'m',style:{position:'absolute',left:0,right:0,top:0,bottom:'128px',background:'#FFFFFF',display:'flex',alignItems:'center',justifyContent:'center',overflow:'hidden'}},
+        h('img',{src:'assets/emblem-color.svg',alt:'',style:{width:'74%',height:'auto',display:'block'}})),
+      h('div',{key:'b',style:{position:'absolute',left:0,right:0,bottom:0,height:'128px',background:BLUE,padding:'16px 18px 46px',boxSizing:'border-box',overflow:'hidden'}},[emblem(),eye(),head(20),
+        h('div',{key:'s',style:{position:'absolute',left:'18px',right:'18px',bottom:'14px',borderTop:'1px solid rgba(255,255,255,0.35)',paddingTop:'8px'}},lock(13))])]);
+    if(s.mode==='mark') return h('div',{style:{...fill,background:'#F2F6F9',overflow:'hidden'}},[
+      h('img',{key:'m',src:'assets/emblem-color.svg',alt:'',style:{position:'absolute',top:0,right:0,height:'100%',width:'auto',transform:'translateX(9%)',pointerEvents:'none'}}),
+      h('div',{key:'t',style:{position:'absolute',left:'18px',right:'40%',bottom:'46px'}},[
+        h('div',{key:'y',style:{fontSize:'9px',letterSpacing:'0.2em',textTransform:'uppercase',color:BLUE,fontWeight:700}},s.eyebrow),
+        h('div',{key:'d',style:{fontSize:'22px',fontWeight:700,color:INK,lineHeight:1.15,marginTop:'7px',whiteSpace:'pre-line'}},s.headline)]),
+      h('div',{key:'s',style:{position:'absolute',left:'18px',right:'18px',bottom:'14px',borderTop:'1px solid rgba(22,34,44,0.18)',paddingTop:'8px'}},
+        h('img',{src:'assets/alares-logo-transparent.png',style:{height:'13px',width:'auto',display:'block'}}))]);
+    const m=s.mode;
+    if(m==='plate') return h('div',{style:fill},[
+      h('div',{key:'p',style:{position:'absolute',left:0,right:0,top:0,bottom:'128px',overflow:'hidden'}},photo()),
+      h('div',{key:'b',style:{position:'absolute',left:0,right:0,bottom:0,minHeight:'128px',background:BLUE,padding:'16px 18px 46px',boxSizing:'border-box',overflow:'hidden'}},[emblem(),eye(),head(20),
+        h('div',{key:'s',style:{position:'absolute',left:'18px',right:'18px',bottom:'14px',borderTop:'1px solid rgba(255,255,255,0.35)',paddingTop:'8px'}},lock(13))])]);
+    if(m==='bordered') return h('div',{style:{...fill,boxSizing:'border-box',border:'12px solid '+BLUE,background:BLUE}},photo());
+    if(m==='topband') return h('div',{style:{...fill,display:'flex',flexDirection:'column'}},[
+      h('div',{key:'t',style:{flex:'none',minHeight:'128px',background:BLUE,padding:'16px 18px 46px',boxSizing:'border-box',position:'relative',overflow:'hidden'}},[emblem(),eye(),head(20),
+        h('div',{key:'s',style:{position:'absolute',left:'18px',right:'18px',bottom:'14px',borderTop:'1px solid rgba(255,255,255,0.35)',paddingTop:'8px'}},lock(13))]),
+      h('div',{key:'p',style:{flex:1,position:'relative',overflow:'hidden'}},photo())]);
+    if(m==='siderail') return h('div',{style:{...fill,display:'flex'}},[
+      h('div',{key:'r',style:{flex:'0 0 45%',background:BLUE,padding:'16px 15px 46px',display:'flex',flexDirection:'column',position:'relative',overflow:'hidden'}},[emblem(),eye(),
+        h('div',{key:'m',style:{flex:1,display:'flex',alignItems:'center'}},head(17)),
+        h('div',{key:'s',style:{position:'absolute',left:'15px',right:'15px',bottom:'14px',borderTop:'1px solid rgba(255,255,255,0.35)',paddingTop:'8px'}},lock(13))]),
+      h('div',{key:'p',style:{flex:1,minWidth:0,position:'relative'}},photo())]);
+    if(m==='corner') return h('div',{style:fill},[
+      h('div',{key:'p',style:{position:'absolute',left:0,right:0,top:0,bottom:'128px',overflow:'hidden'}},photo()),
+      h('div',{key:'t',style:{position:'absolute',left:0,right:0,bottom:0,minHeight:'128px',boxSizing:'border-box',background:BLUE,padding:'16px 18px 46px',overflow:'hidden'}},[emblem(),eye(),head(20),
+        h('div',{key:'s',style:{position:'absolute',left:'18px',right:'18px',bottom:'14px',borderTop:'1px solid rgba(255,255,255,0.35)',paddingTop:'8px'}},lock(13))])]);
+    if(m==='split') return h('div',{style:{...fill,display:'flex',flexDirection:'column'}},[
+      h('div',{key:'p',style:{flex:1,position:'relative',overflow:'hidden'}},photo()),
+      h('div',{key:'f',style:{flex:'none',minHeight:'128px',background:BLUE,padding:'16px 18px 46px',boxSizing:'border-box',position:'relative',overflow:'hidden'}},[emblem(),eye(),head(20),
+        h('div',{key:'s',style:{position:'absolute',left:'18px',right:'18px',bottom:'14px',borderTop:'1px solid rgba(255,255,255,0.35)',paddingTop:'8px'}},lock(13))])]);
+    if(m==='framed') return h('div',{style:{...fill,background:BLUE,padding:'18px 18px 46px',display:'flex',flexDirection:'column',boxSizing:'border-box',overflow:'hidden'}},[emblem(),
+      h('div',{key:'p',style:{flex:1,position:'relative',overflow:'hidden'}},photo()),
+      h('div',{key:'t',style:{position:'relative',paddingTop:'12px'}},[eye(),head(20)]),
+      h('div',{key:'s',style:{position:'absolute',left:'18px',right:'18px',bottom:'14px',borderTop:'1px solid rgba(255,255,255,0.35)',paddingTop:'8px'}},lock(13))]);
+    if(m==='stat') return h('div',{style:{...fill,padding:'24px 18px 46px',display:'flex',flexDirection:'column',boxSizing:'border-box',overflow:'hidden'}},[emblem(),eye(),
+      h('div',{key:'m',style:{flex:1,display:'flex',flexDirection:'column',justifyContent:'center',position:'relative'}},[
+        h('div',{key:'n',style:{fontSize:'66px',fontWeight:700,color:W,lineHeight:0.95,letterSpacing:'-1px'}},s.stat),
+        h('div',{key:'l',style:{fontSize:'16px',fontWeight:600,color:W,lineHeight:1.3,marginTop:'12px',maxWidth:'250px',whiteSpace:'pre-line'}},s.statLabel)]),
+      h('div',{key:'s',style:{position:'absolute',left:'18px',right:'18px',bottom:'14px',borderTop:'1px solid rgba(255,255,255,0.35)',paddingTop:'8px'}},lock(13))]);
+    if(m==='quote') return h('div',{style:{...fill,padding:'24px 18px 46px',display:'flex',flexDirection:'column',boxSizing:'border-box',overflow:'hidden'}},[emblem(),
+      h('div',{key:'q',style:{fontSize:'52px',fontWeight:700,color:SKY,lineHeight:0.6,position:'relative'}},'\u201C'),
+      h('div',{key:'m',style:{flex:1,display:'flex',alignItems:'center',position:'relative'}},h('div',{style:{fontSize:'22px',fontWeight:600,color:W,lineHeight:1.32}},s.quote)),
+      h('div',{key:'a',style:{position:'relative'}},h('div',{key:'x',style:{fontSize:'9px',letterSpacing:'0.18em',textTransform:'uppercase',color:SKY,fontWeight:700}},s.quoteAttr)),
+      h('div',{key:'s',style:{position:'absolute',left:'18px',right:'18px',bottom:'14px',borderTop:'1px solid rgba(255,255,255,0.35)',paddingTop:'8px'}},lock(13))]);
+    // flat
+    return h('div',{style:{...fill,padding:'24px 18px 46px',display:'flex',flexDirection:'column',boxSizing:'border-box',overflow:'hidden'}},[emblem(),eye(),
+      h('div',{key:'m',style:{flex:1,display:'flex',alignItems:'center',position:'relative'}},h('div',{style:{fontSize:'28px',fontWeight:700,color:W,lineHeight:1.15,whiteSpace:'pre-line'}},s.headline)),
+      h('div',{key:'s',style:{position:'absolute',left:'18px',right:'18px',bottom:'14px',borderTop:'1px solid rgba(255,255,255,0.35)',paddingTop:'8px'}},lock(13))]);
+  }
+
+  select(id){ this.setState({ sel:id, slide:0, copied:false }); }
+  go(n){ const len=this.selDay.slides.length; this.setState({ slide:(this.state.slide+n+len)%len }); }
+  setSlide(i){ this.setState({ slide:i }); }
+
+  copy(){
+    const d = this.selDay;
+    const txt = d.caption + (d.tags && d.tags.length ? '\n\n' + d.tags.join(' ') : '');
+    const done = () => { this.setState({ copied:true }); clearTimeout(this._t); this._t=setTimeout(()=>this.setState({copied:false}),1800); };
+    try { navigator.clipboard.writeText(txt).then(done, done); } catch(e){ done(); }
+  }
+
+  renderVals(){
+    const sel = this.state.sel;
+    const badgeSocial = { display:'inline-flex',alignItems:'center',justifyContent:'center',fontSize:'9px',fontWeight:700,letterSpacing:'0.06em',color:'#FFFFFF',background:'#0E74BB',padding:'3px 7px',whiteSpace:'nowrap' };
+    const badgeBlog = { ...badgeSocial, background:'#16222C' };
+    const weeks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19].map(wk => ({
+      label:'Week '+wk, range:this.WEEK_RANGE[wk],
+      days:this.DAYS.filter(d=>d.wk===wk).map(dd=>{ const d=this._merge(dd);
+        const on = d.id===sel;
+        return {
+          badge: d.layout.split(' ')[0],
+          badgeStyle: badgeSocial,
+          dateLabel: d.dateLabel, pillar: d.pillar, title: d.title,
+          onClick: () => this.select(d.id),
+          rowStyle: {
+            display:'block',width:'100%',boxSizing:'border-box',textAlign:'left',cursor:'pointer',
+            padding:'11px 12px',marginTop:'6px',borderRadius:'2px',
+            border:'1px solid '+(on?'#0E74BB':'#E4E9ED'),
+            borderLeft:'3px solid '+(on?'#0E74BB':'#E4E9ED'),
+            background: on?'#F2F8FC':'#FFFFFF',
+            fontFamily:"Bahnschrift,'Barlow Semi Condensed',Arial,sans-serif"
+          }
+        };
+      })
+    }));
+
+    const d = this.selDay;
+    const len=d.slides.length; const i=Math.min(this.state.slide,len-1); const s=d.slides[i];
+    const modeName={plate:'Photo + plate',split:'Split stack',stat:'Stat card',quote:'Quote card',flat:'Flat blue',topband:'Top band',corner:'Corner tab',siderail:'Side rail',framed:'Framed',bordered:'Bordered'};
+    const post = {
+      pillar:d.pillar, title:d.title, isSocial:true,
+      copy:()=>this.copy(), copyLabel: this.state.copied ? '✓ Copied' : 'Copy caption / share text',
+      hasTags: !!(d.tags&&d.tags.length), tagLine: d.tags?d.tags.join('  '):'', caption:d.caption,
+      previewLabel:'Instagram · LinkedIn · X  ·  4:5',
+      setPreview:this.setPreview,
+      slideEl:this.renderSlide(s),
+      multi:len>1, counter:(i+1)+' / '+len,
+      prev:()=>this.go(-1), next:()=>this.go(1),
+      dots:d.slides.map((_,k)=>({ onClick:()=>this.setSlide(k),
+        style:{ width:k===i?'22px':'8px',height:'8px',borderRadius:'4px',border:'none',cursor:'pointer',padding:0,background:k===i?'#0E74BB':'#C3D0D9',transition:'width .2s' } })),
+      tagText:d.layout, tagStyle:{ ...badgeSocial, fontSize:'10px', padding:'4px 9px' },
+      metaLine:d.date+'  ·  Social + blog  ·  2160 × 2700 & 2400 × 1260 px',
+      bodyLabel:'Caption / share text',
+      slideSummary:len+(len>1?' slides':' slide'),
+      dl:()=>this.downloadCurrent(), dlAll:()=>this.downloadAll(),
+      dlLabel:this.state.dling?'Preparing…':'↓ Download this slide',
+      dlAllLabel:this.state.dling?'Zipping…':'Download all '+len+' (.zip)',
+      dlStyle:{ background:'#0E74BB',color:'#FFFFFF',border:'none',padding:'11px 18px',fontFamily:"Bahnschrift,'Barlow Semi Condensed',Arial,sans-serif",fontSize:'12.5px',fontWeight:700,letterSpacing:'0.03em',cursor:this.state.dling?'default':'pointer',opacity:this.state.dling?0.7:1,whiteSpace:'nowrap' },
+      canUpscale: !!(s&&s.img),
+      upsc:()=>this.upscaleCurrent(),
+      upscBusy:this.state.upsc,
+      upscLabel:this.state.upsc?('Upscaling… '+Math.round(this.state.upscP*100)+'%'):'AI upscale this photo (2×)',
+      upscPct:Math.round(this.state.upscP*100)+'%',
+      upscHasNote:!!this.state.upscNote, upscNote:this.state.upscNote,
+      upscStyle:{ background:'#FFFFFF',color:'#0E74BB',border:'1px solid #0E74BB',padding:'10px 16px',fontFamily:"Bahnschrift,'Barlow Semi Condensed',Arial,sans-serif",fontSize:'12px',fontWeight:700,letterSpacing:'0.03em',cursor:this.state.upsc?'default':'pointer',opacity:this.state.upsc?0.7:1,width:'100%',boxSizing:'border-box' },
+      slideList:d.slides.map((sl,k)=>({
+        num:k+1, mode:modeName[sl.mode]||sl.mode,
+        label: sl.headline || sl.stat || sl.quote || sl.eyebrow || '',
+        onClick:()=>this.setSlide(k),
+        numStyle:{ flex:'0 0 22px',height:'22px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'11px',fontWeight:700,color:k===i?'#FFFFFF':'#5B6B77',background:k===i?'#0E74BB':'#EEF2F5',borderRadius:'2px' },
+        rowStyle:{ display:'flex',gap:'10px',alignItems:'center',width:'100%',boxSizing:'border-box',textAlign:'left',cursor:'pointer',padding:'8px 10px',border:'1px solid '+(k===i?'#0E74BB':'#E4E9ED'),background:k===i?'#F2F8FC':'#FFFFFF',fontFamily:"Bahnschrift,'Barlow Semi Condensed',Arial,sans-serif" }
+      })),
+      fldLabelStyle:{ fontSize:'9px',letterSpacing:'0.14em',textTransform:'uppercase',color:'#8A98A3',fontWeight:700,marginBottom:'4px' },
+      fldStyle:{ width:'100%',boxSizing:'border-box',border:'1px solid #D8DFE4',padding:'8px 10px',fontFamily:"Bahnschrift,'Barlow Semi Condensed',Arial,sans-serif",fontSize:'12.5px',color:'#16222C',background:'#FFFFFF',outline:'none' },
+      editFields:(()=>{ const base=(this.DAYS.find(x=>x.id===d.id)||d);
+        const keys=['eyebrow','headline','stat','statLabel','quote','quoteAttr'].filter(k=> base.slides[i] && base.slides[i][k] !== undefined);
+        return keys.map(k=>{ const ml=(k==='headline'||k==='quote'||k==='statLabel');
+          return { label:'Slide '+(i+1)+' · '+(k==='statLabel'?'stat label':k==='quoteAttr'?'attribution':k)+(ml?' · Enter = line break':''),
+            value:s[k]||'', multiline:ml, single:!ml, onChange:(ev)=>this.setEdit(d.id, k, ev.target.value, i) }; }); })(),
+      titleVal:d.title, titleChange:(ev)=>this.setEdit(d.id,'title',ev.target.value),
+      pillarVal:d.pillar, pillarChange:(ev)=>this.setEdit(d.id,'pillar',ev.target.value),
+      xTitleVal:d.xTitle||d.title, xTitleChange:(ev)=>this.setEdit(d.id,'xTitle',ev.target.value),
+      captionVal:d.caption, captionChange:(ev)=>this.setEdit(d.id,'caption',ev.target.value),
+      tagsVal:(d.tags||[]).join(' '), tagsChange:(ev)=>this.setEdit(d.id,'tags',ev.target.value.split(/\s+/).filter(Boolean)),
+      hasEdits:!!this.edits[d.id], resetEdits:()=>this.resetEdits(d.id),
+      setBlogRef:this.setBlogRef,
+      blogCardEl:this.renderBlogCard(d),
+      blogTitle:d.title, blogKicker:d.pillar, blogExcerpt:d.excerpt||d.caption, blogRead:d.read||'3 min read',
+      dlBlog:()=>this.downloadBlog(),
+      dlBlogLabel:this.state.dlingBlog?'Preparing…':'↓ Download link card',
+      setXRef:this.setXRef,
+      xCardEl:this.renderXCard(d),
+      dlX:()=>this.downloadX(),
+      dlXLabel:this.state.dlingX?'Preparing…':'↓ Download X card',
+      dlXStyle:{ background:'#0E74BB',color:'#FFFFFF',border:'none',padding:'11px 18px',fontFamily:"Bahnschrift,'Barlow Semi Condensed',Arial,sans-serif",fontSize:'12.5px',fontWeight:700,letterSpacing:'0.03em',cursor:this.state.dlingX?'default':'pointer',opacity:this.state.dlingX?0.7:1,whiteSpace:'nowrap' },
+      dlBlogStyle:{ background:'#0E74BB',color:'#FFFFFF',border:'none',padding:'11px 18px',fontFamily:"Bahnschrift,'Barlow Semi Condensed',Arial,sans-serif",fontSize:'12.5px',fontWeight:700,letterSpacing:'0.03em',cursor:this.state.dlingBlog?'default':'pointer',opacity:this.state.dlingBlog?0.7:1,whiteSpace:'nowrap' }
+    };
+    return { weeks, post };
+  }
+}
+</script>
+</body>
+</html>

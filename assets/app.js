@@ -5,7 +5,7 @@ const TARGET_HOURS = 20;
 const TABS = ['Opportunities', 'Outreach', 'Posts', 'Newsletter', 'Listings', 'Hours', 'Reports'];
 const PAGES = [
   ['index.html', 'Overview'], ['opportunities.html', 'Opportunities'], ['outreach.html', 'Outreach'],
-  ['content.html', 'Content calendar'], ['newsletter.html', 'Newsletter'], ['listings.html', 'Listings'],
+  ['content.html', 'Content calendar'], ['design/posting-calendar.html', 'Post builder'], ['newsletter.html', 'Newsletter'], ['listings.html', 'Listings'],
   ['hours.html', 'Hours'], ['reports.html', 'Reports']
 ];
 
@@ -161,7 +161,7 @@ const VIEW = {
     draw(el, D, S) {
       const P = ['Blog', 'LinkedIn', 'X', 'Instagram', 'Facebook'];
       const past = D.Posts.map(r => ({ ...r, _d: parseDate(r.Date) })).filter(r => r._d && daysFrom(r._d) < 0).sort((a, b) => b._d - a._d);
-      el.innerHTML = `<h2 style="margin-top:0">Coming up</h2>
+      el.innerHTML = `<div class="note-box">The post builder from Claude Design is here too: preview each post's carousel, captions and cards, and download them. <a href="design/posting-calendar.html"><b>Open the post builder</b></a></div><h2 style="margin-top:0">Coming up</h2>
       ${S.upcoming.length ? `<div class="cards">${S.upcoming.map(r => `<div class="card ${daysFrom(r._d) === 0 ? 'today' : ''}"><span class="label">${esc(fmtLong(r._d))} · ${esc(when(r._d))}</span><h3>${esc(r.Title || 'To be decided')}</h3><div class="plat">${P.map(p => `<span>${p}</span>${pill(r[p])}`).join('')}</div><div class="foot">${link(r['Drive folder'], 'Drive folder')}${link(r['Blog link'], 'Blog post')}</div></div>`).join('')}</div>` : '<div class="empty">Nothing scheduled. Add rows to the Posts tab of the sheet.</div>'}
       <h2>Published</h2>
       ${table([{ h: 'Date', cls: 'nowrap', f: r => esc(fmt(r._d, { month: 'short', day: 'numeric', year: 'numeric' })) }, { h: 'Post', cls: 't', f: r => link(r['Blog link'], r.Title) || esc(r.Title) }, { h: 'Type', cls: 'nowrap', f: r => esc(r.Type) }, ...P.map(p => ({ h: p, f: r => pill(r[p]) }))], past, 'No past posts listed.')}`;
