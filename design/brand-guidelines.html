@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Brand guidelines | Alares Marketing Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<a href="../index.html" style="position:fixed;left:12px;bottom:12px;z-index:9999;background:#0a0a0a;color:#fff;font:500 13px Inter,Arial,sans-serif;padding:8px 12px;text-decoration:none">&larr; Marketing dashboard</a>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+h1,h2,h3,h4,h5,h6,p,div,span,li,td,th,a,button,label{text-wrap:pretty}
+body{margin:0}
+a{color:#0E74BB;text-decoration:none}
+a:hover{color:#0C6393;text-decoration:underline}
+div{text-wrap:pretty}
+</style>
+</helmet>
+<x-import component-from-global-scope="doc-page" from="./doc-page.js" size="{{ paperSize }}" orientation="portrait" margin="0.75in" hint-size="100%,1200px">
+<div slot="footer" style="display:flex;justify-content:space-between;font-family:Bahnschrift,'Barlow Semi Condensed',Arial,sans-serif;font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#8A98A3;padding-top:6px;border-top:1px solid #E4E9ED">
+  <span>Alares Architects &amp; Engineers</span>
+  <span>Brand guidelines · {{ versionLabel }}</span>
+</div>
+<div lang="en" style="font-family:Bahnschrift,'Barlow Semi Condensed',Arial,sans-serif;color:#16222C">
+
+  <!-- ============ COVER ============ -->
+  <div style="display:flex;flex-direction:column;min-height:8.9in">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start">
+      <img src="assets/emblem-color.svg" alt="Alares wing emblem" style="height:64px">
+      <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;text-align:right;line-height:1.7">Sarasota, FL · Quincy, MA<br>Est. 2007</div>
+    </div>
+    <div style="margin-top:84px">
+      <div style="font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:#C1272D;font-weight:700">Alares Architects &amp; Engineers</div>
+      <div style="font-size:58px;font-weight:700;line-height:1.02;letter-spacing:-1px;color:#16222C;margin-top:12px">Brand<br>guidelines.</div>
+      <div style="font-size:13px;color:#5B6B77;margin-top:18px">{{ versionLabel }}</div>
+    </div>
+    <div style="flex:1"></div>
+    <div style="position:relative;background:#0E74BB;overflow:hidden;padding:36px 40px;min-height:250px;display:flex;flex-direction:column;justify-content:flex-end;break-inside:avoid">
+      <sc-if value="{{ showWatermark }}" hint-placeholder-val="{{ true }}">
+        <img src="assets/emblem-white.svg" alt="" style="position:absolute;top:0;right:0;height:100%;width:auto;transform:translateX(9%);opacity:0.06;pointer-events:none">
+      </sc-if>
+      <div style="position:relative;font-size:28px;font-weight:700;color:#FFFFFF;line-height:1.15;max-width:420px">Healthcare architects and engineers.</div>
+      <div style="position:relative;font-size:13.5px;line-height:1.6;color:rgba(255,255,255,0.85);max-width:430px;margin-top:12px">How Alares looks, speaks, and shows up on proposals, drawings, job sites, and everything in between. These standards keep the brand as precise as the work.</div>
+    </div>
+  </div>
+
+  <!-- ============ CONTENTS ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">Contents</div>
+    <div style="font-size:30px;font-weight:700;line-height:1.1;margin:6px 0 26px">What's inside.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 36px">
+      <div style="display:flex;gap:14px;border-top:1px solid #D8DFE4;padding-top:10px"><span style="font-weight:700;color:#0E74BB;font-size:14px">01</span><div><div style="font-weight:600;font-size:14px">The brand</div><div style="font-size:11.5px;color:#5B6B77;margin-top:2px">Who we are, what we stand for</div></div></div>
+      <div style="display:flex;gap:14px;border-top:1px solid #D8DFE4;padding-top:10px"><span style="font-weight:700;color:#0E74BB;font-size:14px">02</span><div><div style="font-weight:600;font-size:14px">Voice &amp; tone</div><div style="font-size:11.5px;color:#5B6B77;margin-top:2px">How Alares sounds in writing</div></div></div>
+      <div style="display:flex;gap:14px;border-top:1px solid #D8DFE4;padding-top:10px"><span style="font-weight:700;color:#0E74BB;font-size:14px">03</span><div><div style="font-weight:600;font-size:14px">The logo</div><div style="font-size:11.5px;color:#5B6B77;margin-top:2px">Lockup, clear space, versions, misuse</div></div></div>
+      <div style="display:flex;gap:14px;border-top:1px solid #D8DFE4;padding-top:10px"><span style="font-weight:700;color:#0E74BB;font-size:14px">04</span><div><div style="font-weight:600;font-size:14px">Color</div><div style="font-size:11.5px;color:#5B6B77;margin-top:2px">Palette, specifications, accessibility</div></div></div>
+      <div style="display:flex;gap:14px;border-top:1px solid #D8DFE4;padding-top:10px"><span style="font-weight:700;color:#0E74BB;font-size:14px">05</span><div><div style="font-weight:600;font-size:14px">Typography</div><div style="font-size:11.5px;color:#5B6B77;margin-top:2px">Bahnschrift, weights, scale, fallbacks</div></div></div>
+      <div style="display:flex;gap:14px;border-top:1px solid #D8DFE4;padding-top:10px"><span style="font-weight:700;color:#0E74BB;font-size:14px">06</span><div><div style="font-weight:600;font-size:14px">Graphic language</div><div style="font-size:11.5px;color:#5B6B77;margin-top:2px">The wing, numbering, rules &amp; captions</div></div></div>
+      <div style="display:flex;gap:14px;border-top:1px solid #D8DFE4;padding-top:10px"><span style="font-weight:700;color:#0E74BB;font-size:14px">07</span><div><div style="font-weight:600;font-size:14px">Imagery</div><div style="font-size:11.5px;color:#5B6B77;margin-top:2px">Photography direction &amp; treatment</div></div></div>
+      <div style="display:flex;gap:14px;border-top:1px solid #D8DFE4;padding-top:10px"><span style="font-weight:700;color:#0E74BB;font-size:14px">08</span><div><div style="font-weight:600;font-size:14px">Applications</div><div style="font-size:11.5px;color:#5B6B77;margin-top:2px">Stationery, email, presentations</div></div></div>
+      <div style="display:flex;gap:14px;border-top:1px solid #D8DFE4;padding-top:10px"><span style="font-weight:700;color:#0E74BB;font-size:14px">09</span><div><div style="font-weight:600;font-size:14px">Social media</div><div style="font-size:11.5px;color:#5B6B77;margin-top:2px">Ten post layouts, the plate &amp; the kit</div></div></div>
+      <div style="display:flex;gap:14px;border-top:1px solid #D8DFE4;padding-top:10px"><span style="font-weight:700;color:#0E74BB;font-size:14px">10</span><div><div style="font-weight:600;font-size:14px">Proposals &amp; documents</div><div style="font-size:11.5px;color:#5B6B77;margin-top:2px">Covers, report pages, title blocks</div></div></div>
+      <div style="display:flex;gap:14px;border-top:1px solid #D8DFE4;padding-top:10px"><span style="font-weight:700;color:#0E74BB;font-size:14px">11</span><div><div style="font-weight:600;font-size:14px">Marketing</div><div style="font-size:11.5px;color:#5B6B77;margin-top:2px">Positioning, audiences, channels, cadence</div></div></div>
+    </div>
+    <div style="margin-top:44px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">The brand at a glance</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px">
+      <div style="border:1px solid #D8DFE4;padding:16px;break-inside:avoid"><div style="font-size:24px;font-weight:700;color:#0E74BB">2007</div><div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B77;margin-top:4px">Founded</div></div>
+      <div style="border:1px solid #D8DFE4;padding:16px;break-inside:avoid"><div style="font-size:24px;font-weight:700;color:#0E74BB">2</div><div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B77;margin-top:4px">Offices, FL &amp; MA</div></div>
+      <div style="border:1px solid #D8DFE4;padding:16px;break-inside:avoid"><div style="font-size:24px;font-weight:700;color:#0E74BB">8</div><div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B77;margin-top:4px">Disciplines</div></div>
+      <div style="border:1px solid #D8DFE4;padding:16px;break-inside:avoid"><div style="font-size:24px;font-weight:700;color:#0E74BB">4</div><div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B77;margin-top:4px">Sectors served</div></div>
+    </div>
+    <div style="font-size:12px;line-height:1.7;color:#5B6B77;margin-top:14px">Sectors: healthcare, federal, commercial, institutional. Disciplines: architecture · MEP · structural &amp; seismic · owner's representation · commissioning · sustainability · environmental · energy consulting.</div>
+  </div>
+
+  <!-- ============ 01 THE BRAND ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">01 / The brand</div>
+    <div style="font-size:30px;font-weight:700;line-height:1.1;margin:6px 0 14px">Built like the firm.</div>
+    <div style="font-size:14px;line-height:1.65;color:#3A4954;max-width:600px">Alares is a healthcare architecture and engineering practice. Since 2007 we have designed MRI suites, oncology renovations, dental clinics, and campus utility plants for the VA, federal agencies, and private healthcare clients, environments where precision isn't a preference, it's a requirement. The brand should feel the way the work does: exact, calm, and dependable.</div>
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:28px;margin-top:26px">
+      <div style="font-size:13px;line-height:1.7;color:#3A4954">
+        <div style="font-size:15px;font-weight:600;color:#16222C;margin-bottom:8px">Where it comes from.</div>
+        Our approach reflects our founder, Don Maggioli, a West Point graduate and former officer of the Green Berets. The firm was built on the leadership training and high standards he carried from those experiences: plan thoroughly, move decisively, own the outcome.
+        <div style="margin-top:12px">Today that discipline shows up as a "can-do" attitude on every project, from a 23-building fire alarm modernization to a 2,200-foot geothermal test well.</div>
+      </div>
+      <div style="background:#0E74BB;color:#FFFFFF;padding:26px 26px 22px;break-inside:avoid;display:flex;flex-direction:column;justify-content:space-between">
+        <div style="font-size:17px;font-weight:600;line-height:1.45">"Always achieve our clients' objectives in a swift manner, without sacrificing quality for&nbsp;speed."</div>
+        <div style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#62C4EF;margin-top:16px">Founding principle</div>
+      </div>
+    </div>
+    <div style="margin-top:30px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Brand values</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px">
+      <div style="border-top:3px solid #0E74BB;background:#F2F6F9;padding:14px;break-inside:avoid"><div style="font-weight:700;font-size:13.5px">Precision</div><div style="font-size:11.5px;line-height:1.55;color:#5B6B77;margin-top:5px">Engineering-grade detail in everything, drawings, documents, layouts.</div></div>
+      <div style="border-top:3px solid #0E74BB;background:#F2F6F9;padding:14px;break-inside:avoid"><div style="font-weight:700;font-size:13.5px">Momentum</div><div style="font-size:11.5px;line-height:1.55;color:#5B6B77;margin-top:5px">Swift by design. We move projects forward without cutting corners.</div></div>
+      <div style="border-top:3px solid #0E74BB;background:#F2F6F9;padding:14px;break-inside:avoid"><div style="font-weight:700;font-size:13.5px">Accountability</div><div style="font-size:11.5px;line-height:1.55;color:#5B6B77;margin-top:5px">Leadership standards from kickoff to closeout. We own the result.</div></div>
+      <div style="border-top:3px solid #0E74BB;background:#F2F6F9;padding:14px;break-inside:avoid"><div style="font-weight:700;font-size:13.5px">Care</div><div style="font-size:11.5px;line-height:1.55;color:#5B6B77;margin-top:5px">Healthcare environments hold people at their most vulnerable. Design accordingly.</div></div>
+    </div>
+    <div style="margin-top:30px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Eight disciplines, one team</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 36px;margin-top:12px;font-size:13px">
+      <div style="display:flex;gap:12px;border-bottom:1px solid #E4E9ED;padding:7px 0"><span style="color:#0E74BB;font-weight:700">01</span><span>Architecture</span></div>
+      <div style="display:flex;gap:12px;border-bottom:1px solid #E4E9ED;padding:7px 0"><span style="color:#0E74BB;font-weight:700">05</span><span>Commissioning</span></div>
+      <div style="display:flex;gap:12px;border-bottom:1px solid #E4E9ED;padding:7px 0"><span style="color:#0E74BB;font-weight:700">02</span><span>Mechanical, electrical, plumbing</span></div>
+      <div style="display:flex;gap:12px;border-bottom:1px solid #E4E9ED;padding:7px 0"><span style="color:#0E74BB;font-weight:700">06</span><span>Sustainability</span></div>
+      <div style="display:flex;gap:12px;border-bottom:1px solid #E4E9ED;padding:7px 0"><span style="color:#0E74BB;font-weight:700">03</span><span>Structural &amp; seismic</span></div>
+      <div style="display:flex;gap:12px;border-bottom:1px solid #E4E9ED;padding:7px 0"><span style="color:#0E74BB;font-weight:700">07</span><span>Environmental</span></div>
+      <div style="display:flex;gap:12px;border-bottom:1px solid #E4E9ED;padding:7px 0"><span style="color:#0E74BB;font-weight:700">04</span><span>Owner's representation</span></div>
+      <div style="display:flex;gap:12px;border-bottom:1px solid #E4E9ED;padding:7px 0"><span style="color:#0E74BB;font-weight:700">08</span><span>Energy consulting</span></div>
+    </div>
+  </div>
+
+  <!-- ============ 02 VOICE ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">02 / Voice &amp; tone</div>
+    <div style="font-size:30px;font-weight:700;line-height:1.1;margin:6px 0 14px">Say it straight.</div>
+    <div style="font-size:14px;line-height:1.65;color:#3A4954;max-width:600px">Alares writes the way its engineers report: short sentences, active voice, real numbers. The work is impressive. The words don't need to be.</div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px">
+      <div style="border:1px solid #D8DFE4;padding:16px;break-inside:avoid"><div style="font-weight:700;font-size:13.5px;color:#0E74BB">Direct</div><div style="font-size:12px;line-height:1.6;color:#3A4954;margin-top:5px">Lead with what was done and for whom. Cut every word that isn't working.</div></div>
+      <div style="border:1px solid #D8DFE4;padding:16px;break-inside:avoid"><div style="font-weight:700;font-size:13.5px;color:#0E74BB">Technical, plainly said</div><div style="font-size:12px;line-height:1.6;color:#3A4954;margin-top:5px">Use real specs, NFPA, Revit, seismic bracing, but explain them like a colleague, not a brochure.</div></div>
+      <div style="border:1px solid #D8DFE4;padding:16px;break-inside:avoid"><div style="font-weight:700;font-size:13.5px;color:#0E74BB">Confident, not salesy</div><div style="font-size:12px;line-height:1.6;color:#3A4954;margin-top:5px">Let scope, budget, and outcomes carry the argument. No superlatives, no buzzwords.</div></div>
+      <div style="border:1px solid #D8DFE4;padding:16px;break-inside:avoid"><div style="font-weight:700;font-size:13.5px;color:#0E74BB">Steady under pressure</div><div style="font-size:12px;line-height:1.6;color:#3A4954;margin-top:5px">Calm and can-do, even when writing about risk, change orders, or active hospital sites.</div></div>
+    </div>
+    <div style="margin-top:28px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">In practice</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px">
+      <div style="background:#F2F6F9;padding:16px;break-inside:avoid">
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:#0E74BB">✓ Write</div>
+        <div style="font-size:12.5px;line-height:1.6;color:#16222C;margin-top:8px">"We replaced 500 feet of steam main beneath an active hospital."</div>
+        <div style="font-size:12.5px;line-height:1.6;color:#16222C;margin-top:8px">"Pre-construction surveys eliminated change-order risk."</div>
+      </div>
+      <div style="background:#F2F6F9;padding:16px;break-inside:avoid">
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:#C1272D">✕ Don't write</div>
+        <div style="font-size:12.5px;line-height:1.6;color:#5B6B77;margin-top:8px">"We leveraged innovative solutions to deliver transformational infrastructure outcomes."</div>
+        <div style="font-size:12.5px;line-height:1.6;color:#5B6B77;margin-top:8px">"Our best-in-class methodology maximizes stakeholder synergies."</div>
+      </div>
+    </div>
+    <div style="margin-top:28px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">House conventions</div>
+    <div style="font-size:13px;line-height:1.9;color:#3A4954;margin-top:10px">
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Headlines are sentence case and end with a period: <span style="font-weight:600">"Eight disciplines, one team."</span></span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>ALL CAPS is reserved for labels, eyebrows, and the logo descriptor, never for headlines or body copy.</span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Name the client and the place: "Albany VAMC, NY." Specificity is credibility.</span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>The firm is "Alares" in running text; "Alares Architects &amp; Engineers" on first formal reference and legal use.</span></div>
+    </div>
+  </div>
+
+  <!-- ============ 03 LOGO ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">03 / The logo</div>
+    <div style="font-size:30px;font-weight:700;line-height:1.1;margin:6px 0 14px">The mark of the firm.</div>
+    <div style="font-size:14px;line-height:1.65;color:#3A4954;max-width:600px">The lockup pairs a three-layer wing with the Alares wordmark. The wing, lift layered like plan sheets, carries the secondary blues; the wordmark holds Alares Blue; the descriptor sits in Alares Red. Always reproduce it from supplied artwork.</div>
+    <div style="position:relative;border:1px solid #D8DFE4;padding:44px 30px;margin-top:22px;display:flex;justify-content:center;break-inside:avoid">
+      <img src="assets/alares-logo.png" alt="Alares Architects &amp; Engineers primary lockup" style="width:430px;max-width:100%">
+      <span style="position:absolute;left:14%;top:16%;width:17px;height:17px;background:#0E74BB;color:#FFFFFF;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center">1</span>
+      <span style="position:absolute;left:48%;top:9%;width:17px;height:17px;background:#0E74BB;color:#FFFFFF;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center">2</span>
+      <span style="position:absolute;left:60%;bottom:10%;width:17px;height:17px;background:#0E74BB;color:#FFFFFF;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center">3</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px;font-size:11.5px;line-height:1.55;color:#5B6B77">
+      <div><span style="font-weight:700;color:#16222C">1 · Wing emblem</span>, three layers in Sky, Bright, and Deep Blue. Never redraw or reorder the layers.</div>
+      <div><span style="font-weight:700;color:#16222C">2 · Wordmark</span>, "ALARES" in Alares Blue. Fixed letterforms; never retype.</div>
+      <div><span style="font-weight:700;color:#16222C">3 · Descriptor</span>, "ARCHITECTS &amp; ENGINEERS" in Alares Red, uppercase, width-matched to the wordmark.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:24px;margin-top:30px">
+      <div style="break-inside:avoid">
+        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Clear space</div>
+        <div style="position:relative;margin-top:12px;border:1px solid #D8DFE4;background:#F9FBFC;padding:34px;display:flex;justify-content:center">
+          <div style="position:relative;border:1px dashed #1693D8;padding:30px 34px">
+            <img src="assets/alares-logo.png" alt="" style="width:230px;display:block">
+            <span style="position:absolute;top:0;left:50%;transform:translateX(-50%);height:30px;display:flex;align-items:center;font-family:Consolas,monospace;font-size:22px;font-weight:700;color:#1693D8">X</span>
+            <span style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);height:30px;display:flex;align-items:center;font-family:Consolas,monospace;font-size:22px;font-weight:700;color:#1693D8">X</span>
+            <span style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:34px;display:flex;justify-content:center;font-family:Consolas,monospace;font-size:22px;font-weight:700;color:#1693D8">X</span>
+            <span style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:34px;display:flex;justify-content:center;font-family:Consolas,monospace;font-size:22px;font-weight:700;color:#1693D8">X</span>
+          </div>
+        </div>
+        <div style="font-size:11.5px;line-height:1.6;color:#5B6B77;margin-top:10px">Keep a margin of at least <span style="font-weight:700;color:#16222C">X = the height of the wing emblem</span> clear on all sides. Nothing enters this zone, no type, rules, photos, or page edges.</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Minimum size</div>
+        <div style="border:1px solid #D8DFE4;padding:18px;margin-top:12px">
+          <img src="assets/alares-logo.png" alt="" style="width:150px;display:block">
+          <div style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;margin-top:8px">Lockup · 150 px / 1.5 in wide min</div>
+          <div style="height:1px;background:#E4E9ED;margin:14px 0"></div>
+          <img src="assets/emblem-color.svg" alt="" style="height:24px;display:block">
+          <div style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;margin-top:8px">Emblem alone · 24 px / 0.25 in min</div>
+        </div>
+        <div style="font-size:11.5px;line-height:1.6;color:#5B6B77;margin-top:10px">Below minimum size the descriptor fails, so use the emblem alone (favicons, app icons, drawing stamps).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 03b LOGO VERSIONS + MISUSE ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">03 / The logo, versions</div>
+    <div style="font-size:22px;font-weight:700;line-height:1.1;margin:6px 0 16px">One mark, four reproductions.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div style="break-inside:avoid">
+        <div style="border:1px solid #D8DFE4;background:#FFFFFF;height:120px;display:flex;align-items:center;justify-content:center"><img src="assets/alares-logo.png" alt="" style="width:200px"></div>
+        <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B77;margin-top:7px">A · Full color on white, default</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="background:#0E74BB;height:120px;display:flex;align-items:center;justify-content:center">
+          <img src="assets/alares-lockup-white.png" alt="" style="width:210px">
+        </div>
+        <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B77;margin-top:7px">B · Reversed, all-white, on Alares Blue</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="border:1px solid #D8DFE4;background:#FFFFFF;height:120px;display:flex;align-items:center;justify-content:center">
+          <img src="assets/alares-lockup-blue.png" alt="" style="width:210px">
+        </div>
+        <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B77;margin-top:7px">C · One color, Alares Blue, limited palettes</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="border:1px solid #D8DFE4;background:#FFFFFF;height:120px;display:flex;align-items:center;justify-content:center">
+          <img src="assets/alares-lockup-black.png" alt="" style="width:210px">
+        </div>
+        <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B77;margin-top:7px">D · One color, black, single-color print, engraving</div>
+      </div>
+    </div>
+    <div style="font-size:11.5px;line-height:1.6;color:#5B6B77;margin-top:12px">The red descriptor never sits on dark or saturated fields. The reversed version is all-white. Versions B to D are one-color renderings of the master artwork; never retype or rebuild the lockup.</div>
+    <div style="margin-top:28px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Misuse, never do this</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px">
+      <div style="break-inside:avoid">
+        <div style="position:relative;border:1px solid #D8DFE4;height:96px;display:flex;align-items:center;justify-content:center;overflow:hidden">
+          <img src="assets/alares-logo-transparent.png" alt="" style="width:160px;transform:scaleX(1.45)">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top right,transparent 48.8%,#C1272D 48.8%,#C1272D 51.2%,transparent 51.2%)"></div>
+        </div>
+        <div style="font-size:10.5px;color:#5B6B77;margin-top:6px"><span style="color:#C1272D;font-weight:700">✕</span> Don't stretch or squeeze</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="position:relative;border:1px solid #D8DFE4;height:96px;display:flex;align-items:center;justify-content:center;overflow:hidden">
+          <img src="assets/alares-logo-transparent.png" alt="" style="width:160px;filter:hue-rotate(115deg) saturate(1.3)">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top right,transparent 48.8%,#C1272D 48.8%,#C1272D 51.2%,transparent 51.2%)"></div>
+        </div>
+        <div style="font-size:10.5px;color:#5B6B77;margin-top:6px"><span style="color:#C1272D;font-weight:700">✕</span> Don't recolor any part</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="position:relative;border:1px solid #D8DFE4;height:96px;display:flex;align-items:center;justify-content:center;overflow:hidden">
+          <img src="assets/alares-logo-transparent.png" alt="" style="width:160px;filter:drop-shadow(3px 4px 3px rgba(0,0,0,0.45))">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top right,transparent 48.8%,#C1272D 48.8%,#C1272D 51.2%,transparent 51.2%)"></div>
+        </div>
+        <div style="font-size:10.5px;color:#5B6B77;margin-top:6px"><span style="color:#C1272D;font-weight:700">✕</span> Don't add effects or shadows</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="position:relative;border:1px solid #D8DFE4;height:96px;display:flex;align-items:center;justify-content:center;overflow:hidden">
+          <img src="assets/alares-logo-transparent.png" alt="" style="width:160px;transform:rotate(-14deg)">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top right,transparent 48.8%,#C1272D 48.8%,#C1272D 51.2%,transparent 51.2%)"></div>
+        </div>
+        <div style="font-size:10.5px;color:#5B6B77;margin-top:6px"><span style="color:#C1272D;font-weight:700">✕</span> Don't rotate or tilt</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="position:relative;border:1px solid #D8DFE4;height:96px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:repeating-linear-gradient(45deg,#C9D4DC 0 8px,#EDF1F4 8px 16px)">
+          <img src="assets/alares-logo-transparent.png" alt="" style="width:160px">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top right,transparent 48.8%,#C1272D 48.8%,#C1272D 51.2%,transparent 51.2%)"></div>
+        </div>
+        <div style="font-size:10.5px;color:#5B6B77;margin-top:6px"><span style="color:#C1272D;font-weight:700">✕</span> Don't place on busy or low-contrast fields</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="position:relative;border:1px solid #D8DFE4;height:96px;display:flex;align-items:center;justify-content:center;overflow:hidden">
+          <img src="assets/alares-logo-transparent.png" alt="" style="width:72px">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top right,transparent 48.8%,#C1272D 48.8%,#C1272D 51.2%,transparent 51.2%)"></div>
+        </div>
+        <div style="font-size:10.5px;color:#5B6B77;margin-top:6px"><span style="color:#C1272D;font-weight:700">✕</span> Don't use below minimum size</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 04 COLOR ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">04 / Color</div>
+    <div style="font-size:30px;font-weight:700;line-height:1.1;margin:6px 0 14px">Blue leads. Red punctuates.</div>
+    <div style="font-size:14px;line-height:1.65;color:#3A4954;max-width:600px">Alares Blue is the workhorse: headings, links, wayfinding, data. Alares Red is punctuation: the descriptor, a key figure, an alert. The three secondary blues belong to the wing and to charts, depth, and dark surfaces.</div>
+    <div style="margin-top:22px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Primary</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px">
+      <div style="border:1px solid #D8DFE4;break-inside:avoid"><div style="height:104px;background:#0E74BB"></div><div style="padding:12px 14px"><div style="font-weight:700;font-size:14px">Alares Blue</div><div style="font-family:Consolas,monospace;font-size:10px;color:#5B6B77;line-height:1.8;margin-top:6px">HEX #0E74BB<br>RGB 14 116 187<br>CMYK 93 38 0 27</div></div></div>
+      <div style="border:1px solid #D8DFE4;break-inside:avoid"><div style="height:104px;background:#C1272D"></div><div style="padding:12px 14px"><div style="font-weight:700;font-size:14px">Alares Red</div><div style="font-family:Consolas,monospace;font-size:10px;color:#5B6B77;line-height:1.8;margin-top:6px">HEX #C1272D<br>RGB 193 39 45<br>CMYK 0 80 77 24</div></div></div>
+    </div>
+    <div style="margin-top:20px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Secondary, the wing blues</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px">
+      <div style="border:1px solid #D8DFE4;break-inside:avoid"><div style="height:74px;background:#0C6393"></div><div style="padding:10px 12px"><div style="font-weight:700;font-size:12.5px">Deep Blue</div><div style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;line-height:1.7;margin-top:4px">HEX #0C6393<br>RGB 12 99 147<br>CMYK 92 33 0 42</div></div></div>
+      <div style="border:1px solid #D8DFE4;break-inside:avoid"><div style="height:74px;background:#1693D8"></div><div style="padding:10px 12px"><div style="font-weight:700;font-size:12.5px">Bright Blue</div><div style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;line-height:1.7;margin-top:4px">HEX #1693D8<br>RGB 22 147 216<br>CMYK 90 32 0 15</div></div></div>
+      <div style="border:1px solid #D8DFE4;break-inside:avoid"><div style="height:74px;background:#62C4EF"></div><div style="padding:10px 12px"><div style="font-weight:700;font-size:12.5px">Sky Blue</div><div style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;line-height:1.7;margin-top:4px">HEX #62C4EF<br>RGB 98 196 239<br>CMYK 59 18 0 6</div></div></div>
+    </div>
+    <div style="margin-top:20px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Functional neutrals, text &amp; surfaces</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px">
+      <div style="border:1px solid #D8DFE4;break-inside:avoid"><div style="height:40px;background:#16222C"></div><div style="padding:8px 10px"><div style="font-weight:600;font-size:11px">Ink</div><div style="font-family:Consolas,monospace;font-size:9px;color:#5B6B77">#16222C</div></div></div>
+      <div style="border:1px solid #D8DFE4;break-inside:avoid"><div style="height:40px;background:#5B6B77"></div><div style="padding:8px 10px"><div style="font-weight:600;font-size:11px">Slate</div><div style="font-family:Consolas,monospace;font-size:9px;color:#5B6B77">#5B6B77</div></div></div>
+      <div style="border:1px solid #D8DFE4;break-inside:avoid"><div style="height:40px;background:#D8DFE4"></div><div style="padding:8px 10px"><div style="font-weight:600;font-size:11px">Hairline</div><div style="font-family:Consolas,monospace;font-size:9px;color:#5B6B77">#D8DFE4</div></div></div>
+      <div style="border:1px solid #D8DFE4;break-inside:avoid"><div style="height:40px;background:#F2F6F9"></div><div style="padding:8px 10px"><div style="font-weight:600;font-size:11px">Mist</div><div style="font-family:Consolas,monospace;font-size:9px;color:#5B6B77">#F2F6F9</div></div></div>
+    </div>
+    <div style="margin-top:22px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Proportion</div>
+    <div style="display:flex;height:34px;margin-top:10px;break-inside:avoid">
+      <div style="width:55%;background:#F2F6F9;border:1px solid #D8DFE4"></div>
+      <div style="width:25%;background:#0E74BB"></div>
+      <div style="width:10%;background:#16222C"></div>
+      <div style="width:7%;background:#1693D8"></div>
+      <div style="width:3%;background:#C1272D"></div>
+    </div>
+    <div style="display:flex;font-size:9.5px;color:#5B6B77;margin-top:6px;font-family:Consolas,monospace">
+      <div style="width:55%">White/Mist 55</div><div style="width:25%">Blue 25</div><div style="width:10%">Ink 10</div><div style="width:7%">2° 7</div><div style="width:3%">3</div>
+    </div>
+  </div>
+
+  <!-- ============ 04b COLOR USE ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">04 / Color, combinations</div>
+    <div style="font-size:22px;font-weight:700;line-height:1.1;margin:6px 0 16px">Pairings that pass.</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+      <div style="break-inside:avoid"><div style="height:70px;background:#0E74BB;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600">Aa</div><div style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;margin-top:6px">White on Alares Blue · 5.0:1 <span style="color:#0E74BB;font-weight:700">AA</span></div></div>
+      <div style="break-inside:avoid"><div style="height:70px;background:#0C6393;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600">Aa</div><div style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;margin-top:6px">White on Deep Blue · 6.5:1 <span style="color:#0E74BB;font-weight:700">AA</span></div></div>
+      <div style="break-inside:avoid"><div style="height:70px;background:#C1272D;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600">Aa</div><div style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;margin-top:6px">White on Alares Red · 5.8:1 <span style="color:#0E74BB;font-weight:700">AA</span></div></div>
+      <div style="break-inside:avoid"><div style="height:70px;background:#FFFFFF;border:1px solid #D8DFE4;color:#0E74BB;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600">Aa</div><div style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;margin-top:6px">Alares Blue on white · 5.0:1 <span style="color:#0E74BB;font-weight:700">AA</span></div></div>
+      <div style="break-inside:avoid"><div style="height:70px;background:#1693D8;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600">Aa</div><div style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;margin-top:6px">White on Bright Blue · 3.4:1 <span style="color:#C1272D;font-weight:700">Large only</span></div></div>
+      <div style="break-inside:avoid"><div style="height:70px;background:#0C6393;color:#62C4EF;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600">Aa</div><div style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;margin-top:6px">Sky on Deep Blue · 3.3:1 <span style="color:#C1272D;font-weight:700">Large only</span></div></div>
+    </div>
+    <div style="margin-top:26px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Rules of use</div>
+    <div style="font-size:13px;line-height:1.9;color:#3A4954;margin-top:10px">
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Body text is always Ink or Slate on white or Mist. Colored body text is reserved for links.</span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Alares Red stays under ~5% of any layout: the descriptor, one key stat, an alert. Never red headlines, never red backgrounds behind body copy.</span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Never set red on blue or blue on red, the logo is the only place the two meet, separated by white.</span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Charts and diagrams use the blue ramp in order, Alares, Deep, Bright, Sky, with red only to flag the exception.</span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Prefer the secondary blues over opacity tints; tints print unpredictably.</span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Bright and Sky Blue are accents and fills, not text colors on white.</span></div>
+    </div>
+  </div>
+
+  <!-- ============ 05 TYPOGRAPHY ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">05 / Typography</div>
+    <div style="font-size:30px;font-weight:700;line-height:1.1;margin:6px 0 14px">One typeface: Bahnschrift.</div>
+    <div style="font-size:14px;line-height:1.65;color:#3A4954;max-width:600px">Bahnschrift is a digital interpretation of DIN 1451, the letterform standard of German road and rail signage. Engineered for legibility at speed, it fits a firm that builds critical infrastructure. It is a variable font with weight and width axes, and it ships with Windows.</div>
+    <div style="border:1px solid #D8DFE4;padding:26px 28px;margin-top:20px;break-inside:avoid">
+      <div style="font-size:44px;font-weight:700;letter-spacing:-0.5px;line-height:1.05">Bahnschrift</div>
+      <div style="font-size:16px;color:#3A4954;margin-top:12px;line-height:1.5">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 &amp;@#%(.,;:!?)</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px">
+      <div style="border:1px solid #D8DFE4;padding:14px;break-inside:avoid"><div style="font-size:30px;font-weight:300">Ag</div><div style="font-size:10.5px;color:#5B6B77;margin-top:6px">Light 300<br>Captions, big numerals</div></div>
+      <div style="border:1px solid #D8DFE4;padding:14px;break-inside:avoid"><div style="font-size:30px;font-weight:400">Ag</div><div style="font-size:10.5px;color:#5B6B77;margin-top:6px">Regular 400<br>Body copy</div></div>
+      <div style="border:1px solid #D8DFE4;padding:14px;break-inside:avoid"><div style="font-size:30px;font-weight:600">Ag</div><div style="font-size:10.5px;color:#5B6B77;margin-top:6px">SemiBold 600<br>Subheads, emphasis</div></div>
+      <div style="border:1px solid #D8DFE4;padding:14px;break-inside:avoid"><div style="font-size:30px;font-weight:700">Ag</div><div style="font-size:10.5px;color:#5B6B77;margin-top:6px">Bold 700<br>Headlines, wordmark contexts</div></div>
+    </div>
+    <div style="margin-top:24px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Type scale, print documents</div>
+    <div style="margin-top:12px;border-top:1px solid #D8DFE4">
+      <div style="display:flex;align-items:baseline;gap:18px;padding:10px 0;border-bottom:1px solid #E4E9ED"><span style="font-size:32px;font-weight:700;flex:1">Display headline.</span><span style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;white-space:nowrap">Bold · 28–36 pt · lh 1.05</span></div>
+      <div style="display:flex;align-items:baseline;gap:18px;padding:10px 0;border-bottom:1px solid #E4E9ED"><span style="font-size:22px;font-weight:700;flex:1">Section heading.</span><span style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;white-space:nowrap">Bold · 18–22 pt · lh 1.15</span></div>
+      <div style="display:flex;align-items:baseline;gap:18px;padding:10px 0;border-bottom:1px solid #E4E9ED"><span style="font-size:15px;font-weight:600;flex:1">Subhead</span><span style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;white-space:nowrap">SemiBold · 12–14 pt · lh 1.3</span></div>
+      <div style="display:flex;align-items:baseline;gap:18px;padding:10px 0;border-bottom:1px solid #E4E9ED"><span style="font-size:14px;flex:1;color:#3A4954">Body copy runs at a comfortable measure with generous leading.</span><span style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;white-space:nowrap">Regular · 10–11 pt · lh 1.6</span></div>
+      <div style="display:flex;align-items:baseline;gap:18px;padding:10px 0;border-bottom:1px solid #E4E9ED"><span style="font-size:11px;flex:1;color:#5B6B77">Caption, 01 / Project / location</span><span style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;white-space:nowrap">Regular · 8–9 pt · Slate</span></div>
+      <div style="display:flex;align-items:baseline;gap:18px;padding:10px 0;border-bottom:1px solid #E4E9ED"><span style="font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;color:#0E74BB;flex:1">Eyebrow label</span><span style="font-family:Consolas,monospace;font-size:9.5px;color:#5B6B77;white-space:nowrap">Bold caps · 8 pt · +0.2 em</span></div>
+    </div>
+  </div>
+
+  <!-- ============ 05b TYPE RULES ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">05 / Typography, rules</div>
+    <div style="font-size:22px;font-weight:700;line-height:1.1;margin:6px 0 16px">Setting it right.</div>
+    <div style="font-size:13px;line-height:1.9;color:#3A4954">
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span><span style="font-weight:600">No italics.</span> Bahnschrift has none. Emphasize with SemiBold or Alares Blue, never faux-slanted type.</span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Headlines: sentence case, terminal period, tight leading (1.05–1.15), letter-spacing −0.5 px at display sizes.</span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Caps with +0.2 em tracking for eyebrows and labels only. Never track body copy.</span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Dense tables and schedules may use Bahnschrift's SemiCondensed width axis; never condense manually.</span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Minimums: 10 pt body in print, 14 px on screen, 24 px on 1920×1080 slides.</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px">
+      <div style="border:1px solid #D8DFE4;padding:18px;break-inside:avoid">
+        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Availability</div>
+        <div style="font-size:12.5px;line-height:1.7;color:#3A4954;margin-top:10px">Bahnschrift ships with Windows 10 (1709) and later, no license needed for internal documents. It is not preinstalled on macOS, iOS, or Android, so anything leaving the firm needs the fallback stack.</div>
+      </div>
+      <div style="border:1px solid #D8DFE4;padding:18px;break-inside:avoid">
+        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Fallback stack</div>
+        <div style="font-size:12.5px;line-height:1.7;color:#3A4954;margin-top:10px">Web &amp; cross-platform: <span style="font-weight:600">Barlow Semi Condensed</span> (Google Fonts), the closest open DIN relative. Email and Office templates: <span style="font-weight:600">Arial</span>.</div>
+        <div style="font-family:Consolas,monospace;font-size:9.5px;color:#0C6393;background:#F2F6F9;padding:8px 10px;margin-top:10px">font-family: Bahnschrift, "Barlow Semi Condensed", Arial, sans-serif;</div>
+      </div>
+    </div>
+    <div style="margin-top:26px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Hierarchy in practice</div>
+    <div style="border:1px solid #D8DFE4;padding:24px 26px;margin-top:12px;break-inside:avoid">
+      <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">Selected work / 02 / 06</div>
+      <div style="font-size:24px;font-weight:700;margin-top:8px;line-height:1.1">Seismic compliance &amp; structural reinforcement.</div>
+      <div style="font-size:12px;font-weight:600;color:#5B6B77;margin-top:6px">East Orange, NJ · Department of Veterans Affairs · <span style="color:#C1272D">$6.5M</span></div>
+      <div style="font-size:12.5px;line-height:1.65;color:#3A4954;margin-top:10px;max-width:520px">Buttress walls on piers, structural steel roof reinforcement and full seismic bracing of piping and conduit brought the boiler plant into compliance with the VA Seismic Design Guide.</div>
+      <div style="font-size:11px;color:#0E74BB;font-weight:600;margin-top:10px">Read case study →</div>
+    </div>
+  </div>
+
+  <!-- ============ 06 GRAPHIC LANGUAGE ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">06 / Graphic language</div>
+    <div style="font-size:30px;font-weight:700;line-height:1.1;margin:6px 0 14px">The wing supplies the only curve.</div>
+    <div style="font-size:14px;line-height:1.65;color:#3A4954;max-width:600px">Layouts are rectilinear, square corners, hairline rules, generous white space, numbered everything. Against that grid, the wing emblem is the one expressive element. Use it deliberately and sparingly.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px">
+      <div style="break-inside:avoid">
+        <div style="position:relative;background:#0E74BB;height:150px;overflow:hidden">
+          <sc-if value="{{ showWatermark }}" hint-placeholder-val="{{ true }}">
+            <img src="assets/emblem-white.svg" alt="" style="position:absolute;top:0;right:0;height:100%;width:auto;transform:translateX(9%);opacity:0.06;pointer-events:none">
+          </sc-if>
+          <div style="position:absolute;left:20px;bottom:18px;color:#FFFFFF;font-size:15px;font-weight:700">Watermark on dark.</div>
+        </div>
+        <div style="font-size:10.5px;color:#5B6B77;margin-top:7px">White emblem at 8–12% opacity, cropped off a corner. One per composition.</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="position:relative;background:#F2F6F9;height:150px;overflow:hidden;border:1px solid #D8DFE4">
+          <img src="assets/emblem-color.svg" alt="" style="position:absolute;top:0;right:0;height:100%;width:auto;transform:translateX(9%);pointer-events:none">
+          <div style="position:absolute;left:20px;bottom:18px;color:#16222C;font-size:15px;font-weight:700">Edge crop on light.</div>
+        </div>
+        <div style="font-size:10.5px;color:#5B6B77;margin-top:7px">Full-color emblem at 100%, large and cropped, section dividers, covers. Min 200 px.</div>
+      </div>
+    </div>
+    <div style="font-size:12.5px;line-height:1.8;color:#3A4954;margin-top:14px">
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Crop from a corner or edge; never rotate, mirror, tile, or use the wing as a repeating pattern.</span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Never set text over the emblem's layered area at small sizes, keep type on clear field.</span></div>
+    </div>
+    <div style="margin-top:26px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Index numbering</div>
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;border:1px solid #D8DFE4;padding:16px 20px;margin-top:10px;break-inside:avoid">
+      <div style="font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">Disciplines / 01 / 08</div>
+      <div style="font-size:11.5px;line-height:1.6;color:#5B6B77">Sections, projects, and figures are numbered with two digits: current / total. Eyebrow style, caps, +0.2 em, Alares Blue. It reads like a sheet index because it is one.</div>
+    </div>
+    <div style="margin-top:22px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Rules, captions &amp; corners</div>
+    <div style="font-size:12.5px;line-height:1.8;color:#3A4954;margin-top:10px">
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Hairlines are 1 px Hairline gray. Square corners everywhere, no rounded containers, no pill buttons.</span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Photo captions follow the sheet format: <span style="font-family:Consolas,monospace;font-size:11px;color:#5B6B77">02 / VA Dental Clinic / treatment</span>, 8–9 pt, Slate.</span></div>
+      <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Accent moves: a 3 px Alares Blue top border on tiles; a single red figure in a field of blue. Nothing else.</span></div>
+    </div>
+  </div>
+
+  <!-- ============ 07 IMAGERY ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">07 / Imagery</div>
+    <div style="font-size:30px;font-weight:700;line-height:1.1;margin:6px 0 14px">Show the real work.</div>
+    <div style="font-size:14px;line-height:1.65;color:#3A4954;max-width:600px">Every image is a project Alares actually built, clinical interiors, mechanical rooms, job sites. Photograph them with the same discipline as the drawings: corrected verticals, honest light, order in the frame.</div>
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-top:20px">
+      <div style="break-inside:avoid"><div style="height:216px"><image-slot id="alares-img-interior" shape="rect" src="https://alaresengineering.com/assets/hero/01-hospital-corridor.jpg" placeholder="Drop project photo, clinical interior"></image-slot></div><div style="font-size:9.5px;color:#5B6B77;margin-top:6px;font-family:Consolas,monospace">01 / Outpatient clinic / reception</div></div>
+      <div style="break-inside:avoid"><div style="height:216px"><image-slot id="alares-img-mech" shape="rect" src="https://alaresengineering.com/assets/hero/05-mep-air-handler.jpg" placeholder="Drop photo, mechanical room"></image-slot></div><div style="font-size:9.5px;color:#5B6B77;margin-top:6px;font-family:Consolas,monospace">02 / Mechanical / air handler</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:14px;margin-top:8px">
+      <div style="break-inside:avoid"><div style="height:150px"><image-slot id="alares-img-detail" shape="rect" src="https://alaresengineering.com/assets/hero/04-dental-check-in.jpg" placeholder="Drop photo, construction detail"></image-slot></div><div style="font-size:9.5px;color:#5B6B77;margin-top:6px;font-family:Consolas,monospace">03 / VA Dental Clinic / check-in</div></div>
+      <div style="display:flex;flex-direction:column;justify-content:center;break-inside:avoid">
+        <div style="font-size:12.5px;line-height:1.75;color:#3A4954">
+          <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Straight-on or two-point perspective; verticals corrected, horizons level.</span></div>
+          <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Natural or ambient light, neutral white balance. No HDR halos, no filters.</span></div>
+          <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Clinical spaces clean and ready; mechanical rooms shot as heroes, symmetry, order, labeled systems.</span></div>
+          <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>People appear working, candid, in proper PPE.</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div style="background:#F2F6F9;padding:16px;break-inside:avoid">
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:#0E74BB">✓ Use</div>
+        <div style="font-size:12px;line-height:1.7;color:#3A4954;margin-top:6px">Full-color photography. For text legibility, an Ink scrim up to 40% or a white plate, nothing else on top of photos.</div>
+      </div>
+      <div style="background:#F2F6F9;padding:16px;break-inside:avoid">
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:#C1272D">✕ Avoid</div>
+        <div style="font-size:12px;line-height:1.7;color:#3A4954;margin-top:6px">Stock metaphors, handshakes, globes, hard-hat clip art. Tilted horizons, fisheye distortion, blue-wash overlays, heavy vignettes.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 08 APPLICATIONS ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">08 / Applications</div>
+    <div style="font-size:30px;font-weight:700;line-height:1.1;margin:6px 0 14px">The system at work.</div>
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;margin-top:20px;align-items:start">
+      <div style="break-inside:avoid">
+        <div style="width:216px;height:279px;border:1px solid #D8DFE4;background:#FFFFFF;padding:18px;display:flex;flex-direction:column">
+          <img src="assets/alares-logo.png" alt="" style="width:96px">
+          <div style="margin-top:26px;display:flex;flex-direction:column;gap:7px">
+            <div style="height:5px;width:38%;background:#D8DFE4"></div>
+            <div style="height:5px;width:88%;background:#EDF1F4"></div>
+            <div style="height:5px;width:94%;background:#EDF1F4"></div>
+            <div style="height:5px;width:82%;background:#EDF1F4"></div>
+            <div style="height:5px;width:90%;background:#EDF1F4"></div>
+            <div style="height:5px;width:56%;background:#EDF1F4"></div>
+          </div>
+          <div style="flex:1"></div>
+          <div style="border-top:2px solid #0E74BB;padding-top:8px;display:flex;justify-content:space-between;font-size:5.5px;color:#5B6B77;letter-spacing:0.08em;text-transform:uppercase">
+            <span>1990 Main St, Suite 750<br>Sarasota, FL 34236</span>
+            <span style="text-align:right">248 Copeland Street<br>Quincy, MA 02169</span>
+          </div>
+        </div>
+        <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B77;margin-top:7px">Letterhead · 8.5 × 11</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="break-inside:avoid">
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <div style="width:216px;height:123px;border:1px solid #D8DFE4;background:#FFFFFF;padding:12px;display:flex;flex-direction:column;justify-content:space-between">
+              <img src="assets/alares-logo.png" alt="" style="width:86px">
+              <div><div style="font-size:10.5px;font-weight:700">Don Maggioli</div><div style="font-size:8px;color:#5B6B77">Principal</div><div style="font-size:7px;color:#0E74BB;margin-top:4px;font-family:Consolas,monospace">941.444.0477 · alaresengineering.com</div></div>
+            </div>
+            <div style="width:216px;height:123px;background:#0E74BB;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center">
+              <sc-if value="{{ showWatermark }}" hint-placeholder-val="{{ true }}">
+                <img src="assets/emblem-white.svg" alt="" style="position:absolute;top:0;right:0;height:100%;width:auto;transform:translateX(9%);opacity:0.06;pointer-events:none">
+              </sc-if>
+              <img src="assets/alares-lockup-white.png" alt="" style="width:130px;position:relative">
+            </div>
+          </div>
+          <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B77;margin-top:7px">Business card · 3.5 × 2 · front / back</div>
+        </div>
+        <div style="break-inside:avoid">
+          <div style="border:1px solid #D8DFE4;padding:14px 16px">
+            <div style="font-size:12.5px;font-weight:700">Don Maggioli</div>
+            <div style="font-size:10.5px;color:#5B6B77">Principal · Alares Architects &amp; Engineers</div>
+            <div style="font-size:10.5px;color:#0E74BB;margin-top:5px">941.444.0477 · <a href="https://alaresengineering.com">alaresengineering.com</a></div>
+          </div>
+          <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B77;margin-top:7px">Email signature, Arial, no images, links in Alares Blue · <a href="Email%20Signature%20Generator.dc.html" style="text-transform:none;letter-spacing:0">generator</a></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;align-items:start">
+      <div style="break-inside:avoid">
+        <div style="position:relative;width:100%;aspect-ratio:16/9;background:#0E74BB;overflow:hidden">
+          <sc-if value="{{ showWatermark }}" hint-placeholder-val="{{ true }}">
+            <img src="assets/emblem-white.svg" alt="" style="position:absolute;top:0;right:0;height:100%;width:auto;transform:translateX(9%);opacity:0.06;pointer-events:none">
+          </sc-if>
+          <div style="position:absolute;left:22px;top:24px;font-size:7.5px;letter-spacing:0.22em;text-transform:uppercase;color:#62C4EF;font-weight:700">Selected work / 01 / 06</div>
+          <div style="position:absolute;left:22px;bottom:40px;right:80px;font-size:17px;font-weight:700;color:#FFFFFF;line-height:1.2">Campus boiler plant replacement.</div>
+          <div style="position:absolute;left:22px;bottom:16px;right:22px;border-top:1px solid rgba(255,255,255,0.35);padding-top:6px;font-size:6px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.75)">Alares Architects &amp; Engineers</div>
+        </div>
+        <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B77;margin-top:7px">Presentation section divider · 16:9</div>
+      </div>
+      <div style="font-size:12.5px;line-height:1.8;color:#3A4954">
+        <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Dividers and covers: Alares Blue field, reversed type, one watermarked wing.</span></div>
+        <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Content slides: white, Ink text ≥ 24 px, one accent color per slide.</span></div>
+        <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Proposals and reports carry the footer line: firm name left, document title and page right.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 09 SOCIAL MEDIA, TEN WAYS ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">09 / Social media</div>
+    <div style="font-size:30px;font-weight:700;line-height:1.1;margin:6px 0 14px">Ten ways to post.</div>
+    <div style="font-size:13.5px;line-height:1.65;color:#3A4954;max-width:600px">One kit, ten compositions, so a feed has rhythm without drifting off-brand. Every layout uses the same three colors (Alares Blue, Sky Blue, white), Bahnschrift, and the wing. The plate (I) is the signature everyday format; mix the rest, but never invent an eleventh.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:22px">
+      <div style="break-inside:avoid">
+        <div style="aspect-ratio:4/5;overflow:hidden;border:5px solid #0E74BB">
+          <image-slot id="ov-corner" shape="rect" src="https://alaresengineering.com/assets/hero/02-dental-clinic-entry.jpg" placeholder="Drop photo"></image-slot>
+        </div>
+        <div style="font-size:11.5px;font-weight:600;color:#16222C;margin-top:8px">A · Bordered photo</div>
+        <div style="font-size:10.5px;line-height:1.5;color:#5B6B77">No text, just the work in an Alares Blue frame. For a strong standalone image.</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="aspect-ratio:4/5;overflow:hidden;border:1px solid #D8DFE4;display:flex;flex-direction:column">
+          <div style="background:#0E74BB;padding:9px 12px;display:flex;align-items:center;justify-content:space-between">
+            <img src="assets/alares-lockup-white.png" alt="" style="height:12px">
+            <span style="font-size:5.5px;letter-spacing:0.18em;text-transform:uppercase;color:#62C4EF;font-weight:700">Project update</span>
+          </div>
+          <div style="flex:1;position:relative"><image-slot id="ov-band" shape="rect" src="https://alaresengineering.com/assets/hero/05-mep-air-handler.jpg" placeholder="Drop photo"></image-slot></div>
+        </div>
+        <div style="font-size:11.5px;font-weight:600;color:#16222C;margin-top:8px">B · Top band</div>
+        <div style="font-size:10.5px;line-height:1.5;color:#5B6B77">Blue bar holds the lockup and a category label. Good for series and recurring posts.</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="aspect-ratio:4/5;display:flex;border:1px solid #D8DFE4;overflow:hidden">
+          <div style="flex:0 0 44%;background:#0E74BB;padding:12px 11px;display:flex;flex-direction:column;position:relative;overflow:hidden">
+            <span style="font-size:5.5px;letter-spacing:0.16em;text-transform:uppercase;color:#62C4EF;font-weight:700;position:relative">Careers / Quincy</span>
+            <span style="font-size:14px;font-weight:700;color:#FFFFFF;line-height:1.15;margin-top:8px;flex:1;position:relative">Now hiring: mechanical engineer.</span>
+            <img src="assets/alares-lockup-white.png" alt="" style="width:78px;position:relative">
+          </div>
+          <div style="flex:1;min-width:0;position:relative"><image-slot id="ov-rail" shape="rect" src="https://alaresengineering.com/assets/hero/01-hospital-corridor.jpg" placeholder="Drop photo"></image-slot></div>
+        </div>
+        <div style="font-size:11.5px;font-weight:600;color:#16222C;margin-top:8px">C · Side rail</div>
+        <div style="font-size:10.5px;line-height:1.5;color:#5B6B77">Text and photo split vertically. Best when the headline needs room to breathe.</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px">
+      <div style="break-inside:avoid">
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid #D8DFE4">
+          <image-slot id="ov-tab" shape="rect" src="https://alaresengineering.com/assets/hero/04-dental-check-in.jpg" placeholder="Drop photo"></image-slot>
+          <div style="position:absolute;left:0;bottom:0;background:#0E74BB;padding:10px 13px 9px;max-width:74%">
+            <span style="font-size:5.5px;letter-spacing:0.16em;text-transform:uppercase;color:#62C4EF;font-weight:700;display:block">Selected work</span>
+            <span style="font-size:12.5px;font-weight:700;color:#FFFFFF;line-height:1.15;display:block;margin-top:3px">A calmer front door.</span>
+          </div>
+          <img src="assets/emblem-white.svg" alt="" style="position:absolute;right:11px;top:11px;height:22px;opacity:0.92">
+        </div>
+        <div style="font-size:11.5px;font-weight:600;color:#16222C;margin-top:8px">D · Corner tab</div>
+        <div style="font-size:10.5px;line-height:1.5;color:#5B6B77">A compact blue tab for a short line; wing icon in the opposite corner. Keeps the image open.</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid #D8DFE4;background:#0E74BB;padding:14px 15px;display:flex;flex-direction:column;box-sizing:border-box">
+          <img src="assets/emblem-white.svg" alt="" style="position:absolute;top:0;right:0;height:100%;width:auto;transform:translateX(9%);opacity:0.06;pointer-events:none">
+          <span style="font-size:5.5px;letter-spacing:0.18em;text-transform:uppercase;color:#62C4EF;font-weight:700;position:relative">By the numbers</span>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:center;position:relative">
+            <div style="font-size:44px;font-weight:700;color:#FFFFFF;line-height:0.95">500<span style="font-size:20px"> ft</span></div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.9);line-height:1.35;margin-top:5px;max-width:150px">of steam main replaced beneath an active hospital, zero downtime.</div>
+          </div>
+          <img src="assets/alares-lockup-white.png" alt="" style="width:92px;position:relative">
+        </div>
+        <div style="font-size:11.5px;font-weight:600;color:#16222C;margin-top:8px">E · Stat card</div>
+        <div style="font-size:10.5px;line-height:1.5;color:#5B6B77">No photo, a single number carries the post. For milestones and results.</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="aspect-ratio:4/5;overflow:hidden;border:1px solid #D8DFE4;display:flex;flex-direction:column">
+          <div style="flex:1;min-height:0;position:relative"><image-slot id="ov-split" shape="rect" src="https://alaresengineering.com/assets/hero/01-hospital-corridor.jpg" placeholder="Drop photo"></image-slot></div>
+          <div style="flex:0 0 42%;background:#0E74BB;padding:12px 13px;display:flex;flex-direction:column;justify-content:center">
+            <span style="font-size:5.5px;letter-spacing:0.16em;text-transform:uppercase;color:#62C4EF;font-weight:700">Selected work / Albany VAMC</span>
+            <span style="font-size:14px;font-weight:700;color:#FFFFFF;line-height:1.15;margin-top:6px">Infrastructure that can't go down.</span>
+          </div>
+        </div>
+        <div style="font-size:11.5px;font-weight:600;color:#16222C;margin-top:8px">F · Split stack</div>
+        <div style="font-size:10.5px;line-height:1.5;color:#5B6B77">Half photo, half field. A clean divide when the headline leads.</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px">
+      <div style="break-inside:avoid">
+        <div style="aspect-ratio:4/5;background:#0E74BB;padding:13px;display:flex;flex-direction:column;box-sizing:border-box;border:1px solid #D8DFE4">
+          <div style="flex:1;min-height:0;position:relative"><image-slot id="ov-frame" shape="rect" src="https://alaresengineering.com/assets/hero/04-dental-check-in.jpg" placeholder="Drop photo"></image-slot></div>
+          <div style="display:flex;align-items:center;justify-content:center;padding-top:10px"><img src="assets/alares-lockup-white.png" alt="" style="height:13px"></div>
+        </div>
+        <div style="font-size:11.5px;font-weight:600;color:#16222C;margin-top:8px">G · Framed</div>
+        <div style="font-size:10.5px;line-height:1.5;color:#5B6B77">Photo inset on a blue field, lockup beneath. Calm and formal.</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid #D8DFE4;background:#0E74BB;padding:14px 15px;display:flex;flex-direction:column;box-sizing:border-box">
+          <img src="assets/emblem-white.svg" alt="" style="position:absolute;top:0;right:0;height:100%;width:auto;transform:translateX(9%);opacity:0.06;pointer-events:none">
+          <div style="flex:1;display:flex;align-items:center;position:relative"><div style="font-size:15px;font-weight:600;color:#FFFFFF;line-height:1.3">“They kept steam online through the entire cutover.”</div></div>
+          <div style="position:relative"><div style="font-size:7px;letter-spacing:0.14em;text-transform:uppercase;color:#62C4EF;font-weight:700;margin-bottom:8px">Project manager · VA</div><img src="assets/alares-lockup-white.png" alt="" style="width:92px"></div>
+        </div>
+        <div style="font-size:11.5px;font-weight:600;color:#16222C;margin-top:8px">H · Quote card</div>
+        <div style="font-size:10.5px;line-height:1.5;color:#5B6B77">No photo, a client's words carry it. For testimonials and awards.</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid #D8DFE4">
+          <image-slot id="ov-plate" shape="rect" src="https://alaresengineering.com/assets/hero/02-dental-clinic-entry.jpg" placeholder="Drop photo"></image-slot>
+          <div style="position:absolute;left:0;right:0;bottom:0;background:#0E74BB;padding:10px 12px 9px;overflow:hidden;pointer-events:none">
+            <img src="assets/emblem-white.svg" alt="" style="position:absolute;top:0;right:0;height:100%;width:auto;transform:translateX(9%);opacity:0.06;pointer-events:none">
+            <div style="position:relative;font-size:5.5px;letter-spacing:0.2em;text-transform:uppercase;color:#62C4EF;font-weight:700">Selected work / VA Dental Clinic</div>
+            <div style="position:relative;font-size:12.5px;font-weight:700;color:#FFFFFF;line-height:1.15;margin-top:3px">A calmer front door.</div>
+            <div style="position:relative;border-top:1px solid rgba(255,255,255,0.35);margin-top:7px;padding-top:4px;font-size:4.5px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.75)">Alares Architects &amp; Engineers</div>
+          </div>
+        </div>
+        <div style="font-size:11.5px;font-weight:600;color:#16222C;margin-top:8px">I · Plate</div>
+        <div style="font-size:10.5px;line-height:1.5;color:#5B6B77">The signature, photo plus a full-width blue band. The everyday project post.</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px;align-items:start">
+      <div style="break-inside:avoid">
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#0E74BB">
+          <img src="assets/emblem-white.svg" alt="" style="position:absolute;top:0;right:0;height:100%;width:auto;transform:translateX(9%);opacity:0.06;pointer-events:none">
+          <div style="position:absolute;left:12px;top:13px;font-size:5.5px;letter-spacing:0.2em;text-transform:uppercase;color:#62C4EF;font-weight:700">Careers / Quincy, MA</div>
+          <div style="position:absolute;left:12px;bottom:38px;right:24px;font-size:15px;font-weight:700;color:#FFFFFF;line-height:1.2">Now hiring: mechanical engineer.</div>
+          <div style="position:absolute;left:12px;right:12px;bottom:12px;border-top:1px solid rgba(255,255,255,0.35);padding-top:6px;display:flex;align-items:center"><img src="assets/alares-lockup-white.png" alt="" style="height:11px"><span style="flex:1"></span><span style="font-size:4.5px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.75)">alaresengineering.com</span></div>
+        </div>
+        <div style="font-size:11.5px;font-weight:600;color:#16222C;margin-top:8px">J · Flat blue</div>
+        <div style="font-size:10.5px;line-height:1.5;color:#5B6B77">No photo, full Alares Blue field. For announcements and hiring.</div>
+      </div>
+      <div style="break-inside:avoid;grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-self:start">
+        <div>
+          <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Anatomy of the plate (I)</div>
+          <div style="font-size:11px;line-height:1.7;color:#3A4954;margin-top:9px">
+            <div style="display:flex;gap:8px"><span style="color:#0E74BB;font-weight:700">1</span><span><span style="font-weight:600">Plate</span>, Alares Blue, full width, bottom edge. Max ⅓ tall.</span></div>
+            <div style="display:flex;gap:8px"><span style="color:#0E74BB;font-weight:700">2</span><span><span style="font-weight:600">Eyebrow</span>, Sky Blue caps: topic / project.</span></div>
+            <div style="display:flex;gap:8px"><span style="color:#0E74BB;font-weight:700">3</span><span><span style="font-weight:600">Headline</span>, white, sentence case, period. Two lines max.</span></div>
+            <div style="display:flex;gap:8px"><span style="color:#0E74BB;font-weight:700">4</span><span><span style="font-weight:600">Sign-off</span>, hairline rule + firm name, white 75%.</span></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Shared rules</div>
+          <div style="font-size:11px;line-height:1.7;color:#3A4954;margin-top:9px">
+            <div style="display:flex;gap:8px"><span style="color:#0E74BB;font-weight:700">—</span><span>Same three colors, Bahnschrift, and the wing across all ten.</span></div>
+            <div style="display:flex;gap:8px"><span style="color:#0E74BB;font-weight:700">—</span><span>One logo per post, lockup or wing, never both. No red on photos or blue.</span></div>
+            <div style="display:flex;gap:8px"><span style="color:#0E74BB;font-weight:700">—</span><span>Sizes: IG 1080×1350 · LinkedIn 1200×1200 · X 1600×900 · blog 1200×630.</span></div>
+            <div style="display:flex;gap:8px"><span style="color:#0E74BB;font-weight:700">—</span><span>Export from the <a href="Brand%20Asset%20Builder.dc.html">asset builder</a>, never rebuild by hand.</span></div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- ============ 10 PROPOSALS & DOCUMENTS ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:64px;padding-top:48px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">10 / Proposals &amp; documents</div>
+    <div style="font-size:30px;font-weight:700;line-height:1.1;margin:6px 0 14px">Where the work is won.</div>
+    <div style="font-size:13.5px;line-height:1.65;color:#3A4954;max-width:620px">Proposals, reports, and drawing sets are the brand's highest-stakes surfaces, reviewed by contracting officers, not designers. Three templates cover all of it.</div>
+    <div style="display:grid;grid-template-columns:auto auto 1fr;gap:20px;margin-top:20px;align-items:start">
+      <div style="break-inside:avoid">
+        <div style="position:relative;width:196px;height:253px;background:#0E74BB;padding:20px;overflow:hidden;box-sizing:border-box">
+          <sc-if value="{{ showWatermark }}" hint-placeholder-val="{{ true }}">
+            <img src="assets/emblem-white.svg" alt="" style="position:absolute;top:0;right:0;height:100%;width:auto;transform:translateX(9%);opacity:0.06;pointer-events:none">
+          </sc-if>
+          <div style="position:relative;font-size:6px;letter-spacing:0.22em;text-transform:uppercase;color:#62C4EF;font-weight:700">Proposal / 36C24E26R0042</div>
+          <div style="position:relative;font-size:15.5px;font-weight:700;color:#FFFFFF;line-height:1.2;margin-top:10px">Fire alarm system upgrade.</div>
+          <div style="position:relative;font-size:7.5px;color:rgba(255,255,255,0.8);margin-top:7px;line-height:1.5">Bedford VA Medical Center<br>Department of Veterans Affairs<br>July 2026</div>
+          <div style="position:absolute;left:20px;right:20px;bottom:16px;border-top:1px solid rgba(255,255,255,0.35);padding-top:8px"><img src="assets/alares-lockup-white.png" alt="" style="height:12px"></div>
+        </div>
+        <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B77;margin-top:7px">Proposal cover · Alares Blue</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="width:196px;height:253px;border:1px solid #D8DFE4;background:#FFFFFF;padding:16px;box-sizing:border-box;display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #E4E9ED;padding-bottom:7px">
+            <img src="assets/alares-logo-transparent.png" alt="" style="height:11px">
+            <span style="font-size:5px;letter-spacing:0.14em;text-transform:uppercase;color:#5B6B77">Technical proposal · Vol. 1</span>
+          </div>
+          <div style="font-size:5.5px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700;margin-top:11px">03 / Technical approach</div>
+          <div style="font-size:10px;font-weight:700;color:#16222C;margin-top:4px;line-height:1.2">Phasing around an active hospital.</div>
+          <div style="display:flex;gap:8px;margin-top:8px;flex:1">
+            <div style="flex:1;display:flex;flex-direction:column;gap:3.5px">
+              <div style="height:3px;background:#EDF1F4"></div><div style="height:3px;background:#EDF1F4"></div><div style="height:3px;background:#EDF1F4"></div><div style="height:3px;width:70%;background:#EDF1F4"></div>
+              <div style="height:3px;background:#EDF1F4;margin-top:5px"></div><div style="height:3px;background:#EDF1F4"></div><div style="height:3px;width:55%;background:#EDF1F4"></div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:3.5px">
+              <div style="flex:none;height:52px;background:#F2F6F9;border:1px solid #E4E9ED;display:flex;align-items:flex-end;padding:4px"><span style="font-family:Consolas,monospace;font-size:4px;color:#5B6B77">Fig. 03 / Phasing diagram</span></div>
+              <div style="height:3px;background:#EDF1F4;margin-top:4px"></div><div style="height:3px;background:#EDF1F4"></div><div style="height:3px;width:80%;background:#EDF1F4"></div>
+            </div>
+          </div>
+          <div style="border-top:1px solid #E4E9ED;padding-top:5px;display:flex;justify-content:space-between;font-size:4.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8A98A3"><span>Alares Architects &amp; Engineers</span><span>Bedford VAMC · 14</span></div>
+        </div>
+        <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#5B6B77;margin-top:7px">Report interior · white</div>
+      </div>
+      <div style="font-size:12px;line-height:1.8;color:#3A4954">
+        <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Covers: Alares Blue, reversed lockup, one watermarked wing. Solicitation number as the eyebrow.</span></div>
+        <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Interiors: white, Ink body ≥ 10 pt, section eyebrows in Alares Blue, figures on Mist with sheet-style captions.</span></div>
+        <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Footer on every page: firm name left, project and folio right.</span></div>
+        <div style="display:flex;gap:10px"><span style="color:#0E74BB;font-weight:700">—</span><span>Volumes and tabs use the blue ramp in order; red only for addenda flags.</span></div>
+      </div>
+    </div>
+    <div style="margin-top:24px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Drawing title block</div>
+    <div style="border:1px solid #16222C;margin-top:10px;display:flex;break-inside:avoid">
+      <div style="flex:none;width:170px;border-right:1px solid #16222C;padding:10px 12px;display:flex;flex-direction:column;justify-content:center;gap:5px">
+        <img src="assets/alares-logo-transparent.png" alt="" style="width:110px">
+        <div style="font-size:5.5px;line-height:1.5;color:#5B6B77;letter-spacing:0.04em">1990 MAIN ST, STE 750, SARASOTA, FL 34236<br>248 COPELAND ST, QUINCY, MA 02169</div>
+      </div>
+      <div style="flex:1;border-right:1px solid #16222C;padding:10px 12px">
+        <div style="font-size:5.5px;letter-spacing:0.14em;text-transform:uppercase;color:#5B6B77">Project</div>
+        <div style="font-size:9.5px;font-weight:700;color:#16222C;margin-top:2px">Fire alarm system upgrade, Bedford VA Medical Center</div>
+        <div style="font-size:5.5px;letter-spacing:0.14em;text-transform:uppercase;color:#5B6B77;margin-top:7px">Sheet title</div>
+        <div style="font-size:8px;font-weight:600;color:#16222C;margin-top:2px">Fire alarm riser diagram, Building 62</div>
+      </div>
+      <div style="flex:none;width:110px;border-right:1px solid #16222C;padding:10px 12px;font-size:6px;color:#16222C;display:flex;flex-direction:column;justify-content:center;gap:4px">
+        <div style="display:flex;justify-content:space-between"><span style="color:#5B6B77">DRAWN</span><span style="font-weight:700">JT</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:#5B6B77">CHECKED</span><span style="font-weight:700">DM</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:#5B6B77">DATE</span><span style="font-weight:700">07.16.26</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:#5B6B77">SCALE</span><span style="font-weight:700">NTS</span></div>
+      </div>
+      <div style="flex:none;width:92px;padding:10px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div style="font-size:5.5px;letter-spacing:0.14em;text-transform:uppercase;color:#5B6B77">Sheet</div>
+        <div style="font-size:20px;font-weight:700;color:#0E74BB">FA-101</div>
+      </div>
+    </div>
+    <div style="font-size:11px;line-height:1.6;color:#5B6B77;margin-top:10px">Title blocks stay full-color on white sheets. The emblem never prints one-color in a drawing set except on half-size mono plots, where the black version applies.</div>
+  </div>
+
+  <!-- ============ 11 MARKETING ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">11 / Marketing</div>
+    <div style="font-size:30px;font-weight:700;line-height:1.1;margin:6px 0 14px">How Alares wins work.</div>
+    <div style="font-size:13.5px;line-height:1.65;color:#3A4954;max-width:560px">Marketing at Alares isn't advertising, it's proof, delivered to the right people in the right order. Most of it happens in documents: proposals, capability statements, project sheets. This section sets who we're talking to, where, and what we say.</div>
+
+    <div style="background:#0E74BB;color:#FFFFFF;padding:22px 24px;margin-top:22px;position:relative;overflow:hidden;break-inside:avoid">
+      <img src="assets/emblem-white.svg" alt="" style="position:absolute;top:0;right:0;height:100%;width:auto;transform:translateX(9%);opacity:0.06;pointer-events:none">
+      <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#62C4EF;font-weight:700;position:relative">Positioning</div>
+      <div style="font-size:19px;font-weight:600;line-height:1.4;margin-top:10px;max-width:640px;position:relative">The healthcare A&amp;E firm that federal and private clients trust to keep critical facilities running, precise engineering, delivered swiftly, without sacrificing quality.</div>
+    </div>
+
+    <div style="margin-top:26px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Who we market to</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px">
+      <div style="border-top:3px solid #0E74BB;background:#F2F6F9;padding:14px;break-inside:avoid"><div style="font-weight:700;font-size:13px">Contracting officers</div><div style="font-size:11px;line-height:1.5;color:#5B6B77;margin-top:5px">VA, DoD, GSA. Win on past performance, compliance, and a clean SF-330.</div></div>
+      <div style="border-top:3px solid #0E74BB;background:#F2F6F9;padding:14px;break-inside:avoid"><div style="font-weight:700;font-size:13px">Facility directors</div><div style="font-size:11px;line-height:1.5;color:#5B6B77;margin-top:5px">Hospital &amp; campus. Care about uptime, phasing around live operations, safety.</div></div>
+      <div style="border-top:3px solid #0E74BB;background:#F2F6F9;padding:14px;break-inside:avoid"><div style="font-weight:700;font-size:13px">GCs &amp; CMs</div><div style="font-size:11px;line-height:1.5;color:#5B6B77;margin-top:5px">Want responsive engineers, coordinated documents, and few RFIs.</div></div>
+      <div style="border-top:3px solid #0E74BB;background:#F2F6F9;padding:14px;break-inside:avoid"><div style="font-weight:700;font-size:13px">Private owners</div><div style="font-size:11px;line-height:1.5;color:#5B6B77;margin-top:5px">Clinics, dental, imaging. Care about speed to occupancy and budget certainty.</div></div>
+    </div>
+
+    <div style="margin-top:26px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Where we show up &amp; how often</div>
+    <div style="margin-top:12px;border-top:1px solid #D8DFE4">
+      <div style="display:flex;gap:16px;align-items:baseline;padding:9px 0;border-bottom:1px solid #E4E9ED"><span style="flex:0 0 168px;font-weight:700;font-size:12.5px">Proposals &amp; SF-330s</span><span style="flex:1;font-size:11.5px;color:#3A4954;line-height:1.5">The primary channel, every submission is marketing. On-template, on-brand, every time.</span><span style="flex:0 0 96px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#0E74BB;font-weight:700;text-align:right">Per pursuit</span></div>
+      <div style="display:flex;gap:16px;align-items:baseline;padding:9px 0;border-bottom:1px solid #E4E9ED"><span style="flex:0 0 168px;font-weight:700;font-size:12.5px">LinkedIn</span><span style="flex:1;font-size:11.5px;color:#3A4954;line-height:1.5">Project wins, milestones, hires, and expertise. The firm's public voice.</span><span style="flex:0 0 96px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#0E74BB;font-weight:700;text-align:right">2–3× / week</span></div>
+      <div style="display:flex;gap:16px;align-items:baseline;padding:9px 0;border-bottom:1px solid #E4E9ED"><span style="flex:0 0 168px;font-weight:700;font-size:12.5px">Conferences</span><span style="flex:1;font-size:11.5px;color:#3A4954;line-height:1.5">SAME, DBIA, ASHE, federal small-business events. Booth, line card, capability statement.</span><span style="flex:0 0 96px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#0E74BB;font-weight:700;text-align:right">By calendar</span></div>
+      <div style="display:flex;gap:16px;align-items:baseline;padding:9px 0;border-bottom:1px solid #E4E9ED"><span style="flex:0 0 168px;font-weight:700;font-size:12.5px">Targeted email</span><span style="flex:1;font-size:11.5px;color:#3A4954;line-height:1.5">Capability sends to COs and GC partners; a short project-of-the-quarter note.</span><span style="flex:0 0 96px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#0E74BB;font-weight:700;text-align:right">Quarterly</span></div>
+      <div style="display:flex;gap:16px;align-items:baseline;padding:9px 0;border-bottom:1px solid #E4E9ED"><span style="flex:0 0 168px;font-weight:700;font-size:12.5px">Website &amp; SEO</span><span style="flex:1;font-size:11.5px;color:#3A4954;line-height:1.5">Project portfolio and the capability-statement download. The proof archive.</span><span style="flex:0 0 96px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#0E74BB;font-weight:700;text-align:right">Ongoing</span></div>
+    </div>
+
+    <div style="margin-top:26px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Content pillars</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px">
+      <div style="border:1px solid #D8DFE4;padding:14px;break-inside:avoid"><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#0E74BB;font-weight:700">01</div><div style="font-weight:700;font-size:13px;margin-top:4px">Case study</div><div style="font-size:11px;line-height:1.5;color:#5B6B77;margin-top:4px">Real projects, real numbers, named clients.</div></div>
+      <div style="border:1px solid #D8DFE4;padding:14px;break-inside:avoid"><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#0E74BB;font-weight:700">02</div><div style="font-weight:700;font-size:13px;margin-top:4px">Capabilities</div><div style="font-size:11px;line-height:1.5;color:#5B6B77;margin-top:4px">Eight disciplines, one accountable team.</div></div>
+      <div style="border:1px solid #D8DFE4;padding:14px;break-inside:avoid"><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#0E74BB;font-weight:700">03</div><div style="font-weight:700;font-size:13px;margin-top:4px">People &amp; culture</div><div style="font-size:11px;line-height:1.5;color:#5B6B77;margin-top:4px">Veteran-led, can-do, precise under pressure.</div></div>
+      <div style="border:1px solid #D8DFE4;padding:14px;break-inside:avoid"><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#0E74BB;font-weight:700">04</div><div style="font-weight:700;font-size:13px;margin-top:4px">Expertise</div><div style="font-size:11px;line-height:1.5;color:#5B6B77;margin-top:4px">A point of view on healthcare infrastructure &amp; compliance.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ 11b MARKETING TOOLKIT ============ -->
+  <div style="break-before:page;border-top:3px solid #16222C;margin-top:26px;padding-top:22px;min-height:8.8in">
+    <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#0E74BB;font-weight:700">11 / Marketing, the toolkit</div>
+    <div style="font-size:22px;font-weight:700;line-height:1.1;margin:6px 0 16px">The message &amp; the materials.</div>
+
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:26px">
+      <div style="break-inside:avoid">
+        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Message hierarchy</div>
+        <div style="margin-top:12px;border-left:3px solid #0E74BB;padding-left:14px">
+          <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#0E74BB;font-weight:700">Lead line</div>
+          <div style="font-size:15px;font-weight:600;color:#16222C;line-height:1.35;margin-top:3px">Healthcare architects and engineers who keep critical facilities running.</div>
+          <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#0E74BB;font-weight:700;margin-top:14px">Support</div>
+          <div style="font-size:12px;color:#3A4954;line-height:1.6;margin-top:3px">Veteran-led since 2007 · federal &amp; private past performance · eight disciplines under one roof · swift without sacrificing quality.</div>
+        </div>
+        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600;margin-top:22px">Proof points</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+          <div style="border:1px solid #D8DFE4;padding:12px;break-inside:avoid"><div style="font-size:22px;font-weight:700;color:#0E74BB">2007</div><div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#5B6B77;margin-top:3px">Veteran-founded</div></div>
+          <div style="border:1px solid #D8DFE4;padding:12px;break-inside:avoid"><div style="font-size:22px;font-weight:700;color:#0E74BB">8</div><div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#5B6B77;margin-top:3px">Disciplines</div></div>
+          <div style="border:1px solid #D8DFE4;padding:12px;break-inside:avoid"><div style="font-size:22px;font-weight:700;color:#0E74BB">VA</div><div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#5B6B77;margin-top:3px">Federal past performance</div></div>
+          <div style="border:1px solid #D8DFE4;padding:12px;break-inside:avoid"><div style="font-size:22px;font-weight:700;color:#0E74BB">2</div><div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#5B6B77;margin-top:3px">Offices, FL &amp; MA</div></div>
+        </div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">Boilerplate, copy-ready</div>
+        <div style="background:#F2F6F9;border:1px solid #D8DFE4;padding:15px;margin-top:12px;font-size:11.5px;line-height:1.65;color:#3A4954">Founded in 2007 and led by a West Point graduate and former Green Beret officer, <span style="font-weight:600;color:#16222C">Alares Architects &amp; Engineers</span> is a healthcare-focused A&amp;E firm serving federal and private clients from offices in Sarasota, FL and Quincy, MA. Across eight disciplines, we design and modernize the environments that keep care running, swiftly, and without sacrificing quality.</div>
+        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600;margin-top:20px">Elevator pitch, one breath</div>
+        <div style="border-left:3px solid #C1272D;padding:10px 0 10px 14px;margin-top:10px;font-size:13px;font-weight:600;color:#16222C;line-height:1.45">"We're the A&amp;E firm hospitals and the VA call when the building can't go down."</div>
+      </div>
+    </div>
+
+    <div style="margin-top:26px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#5B6B77;font-weight:600">The collateral kit</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px">
+      <div style="break-inside:avoid">
+        <div style="aspect-ratio:3/4;border:1px solid #D8DFE4;background:#FFFFFF;padding:12px;display:flex;flex-direction:column;box-sizing:border-box">
+          <img src="assets/alares-logo-transparent.png" alt="" style="width:72px">
+          <div style="font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:#0E74BB;font-weight:700;margin-top:10px">Capability statement</div>
+          <div style="margin-top:6px;display:flex;flex-direction:column;gap:3px"><div style="height:3px;width:90%;background:#EDF1F4"></div><div style="height:3px;width:80%;background:#EDF1F4"></div><div style="height:3px;width:86%;background:#EDF1F4"></div></div>
+          <div style="flex:1"></div>
+          <div style="border-top:2px solid #0E74BB;padding-top:5px;font-size:4.5px;letter-spacing:0.08em;text-transform:uppercase;color:#5B6B77">UEI · NAICS · SDVOSB</div>
+        </div>
+        <div style="font-size:10px;color:#5B6B77;margin-top:6px">1-page capability statement</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="aspect-ratio:3/4;border:1px solid #D8DFE4;background:#FFFFFF;display:flex;flex-direction:column;overflow:hidden">
+          <div style="flex:0 0 46%;position:relative"><image-slot id="mk-onepager" shape="rect" src="https://alaresengineering.com/assets/hero/01-hospital-corridor.jpg" placeholder="Drop project photo"></image-slot></div>
+          <div style="padding:9px 10px;flex:1;display:flex;flex-direction:column">
+            <div style="font-size:5px;letter-spacing:0.16em;text-transform:uppercase;color:#0E74BB;font-weight:700">Selected work</div>
+            <div style="font-size:8.5px;font-weight:700;color:#16222C;line-height:1.15;margin-top:2px">Campus boiler plant replacement.</div>
+            <div style="margin-top:6px;display:flex;flex-direction:column;gap:3px"><div style="height:2.5px;width:92%;background:#EDF1F4"></div><div style="height:2.5px;width:84%;background:#EDF1F4"></div></div>
+          </div>
+        </div>
+        <div style="font-size:10px;color:#5B6B77;margin-top:6px">Project one-pager</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="aspect-ratio:3/4;border:1px solid #D8DFE4;background:#0E74BB;padding:12px;display:flex;flex-direction:column;box-sizing:border-box;position:relative;overflow:hidden">
+          <img src="assets/emblem-white.svg" alt="" style="position:absolute;top:0;right:0;height:100%;width:auto;transform:translateX(9%);opacity:0.06;pointer-events:none">
+          <div style="font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:#62C4EF;font-weight:700;position:relative">Services</div>
+          <div style="margin-top:8px;display:flex;flex-direction:column;gap:5px;position:relative;font-size:7px;color:#FFFFFF">
+            <div>Architecture</div><div>MEP engineering</div><div>Structural &amp; seismic</div><div>Commissioning</div><div>Sustainability</div><div>Energy consulting</div>
+          </div>
+          <div style="flex:1"></div>
+          <img src="assets/alares-lockup-white.png" alt="" style="width:74px;position:relative">
+        </div>
+        <div style="font-size:10px;color:#5B6B77;margin-top:6px">Line card</div>
+      </div>
+      <div style="break-inside:avoid">
+        <div style="aspect-ratio:3/4;border:1px solid #D8DFE4;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative">
+          <div style="width:100%;aspect-ratio:1/1;position:relative;overflow:hidden">
+            <image-slot id="mk-social" shape="rect" src="https://alaresengineering.com/assets/hero/04-dental-check-in.jpg" placeholder="Drop photo"></image-slot>
+            <div style="position:absolute;left:0;right:0;bottom:0;background:#0E74BB;padding:7px 9px;pointer-events:none"><div style="font-size:4.5px;letter-spacing:0.16em;text-transform:uppercase;color:#62C4EF;font-weight:700">Selected work</div><div style="font-size:8px;font-weight:700;color:#FFFFFF;line-height:1.15;margin-top:2px">A calmer front door.</div></div>
+          </div>
+        </div>
+        <div style="font-size:10px;color:#5B6B77;margin-top:6px">Social kit, see §09</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px">
+      <div style="background:#F2F6F9;padding:16px;break-inside:avoid">
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:#0E74BB">✓ Market like this</div>
+        <div style="font-size:12px;line-height:1.7;color:#3A4954;margin-top:8px">Lead with past performance and hard numbers · name the client and the place · show projects we actually built · keep every SF-330 clean and on-template · answer the evaluation criteria in their order.</div>
+      </div>
+      <div style="background:#F2F6F9;padding:16px;break-inside:avoid">
+        <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:#C1272D">✕ Never</div>
+        <div style="font-size:12px;line-height:1.7;color:#3A4954;margin-top:8px">Stock metaphors or buzzwords · overpromise on schedule · bury the proof under adjectives · let any outbound piece go out off-template · claim experience we can't cite.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ BACK COVER ============ -->
+  <div style="break-before:page;position:relative;background:#0E74BB;min-height:8.2in;max-height:8.6in;padding:44px 48px;display:flex;flex-direction:column;overflow:hidden;break-inside:avoid">
+    <img src="assets/emblem-white.svg" alt="" style="position:absolute;top:0;right:0;height:100%;width:auto;transform:translateX(9%);opacity:0.06;pointer-events:none">
+    <img src="assets/alares-lockup-white.png" alt="Alares Architects &amp; Engineers" style="width:230px;position:relative">
+    <div style="font-size:34px;font-weight:700;color:#FFFFFF;line-height:1.1;margin-top:40px;position:relative">Questions about<br>the brand.</div>
+    <div style="font-size:13px;line-height:1.65;color:rgba(255,255,255,0.85);max-width:400px;margin-top:14px;position:relative">For logo artwork, templates, or review of anything these guidelines don't cover, contact the Sarasota office before improvising.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:28px;max-width:460px;position:relative">
+      <div><div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#62C4EF;font-weight:700">Headquarters</div><div style="font-size:12.5px;line-height:1.65;color:#FFFFFF;margin-top:8px">1990 Main St Downtown<br>Suite 750<br>Sarasota, FL 34236<br>941.444.0477</div></div>
+      <div><div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#62C4EF;font-weight:700">Boston office</div><div style="font-size:12.5px;line-height:1.65;color:#FFFFFF;margin-top:8px">248 Copeland Street<br>Quincy, MA 02169<br>617.481.6390</div></div>
+    </div>
+    <div style="font-size:12.5px;color:#FFFFFF;margin-top:26px;position:relative"><a href="https://alaresengineering.com" style="color:#62C4EF">alaresengineering.com</a></div>
+    <div style="flex:1"></div>
+    <div style="font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.65);position:relative">© 2026 Alares Architects &amp; Engineers · Brand guidelines · {{ versionLabel }}</div>
+  </div>
+
+</div>
+</x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;paperSize&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;letter&quot;, &quot;a4&quot;], &quot;default&quot;: &quot;letter&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Document&quot;},
+  &quot;versionLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Version 1.0 · July 2026&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Document&quot;},
+  &quot;watermarks&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Style&quot;}
+}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      paperSize: this.props.paperSize ?? 'letter',
+      versionLabel: this.props.versionLabel ?? 'Version 1.0 · July 2026',
+      showWatermark: this.props.watermarks ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -5,7 +5,7 @@ const TARGET_HOURS = 20;
 const TABS = ['Opportunities', 'Outreach', 'Posts', 'Newsletter', 'Listings', 'Hours', 'Reports'];
 const PAGES = [
   ['index.html', 'Overview'], ['opportunities.html', 'Opportunities'], ['outreach.html', 'Outreach'],
-  ['content.html', 'Content calendar'], ['design/posting-calendar.html', 'Post builder'], ['newsletter.html', 'Newsletter'], ['listings.html', 'Listings'],
+  ['content.html', 'Content calendar'], ['design/posting-calendar.html', 'Post builder'], ['design/brand-guidelines.html', 'Brand guidelines'], ['newsletter.html', 'Newsletter'], ['listings.html', 'Listings'],
   ['hours.html', 'Hours'], ['reports.html', 'Reports']
 ];
 
